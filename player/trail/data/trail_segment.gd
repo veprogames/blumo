@@ -6,9 +6,9 @@ var origin: Vector2
 ## [member origin] + [member length] = To
 var length: Vector2
 
-func _init(origin: Vector2, length: Vector2) -> void:
-	self.origin = origin
-	self.length = length
+func _init(origin_: Vector2, length_: Vector2) -> void:
+	self.origin = origin_
+	self.length = length_
 
 func get_target_position() -> Vector2:
 	return origin + length

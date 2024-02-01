@@ -17,13 +17,14 @@ func _ready() -> void:
 	trail.vertex_added.connect(_on_point_added)
 	trail.vertex_removed.connect(_on_point_removed)
 
-func _on_point_added(position: Vector2, index: int):
+func _on_point_added(point_position: Vector2, index: int):
 	# We can't build a segment with 1 point
 	if index < 1:
 		return
 	
 	var previous_position = trail.points[index - 1]
-	var segment = TrailSegment.new(previous_position, position - previous_position)
+	var segment_length = point_position - previous_position
+	var segment = TrailSegment.new(previous_position, segment_length)
 	
 	segments.push_back(segment)
 	
@@ -31,7 +32,7 @@ func _on_point_added(position: Vector2, index: int):
 	if index < 3:
 		return
 	
-	check_for_new_areas(segments)
+	check_for_new_areas()
 	
 	assert(len(segments) == len(trail.points) - 1)
 
@@ -47,14 +48,14 @@ func _on_point_removed() -> void:
 ## build the actual collision area node
 ##
 ## This includes constructing the Polygon
-func build_collision_area(segments: Array[TrailSegment], index_from: int, index_to: int, intersection_point: Vector2) -> TrailCollisionArea:
+func build_collision_area(trail_segments: Array[TrailSegment], index_from: int, index_to: int, intersection_point: Vector2) -> TrailCollisionArea:
 	var area := TrailCollisionAreaScene.instantiate() as TrailCollisionArea
 	var poly := PackedVector2Array()
 	
 	# start with the intersection point
 	poly.append(intersection_point)
 	for i in range(index_from + 1, index_to):
-		var segment = segments[i] as TrailSegment
+		var segment = trail_segments[i] as TrailSegment
 		poly.append(segment.origin)
 	
 	add_child(area)
@@ -63,15 +64,9 @@ func build_collision_area(segments: Array[TrailSegment], index_from: int, index_
 	
 	return area
 
-## Return a [class TrailCollisionArea] if conditions are met:
-##
-## The newest and 2nd newest segment always touch in a single point, ignore that
-func try_create_collision_area(index_from: int, index_to: int, intersection_point: Vector2) -> TrailCollisionArea:
-	return build_collision_area(self.segments, index_from, index_to, intersection_point)
-
 ## for the most recent segment only, go through all segments and if they collide,
 ## try to create a new polygon shape
-func check_for_new_areas(segments: Array[TrailSegment]) -> void:
+func check_for_new_areas() -> void:
 	var newest := segments[len(segments) - 1]
 	# skip the 2nd newest segment because they would always touch in a single point
 	for i in range(len(segments) - 2):
@@ -81,6 +76,6 @@ func check_for_new_areas(segments: Array[TrailSegment]) -> void:
 		if possible_intersection != null:
 			var index_from := i
 			var index_to := len(segments) - 1
-			try_create_collision_area(index_from, index_to, possible_intersection)
+			build_collision_area(segments, index_from, index_to, possible_intersection)
 
 #endregion
