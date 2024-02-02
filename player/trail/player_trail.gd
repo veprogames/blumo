@@ -4,7 +4,7 @@ extends Line2D
 signal vertex_added(position: Vector2, index: int)
 signal vertex_removed()
 
-const MIN_VERTEX_DIST := 8
+const MIN_VERTEX_DIST := 4
 
 @export var player: Player
 

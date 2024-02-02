@@ -26,6 +26,13 @@ func _on_point_added(point_position: Vector2, index: int):
 	var segment_length = point_position - previous_position
 	var segment = TrailSegment.new(previous_position, segment_length)
 	
+	# link the segments together if possible
+	# each segment has a reference to the previous and next segment if applicable
+	if len(segments) > 0:
+		var previus_segment = segments[len(segments) - 1]
+		segment.previous = previus_segment
+		previus_segment.next = segment
+	
 	segments.push_back(segment)
 	
 	# if we have less than 4 points, a closed shape cant exist
@@ -38,38 +45,35 @@ func _on_point_added(point_position: Vector2, index: int):
 
 func _on_point_removed() -> void:
 	segments.pop_front()
+	# unlink the removed segment
+	segments[0].previous = null
 	assert(
 		len(segments) == len(trail.points) - 1 or
 		(len(segments) == 0 and len(trail.points) == 0)
 	)
+	assert(segments[0].previous == null)
 
 #region Collision Areas Construction
 
 ## build the actual collision area node
 ##
 ## This includes constructing the Polygon
-func build_collision_area(trail_segments: Array[TrailSegment], index_from: int, index_to: int, intersection_point: Vector2) -> TrailCollisionArea:
+func build_collision_area(from_segment: TrailSegment, intersection_point: Vector2) -> TrailCollisionArea:
 	var area := TrailCollisionAreaScene.instantiate() as TrailCollisionArea
 	var poly := PackedVector2Array()
+	
+	var segment = from_segment
 	
 	# start with the intersection point
 	poly.append(intersection_point)
 	
-	var i = index_from + 1
-	while i < index_to:
-		var segment = trail_segments[i] as TrailSegment
-		poly.append(segment.origin)
+	while segment.has_next():
+		poly.append(segment.next.origin)
 		
-		# test
-		for j in range(i + 2, index_to - 1):
-			var check_segment := trail_segments[j] as TrailSegment
-			var possible_intersection = segment.get_intersection(check_segment)
-			if possible_intersection:
-				poly.append(possible_intersection)
-				i = j
-				break
-
-		i += 1
+		if len(segment.intersections) > 0 and segment != from_segment:
+			segment = segment.intersections[0]
+		else:
+			segment = segment.next
 	
 	add_child(area)
 	
@@ -87,8 +91,7 @@ func check_for_new_areas() -> void:
 		
 		var possible_intersection = current.get_intersection(newest)
 		if possible_intersection != null:
-			var index_from := i
-			var index_to := len(segments) - 1
-			build_collision_area(segments, index_from, index_to, possible_intersection)
+			current.add_intersection(newest)
+			build_collision_area(current, possible_intersection)
 
 #endregion
