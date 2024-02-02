@@ -54,9 +54,22 @@ func build_collision_area(trail_segments: Array[TrailSegment], index_from: int, 
 	
 	# start with the intersection point
 	poly.append(intersection_point)
-	for i in range(index_from + 1, index_to):
+	
+	var i = index_from + 1
+	while i < index_to:
 		var segment = trail_segments[i] as TrailSegment
 		poly.append(segment.origin)
+		
+		# test
+		for j in range(i + 2, index_to - 1):
+			var check_segment := trail_segments[j] as TrailSegment
+			var possible_intersection = segment.get_intersection(check_segment)
+			if possible_intersection:
+				poly.append(possible_intersection)
+				i = j
+				break
+
+		i += 1
 	
 	add_child(area)
 	
@@ -69,7 +82,7 @@ func build_collision_area(trail_segments: Array[TrailSegment], index_from: int, 
 func check_for_new_areas() -> void:
 	var newest := segments[len(segments) - 1]
 	# skip the 2nd newest segment because they would always touch in a single point
-	for i in range(len(segments) - 2):
+	for i in range(len(segments) - 2, -1, -1):
 		var current := segments[i]
 		
 		var possible_intersection = current.get_intersection(newest)

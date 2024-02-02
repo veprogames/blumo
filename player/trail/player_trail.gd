@@ -15,6 +15,8 @@ var vertex_times: Array[float] = []
 ## Elapsed time
 var t := 0.0
 
+const TRAIL_LIFETIME: float = 10.5
+
 func _process(delta: float) -> void:
 	t += delta
 	if player != null:
@@ -52,7 +54,7 @@ func try_add_trail_vertex():
 func should_remove_first_vertex() -> bool:
 	if len(vertex_times) == 0:
 		return false
-	return t - vertex_times[0] >= 1.5
+	return t - vertex_times[0] >= TRAIL_LIFETIME
 
 ## Remove the first/oldest vertex if [method should_remove_first_vertex] applies
 func try_remove_first_trail_vertex():
