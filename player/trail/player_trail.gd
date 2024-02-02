@@ -4,7 +4,7 @@ extends Line2D
 signal vertex_added(position: Vector2, index: int)
 signal vertex_removed()
 
-const MIN_VERTEX_DIST := 4
+const MIN_VERTEX_DIST := 32
 
 @export var player: Player
 
@@ -15,7 +15,7 @@ var vertex_times: Array[float] = []
 ## Elapsed time
 var t := 0.0
 
-const TRAIL_LIFETIME: float = 10.5
+static var TRAIL_LIFETIME: float = 1.5
 
 func _process(delta: float) -> void:
 	t += delta
@@ -54,7 +54,7 @@ func try_add_trail_vertex():
 func should_remove_first_vertex() -> bool:
 	if len(vertex_times) == 0:
 		return false
-	return t - vertex_times[0] >= TRAIL_LIFETIME
+	return t - vertex_times[0] >= PlayerTrail.TRAIL_LIFETIME
 
 ## Remove the first/oldest vertex if [method should_remove_first_vertex] applies
 func try_remove_first_trail_vertex():
