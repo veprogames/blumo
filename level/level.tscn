@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://biepw3gb8bcue"]
+[gd_scene load_steps=6 format=3 uid="uid://biepw3gb8bcue"]
 
 [ext_resource type="PackedScene" uid="uid://b524q435s8xuh" path="res://player/player.tscn" id="1_2tvxm"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_qimrh"]
 [ext_resource type="PackedScene" uid="uid://cr514afpudpu0" path="res://player/trail/player_trail.tscn" id="2_dp51t"]
 [ext_resource type="PackedScene" uid="uid://dufqidwgk1b28" path="res://player/trail/collision/trail_collision_manager.tscn" id="3_6qic3"]
-[ext_resource type="PackedScene" uid="uid://cfk6aw3v0herd" path="res://edible/edible.tscn" id="4_8mdv2"]
+[ext_resource type="PackedScene" uid="uid://ii8882bpv1n6" path="res://level/edible_spawner.tscn" id="6_45qq1"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_qimrh")
 
 [node name="Player" parent="." instance=ExtResource("1_2tvxm")]
 position = Vector2(540, 960)
@@ -15,9 +17,6 @@ player = NodePath("../Player")
 
 [node name="TrailCollisionManager" parent="." node_paths=PackedStringArray("trail") instance=ExtResource("3_6qic3")]
 trail = NodePath("../PlayerTrail")
-
-[node name="Edible" parent="." instance=ExtResource("4_8mdv2")]
-position = Vector2(540, 100)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -10
@@ -29,3 +28,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="EdibleSpawner" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6_45qq1")]
+level = NodePath("..")

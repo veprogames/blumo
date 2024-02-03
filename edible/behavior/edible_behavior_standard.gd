@@ -12,6 +12,8 @@ var viewport_rect: Rect2
 
 var tween: Tween
 
+var from_edge: EdibleSpawner.LevelEdge
+
 func _ready() -> void:
 	super._ready()
 	
@@ -22,7 +24,8 @@ func _ready() -> void:
 	viewport_rect = get_viewport_rect()
 	
 	# This ensures that the direction wont be too close to a multiple of 90 degrees
-	var direction: float = randi_range(0, 3) * PI / 2.0 + randf_range(-PI / 3.0, PI / 3.0)
+	var direction: float = get_direction_from_edge(from_edge) + \
+		randf_range(PI / 7.0, PI / 3.0) * (1.0 if randi() % 2 == 0 else -1.0)
 	speed = randf_range(100.0, 200.0)
 	
 	direction_vector = Vector2.RIGHT.rotated(direction)
@@ -41,6 +44,16 @@ func _process(delta: float) -> void:
 	edible.position += direction_vector * speed * delta
 	if not viewport_rect.has_point(edible.position):
 		direction_vector = direction_vector.rotated(PI / 2)
+		edible.position = edible.position.clamp(viewport_rect.position, viewport_rect.end)
+
+func get_direction_from_edge(edge: EdibleSpawner.LevelEdge) -> float:
+	match edge:
+		EdibleSpawner.LevelEdge.Right: return 0.0
+		EdibleSpawner.LevelEdge.Top: return PI / 2
+		EdibleSpawner.LevelEdge.Left: return PI
+		EdibleSpawner.LevelEdge.Bottom: return 3 * PI / 2
+		_: return 0.0
+		
 
 func _on_became_edible() -> void:
 	tween.kill()

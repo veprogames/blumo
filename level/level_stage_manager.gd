@@ -1,0 +1,2 @@
+class_name LevelStageManager
+extends Node2D
