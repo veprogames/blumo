@@ -1,6 +1,8 @@
 class_name Player
 extends Area2D
 
+signal died()
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 ## Used for getting screen edges
@@ -37,3 +39,12 @@ func _process(_delta: float) -> void:
 	if len(movements) > 0:
 		var average_motion = Utils.sum(movements) / len(movements)
 		sprite_2d.rotation = average_motion.angle()
+
+func die():
+	died.emit()
+	queue_free()
+
+func _on_area_entered(area: Area2D) -> void:
+	var edible := area as Edible
+	if edible:
+		edible.handle_player_collision(self)

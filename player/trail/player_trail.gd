@@ -4,6 +4,8 @@ extends Line2D
 signal vertex_added(position: Vector2, index: int)
 signal vertex_removed()
 
+signal died()
+
 const MIN_VERTEX_DIST := 32
 
 @export var player: Player
@@ -17,12 +19,19 @@ var t := 0.0
 
 static var TRAIL_LIFETIME: float = 1.5
 
+func _ready() -> void:
+	player.died.connect(die)
+
 func _process(delta: float) -> void:
 	t += delta
 	if player != null:
 		global_position = Vector2.ZERO
 		try_add_trail_vertex()
 		try_remove_first_trail_vertex()
+
+func die() -> void:
+	died.emit()
+	queue_free()
 
 ## Get the position where a new vertex should be placed
 func get_vertex_pos() -> Vector2:

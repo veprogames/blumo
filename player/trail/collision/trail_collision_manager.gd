@@ -14,6 +14,7 @@ var segments: Array[TrailSegment] = []
 var collision_areas := {}
 
 func _ready() -> void:
+	trail.died.connect(queue_free)
 	trail.vertex_added.connect(_on_point_added)
 	trail.vertex_removed.connect(_on_point_removed)
 
