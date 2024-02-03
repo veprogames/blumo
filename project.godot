@@ -42,6 +42,17 @@ window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
 
+[file_customization]
+
+folder_colors={
+"res://art/": "gray",
+"res://fonts/": "gray"
+}
+
+[gui]
+
+theme/custom="res://main_theme.tres"
+
 [rendering]
 
 renderer/rendering_method="mobile"

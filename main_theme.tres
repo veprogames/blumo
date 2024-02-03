@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ckehh8iri5o8t"]
+
+[ext_resource type="FontFile" uid="uid://bwqj1g86nb0i2" path="res://fonts/Montserrat-Regular.ttf" id="1_ka16o"]
+
+[resource]
+default_font = ExtResource("1_ka16o")
+default_font_size = 48
+LabelLarge/base_type = &"Label"
+LabelLarge/font_sizes/font_size = 192

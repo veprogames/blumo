@@ -29,6 +29,7 @@ func become_edible() -> void:
 	became_edible.emit()
 
 func eat() -> void:
+	Global.save.score += 1
 	queue_free()
 	await tree_exited
 	eaten.emit()
