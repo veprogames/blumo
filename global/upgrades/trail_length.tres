@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=6 format=3 uid="uid://b4nvya2rvntae"]
+
+[ext_resource type="Script" path="res://upgrade/formulae/upgrade_formula_polynomial.gd" id="1_5kh5f"]
+[ext_resource type="Script" path="res://upgrade/upgrade.gd" id="1_hi15p"]
+[ext_resource type="Script" path="res://upgrade/formulae/upgrade_formula_exponential.gd" id="2_bexni"]
+
+[sub_resource type="Resource" id="Resource_7lvgu"]
+script = ExtResource("1_5kh5f")
+base = 0.4
+multiplier = 0.01
+exponent = 1.0
+
+[sub_resource type="Resource" id="Resource_oxvfx"]
+script = ExtResource("2_bexni")
+base = 1.0
+multiplier = 10.0
+exponent = 1.2
+
+[resource]
+script = ExtResource("1_hi15p")
+level = 0
+price_formula = SubResource("Resource_oxvfx")
+effect_formula = SubResource("Resource_7lvgu")
