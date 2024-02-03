@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfk6aw3v0herd"]
+[gd_scene load_steps=5 format=3 uid="uid://cfk6aw3v0herd"]
 
 [ext_resource type="Script" path="res://edible/edible.gd" id="1_n0a62"]
 [ext_resource type="Texture2D" uid="uid://blofy2qar2bv3" path="res://edible/edible.png" id="2_tifuu"]
+[ext_resource type="PackedScene" uid="uid://hougfbs3syj8" path="res://edible/behavior/edible_behavior_standard.tscn" id="3_6jn4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjdqc"]
 size = Vector2(64, 64)
@@ -17,5 +18,8 @@ texture = ExtResource("2_tifuu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gjdqc")
+
+[node name="EdibleBehaviorStandard" parent="." node_paths=PackedStringArray("edible") instance=ExtResource("3_6jn4o")]
+edible = NodePath("..")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

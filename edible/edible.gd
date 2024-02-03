@@ -1,6 +1,8 @@
 class_name Edible
 extends Area2D
 
+signal became_edible()
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 const EDIBLE_COLOR := Color("#224fff")
@@ -16,6 +18,7 @@ func _on_area_entered(area: Area2D) -> void:
 func become_edible() -> void:
 	edible = true
 	sprite_2d.modulate *= EDIBLE_COLOR
+	became_edible.emit()
 
 func eat() -> void:
 	queue_free()

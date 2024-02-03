@@ -8,6 +8,7 @@
 [node name="Level" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2tvxm")]
+position = Vector2(540, 960)
 
 [node name="PlayerTrail" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_dp51t")]
 player = NodePath("../Player")
@@ -16,7 +17,7 @@ player = NodePath("../Player")
 trail = NodePath("../PlayerTrail")
 
 [node name="Edible" parent="." instance=ExtResource("4_8mdv2")]
-position = Vector2(538, 380)
+position = Vector2(540, 100)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -10
