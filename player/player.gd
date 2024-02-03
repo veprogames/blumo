@@ -41,6 +41,7 @@ func _process(_delta: float) -> void:
 		sprite_2d.rotation = average_motion.angle()
 
 func die() -> void:
+	Global.save_game()
 	died.emit()
 	queue_free()
 
