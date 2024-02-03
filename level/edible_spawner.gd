@@ -94,7 +94,3 @@ func _on_edible_eaten() -> void:
 
 func get_edible_count() -> int:
 	return edibles.get_child_count()
-
-func remove_all_edibles() -> void:
-	for edible in edibles.get_children():
-		edible.queue_free()
