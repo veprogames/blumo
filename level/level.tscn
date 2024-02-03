@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://biepw3gb8bcue"]
+[gd_scene load_steps=8 format=3 uid="uid://biepw3gb8bcue"]
 
 [ext_resource type="PackedScene" uid="uid://b524q435s8xuh" path="res://player/player.tscn" id="1_2tvxm"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_qimrh"]
 [ext_resource type="PackedScene" uid="uid://cr514afpudpu0" path="res://player/trail/player_trail.tscn" id="2_dp51t"]
 [ext_resource type="PackedScene" uid="uid://dufqidwgk1b28" path="res://player/trail/collision/trail_collision_manager.tscn" id="3_6qic3"]
+[ext_resource type="PackedScene" uid="uid://xj62mrn8p1oo" path="res://level/ui/remaining_edible_counter.tscn" id="5_ibb6m"]
 [ext_resource type="PackedScene" uid="uid://ii8882bpv1n6" path="res://level/edible_spawner.tscn" id="6_45qq1"]
 [ext_resource type="PackedScene" uid="uid://k2rqx22hnehf" path="res://level/level_stage_manager.tscn" id="6_u3frg"]
 
@@ -29,6 +30,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -9
+
+[node name="RemainingEdibleCounter" parent="CanvasLayer2" node_paths=PackedStringArray("stage_manager") instance=ExtResource("5_ibb6m")]
+modulate = Color(1, 1, 1, 0.556863)
+offset_left = -465.0
+offset_top = -175.0
+offset_right = -350.0
+offset_bottom = -132.0
+scale = Vector2(8, 8)
+text = "123"
+horizontal_alignment = 1
+vertical_alignment = 1
+stage_manager = NodePath("../../LevelStageManager")
 
 [node name="EdibleSpawner" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6_45qq1")]
 level = NodePath("..")

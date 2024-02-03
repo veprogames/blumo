@@ -1,6 +1,8 @@
 class_name LevelStageManager
 extends Node2D
 
+signal remaining_changed(new_amount: int)
+
 @export var spawner: EdibleSpawner
 
 var stage: int = 0
@@ -19,6 +21,7 @@ func _ready() -> void:
 func start_stage() -> void:
 	remaining = get_total_edibles(stage)
 	remaining_to_spawn = get_total_edibles(stage)
+	remaining_changed.emit(remaining)
 	try_spawn_edibles()
 
 func next_stage() -> void:
@@ -37,5 +40,8 @@ func try_spawn_edibles() -> void:
 func _on_edible_eaten() -> void:
 	try_spawn_edibles()
 	remaining -= 1
+	
+	remaining_changed.emit(remaining)
+	
 	if remaining == 0:
 		next_stage()
