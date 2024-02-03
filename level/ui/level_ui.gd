@@ -9,6 +9,7 @@ func _ready() -> void:
 	_on_stage_changed(Global.save.stage)
 	
 	Global.save.score_changed.connect(_on_score_changed)
+	Global.save.stage_changed.connect(_on_stage_changed)
 
 func _on_score_changed(new_score: float) -> void:
 	label_score.text = "%.0f" % new_score

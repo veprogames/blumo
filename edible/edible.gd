@@ -28,8 +28,11 @@ func become_edible() -> void:
 	sprite_2d.modulate *= EDIBLE_COLOR
 	became_edible.emit()
 
+func get_value() -> float:
+	return Global.save.stage + 1
+
 func eat() -> void:
-	Global.save.score += 1
+	Global.save.score += get_value()
 	queue_free()
 	await tree_exited
 	eaten.emit()
