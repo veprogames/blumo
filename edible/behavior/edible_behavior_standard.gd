@@ -12,7 +12,7 @@ var viewport_rect: Rect2
 
 var tween: Tween
 
-func _ready():
+func _ready() -> void:
 	super._ready()
 	
 	await edible.ready
@@ -22,7 +22,7 @@ func _ready():
 	viewport_rect = get_viewport_rect()
 	
 	# This ensures that the direction wont be too close to a multiple of 90 degrees
-	var direction = randi_range(0, 3) * PI / 2.0 + randf_range(-PI / 3.0, PI / 3.0)
+	var direction: float = randi_range(0, 3) * PI / 2.0 + randf_range(-PI / 3.0, PI / 3.0)
 	speed = randf_range(100.0, 200.0)
 	
 	direction_vector = Vector2.RIGHT.rotated(direction)

@@ -6,7 +6,7 @@ signal vertex_removed()
 
 signal died()
 
-const MIN_VERTEX_DIST := 32
+const MIN_VERTEX_DIST: int = 32
 
 @export var player: Player
 
@@ -15,7 +15,7 @@ var last_vertex: Vector2
 ## At what [member t] each vertex was placed. Used for removal
 var vertex_times: Array[float] = []
 ## Elapsed time
-var t := 0.0
+var t: float = 0.0
 
 static var TRAIL_LIFETIME: float = 1.5
 
@@ -46,14 +46,14 @@ func should_add_vertex() -> bool:
 		last_vertex.distance_to(get_vertex_pos()) > MIN_VERTEX_DIST
 
 ## Add a vertex if [method should_add_vertex] applies
-func try_add_trail_vertex():
+func try_add_trail_vertex() -> void:
 	if should_add_vertex():
-		var pos := get_vertex_pos()
+		var pos: Vector2 = get_vertex_pos()
 		self.add_point(pos)
 		vertex_times.push_back(t)
 		last_vertex = pos
 		
-		var last_vertex_index = len(self.points) - 1
+		var last_vertex_index: int = len(self.points) - 1
 		vertex_added.emit(pos, last_vertex_index)
 #endregion
 
@@ -66,7 +66,7 @@ func should_remove_first_vertex() -> bool:
 	return t - vertex_times[0] >= PlayerTrail.TRAIL_LIFETIME
 
 ## Remove the first/oldest vertex if [method should_remove_first_vertex] applies
-func try_remove_first_trail_vertex():
+func try_remove_first_trail_vertex() -> void:
 	if should_remove_first_vertex():
 		self.remove_point(0)
 		vertex_times.pop_front()

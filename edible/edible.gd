@@ -5,8 +5,8 @@ signal became_edible()
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-const EDIBLE_COLOR := Color("#224fff")
-var edible := false
+const EDIBLE_COLOR: Color = Color("#224fff")
+var edible: bool = false
 
 func _ready() -> void:
 	sprite_2d.modulate.a *= randf_range(0.6, 0.8)

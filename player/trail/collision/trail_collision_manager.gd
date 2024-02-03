@@ -1,7 +1,7 @@
 class_name TrailCollisionManager
 extends Node2D
 
-var TrailCollisionAreaScene = preload("res://player/trail/collision/trail_collision_area.tscn")
+var TrailCollisionAreaScene: PackedScene = preload("res://player/trail/collision/trail_collision_area.tscn")
 
 @export var trail: PlayerTrail
 
@@ -11,7 +11,7 @@ var TrailCollisionAreaScene = preload("res://player/trail/collision/trail_collis
 var segments: Array[TrailSegment] = []
 
 ## Shouldnt be needed there are no dup checks needed ig
-var collision_areas := {}
+var collision_areas: Dictionary = {}
 
 func _ready() -> void:
 	trail.died.connect(queue_free)
@@ -21,22 +21,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# increase the age of segments,
 	# used to set the timer for the areas accordingly
-	for segment in segments:
+	for segment: TrailSegment in segments:
 		segment.age += delta
 
-func _on_point_added(point_position: Vector2, index: int):
+func _on_point_added(point_position: Vector2, index: int) -> void:
 	# We can't build a segment with 1 point
 	if index < 1:
 		return
 	
-	var previous_position = trail.points[index - 1]
-	var segment_length = point_position - previous_position
-	var segment = TrailSegment.new(previous_position, segment_length)
+	var previous_position: Vector2 = trail.points[index - 1]
+	var segment_length: Vector2 = point_position - previous_position
+	var segment: TrailSegment = TrailSegment.new(previous_position, segment_length)
 	
 	# link the segments together if possible
 	# each segment has a reference to the previous and next segment if applicable
 	if len(segments) > 0:
-		var previus_segment = segments[len(segments) - 1]
+		var previus_segment: TrailSegment = segments[len(segments) - 1]
 		segment.previous = previus_segment
 		previus_segment.next = segment
 	
@@ -77,10 +77,10 @@ func _on_point_removed() -> void:
 ##
 ## This includes constructing the Polygon
 func build_collision_area(from_segment: TrailSegment, intersection_point: Vector2) -> TrailCollisionArea:
-	var area := TrailCollisionAreaScene.instantiate() as TrailCollisionArea
-	var poly := PackedVector2Array()
+	var area: TrailCollisionArea = TrailCollisionAreaScene.instantiate() as TrailCollisionArea
+	var poly: PackedVector2Array = PackedVector2Array()
 	
-	var segment = from_segment
+	var segment: TrailSegment = from_segment
 	
 	# start with the intersection point
 	poly.append(intersection_point)
@@ -109,17 +109,19 @@ func build_collision_area(from_segment: TrailSegment, intersection_point: Vector
 ## for the most recent segment only, go through all segments and if they collide,
 ## try to create a new polygon shape
 func check_for_new_areas() -> void:
-	var newest := segments[len(segments) - 1]
+	var newest: TrailSegment = segments[len(segments) - 1]
 	# skip the 2nd newest segment because they would always touch in a single point
 	# go backwards until the first intersection is found
-	for i in range(len(segments) - 2, -1, -1):
-		var current := segments[i]
+	for i: int in range(len(segments) - 2, -1, -1):
+		var current: TrailSegment = segments[i]
 		
-		var possible_intersection = current.get_intersection(newest)
+		var possible_intersection: Variant = current.get_intersection(newest)
 		if possible_intersection != null:
+			var intersection: Vector2 = possible_intersection
+			
 			# add a reference to the segment it intersects
 			# for faster lookup
 			current.add_intersection(newest)
-			build_collision_area(current, possible_intersection)
+			build_collision_area(current, intersection)
 
 #endregion

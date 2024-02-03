@@ -19,9 +19,9 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
-	var mouse_event = event as InputEventMouseMotion
+	var mouse_event: InputEventMouseMotion = event as InputEventMouseMotion
 	if mouse_event:
-		var motion = mouse_event.relative
+		var motion: Vector2 = mouse_event.relative
 		
 		# add motion and clamp to screen edges
 		position += motion
@@ -37,14 +37,14 @@ func _input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	if len(movements) > 0:
-		var average_motion = Utils.sum(movements) / len(movements)
+		var average_motion: Vector2 = Utils.sum(movements) / len(movements)
 		sprite_2d.rotation = average_motion.angle()
 
-func die():
+func die() -> void:
 	died.emit()
 	queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
-	var edible := area as Edible
+	var edible: Edible = area as Edible
 	if edible:
 		edible.handle_player_collision(self)
