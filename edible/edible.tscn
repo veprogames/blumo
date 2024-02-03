@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://blofy2qar2bv3" path="res://edible/edible.png" id="2_tifuu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjdqc"]
-size = Vector2(48, 48)
+size = Vector2(64, 64)
 
 [node name="Edible" type="Area2D"]
 collision_layer = 2
