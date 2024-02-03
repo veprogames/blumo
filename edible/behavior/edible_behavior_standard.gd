@@ -3,6 +3,7 @@ extends EdibleBehavior
 
 var speed: float
 var to_speed: float
+var rotation_speed: float
 
 var direction_vector: Vector2
 
@@ -23,10 +24,12 @@ func _ready() -> void:
 	
 	viewport_rect = get_viewport_rect()
 	
+	rotation_speed = randf_range(-PI, PI)
+	
 	# This ensures that the direction wont be too close to a multiple of 90 degrees
 	var direction: float = get_direction_from_edge(from_edge) + \
-		randf_range(PI / 7.0, PI / 3.0) * (1.0 if randi() % 2 == 0 else -1.0)
-	speed = randf_range(100.0, 200.0)
+		randf_range(PI / 8.0, PI / 2.0) * (1.0 if randi() % 2 == 0 else -1.0)
+	speed = randf_range(90.0, 150.0)
 	
 	direction_vector = Vector2.RIGHT.rotated(direction)
 	
@@ -39,11 +42,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super._process(delta)
 	
-	sprite_2d.rotate(delta * PI)
+	sprite_2d.rotate(delta * rotation_speed)
 	
 	edible.position += direction_vector * speed * delta
 	if not viewport_rect.has_point(edible.position):
-		direction_vector = direction_vector.rotated(PI / 2)
+		direction_vector = direction_vector.rotated(randf_range(-PI / 2, PI / 2))
 		edible.position = edible.position.clamp(viewport_rect.position, viewport_rect.end)
 
 func get_direction_from_edge(edge: EdibleSpawner.LevelEdge) -> float:

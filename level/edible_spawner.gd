@@ -1,10 +1,14 @@
 class_name EdibleSpawner
 extends Node2D
 
+signal edible_eaten()
+
 @export var level: Level
 
 var EdibleScene: PackedScene = preload("res://edible/edible.tscn")
 var EdibleBehaviorStandardScene: PackedScene = preload("res://edible/behavior/edible_behavior_standard.tscn")
+
+@onready var edibles: Node2D = $Edibles
 
 enum LevelEdge {
 	Right,
@@ -17,13 +21,6 @@ var viewport_rect: Rect2
 
 func _ready() -> void:
 	viewport_rect = get_viewport_rect()
-	
-	await level.ready
-	
-	spawn_edible(LevelEdge.Left)
-	spawn_edible(LevelEdge.Right)
-	spawn_edible(LevelEdge.Top)
-	spawn_edible(LevelEdge.Bottom)
 
 func get_random_position_for_edge(edge: LevelEdge) -> Vector2:
 	var from: Vector2
@@ -84,4 +81,16 @@ func spawn_edible(edge: LevelEdge) -> void:
 	
 	edible.add_child(behavior)
 	
-	level.add_child(edible)
+	edible.eaten.connect(_on_edible_eaten)
+	
+	edibles.add_child(edible)
+
+func get_random_edge() -> LevelEdge:
+	var values: Array = LevelEdge.values()
+	return values[randi() % len(values)]
+
+func _on_edible_eaten() -> void:
+	edible_eaten.emit()
+
+func get_edible_count() -> int:
+	return edibles.get_child_count()

@@ -2,6 +2,7 @@ class_name Edible
 extends Area2D
 
 signal became_edible()
+signal eaten()
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
@@ -19,7 +20,7 @@ func _ready() -> void:
 	sprite_2d.modulate.a *= randf_range(0.6, 0.8)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is TrailCollisionArea:
+	if area is TrailCollisionArea and !edible:
 		become_edible()
 
 func become_edible() -> void:
@@ -29,6 +30,8 @@ func become_edible() -> void:
 
 func eat() -> void:
 	queue_free()
+	await tree_exited
+	eaten.emit()
 
 func handle_player_collision(player: Player) -> void:
 	if edible:

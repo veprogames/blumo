@@ -17,7 +17,7 @@ var vertex_times: Array[float] = []
 ## Elapsed time
 var t: float = 0.0
 
-static var TRAIL_LIFETIME: float = 1.5
+static var TRAIL_LIFETIME: float = 0.4
 
 func _ready() -> void:
 	player.died.connect(die)
