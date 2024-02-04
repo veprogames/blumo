@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmmxbm2sv5ose"]
+[gd_scene load_steps=7 format=3 uid="uid://cmmxbm2sv5ose"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_p4hwm"]
 [ext_resource type="PackedScene" uid="uid://dojgmv85rvmht" path="res://ui/currency_counter.tscn" id="2_u3cp3"]
 [ext_resource type="Texture2D" uid="uid://d0kn8ocaeinst" path="res://art/score.png" id="3_yp4b8"]
 [ext_resource type="PackedScene" uid="uid://bxs7lmruydgcw" path="res://upgrade/upgrade_button.tscn" id="4_7rp64"]
 [ext_resource type="Texture2D" uid="uid://c0ty6fibrxj1w" path="res://upgrade/icons/trail_length.png" id="5_4emt7"]
+[ext_resource type="Texture2D" uid="uid://b6vgvifwtw52p" path="res://upgrade/icons/edible_value.png" id="6_hso4n"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_p4hwm")
@@ -72,6 +73,7 @@ offset_top = -386.0
 offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 48
 alignment = 1
 
 [node name="UpgradeButton" parent="CanvasLayer/HBoxContainerUpgrades" instance=ExtResource("4_7rp64")]
@@ -79,6 +81,12 @@ layout_mode = 2
 property = "upgrade_trail_length"
 icon = ExtResource("5_4emt7")
 effect_text = "trail"
+
+[node name="UpgradeButton2" parent="CanvasLayer/HBoxContainerUpgrades" instance=ExtResource("4_7rp64")]
+layout_mode = 2
+property = "upgrade_edible_value"
+icon = ExtResource("6_hso4n")
+effect_text = "value"
 
 [node name="VBoxContainerButtons" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = -1

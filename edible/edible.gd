@@ -33,7 +33,9 @@ func become_edible() -> void:
 	became_edible.emit()
 
 func get_value() -> float:
-	return Global.save.stage + 1
+	var base: float = Global.save.stage + 1
+	var multiplier: float = Global.save.upgrade_edible_value.get_current_effect()
+	return base * multiplier
 
 func eat() -> void:
 	Global.save.score += get_value()

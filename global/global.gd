@@ -23,6 +23,7 @@ func apply_loaded_save(loaded: SaveGame) -> void:
 	save.score = loaded.score
 	save.stage = loaded.stage
 	save.upgrade_trail_length.level = loaded.upgrade_trail_length.level
+	save.upgrade_edible_value.level = loaded.upgrade_edible_value.level
 
 func _on_stage_changed(_new_stage: int) -> void:
 	save_game()

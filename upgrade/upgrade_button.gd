@@ -6,7 +6,7 @@ extends Control
 @onready var label_effect: Label = $LabelEffect
 @onready var label_effect_title: Label = $LabelEffectTitle
 
-@export_enum("upgrade_trail_length") var property: String
+@export_enum("upgrade_trail_length", "upgrade_edible_value") var property: String
 
 @export var icon: Texture2D
 @export var effect_text: String
