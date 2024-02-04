@@ -31,14 +31,14 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_wv14l")
 [node name="LevelQuitButton" parent="HBoxContainer" instance=ExtResource("2_tp736")]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
+[node name="Spacer2" type="Control" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 24
-theme_override_styles/separator = SubResource("StyleBoxEmpty_wv14l")
+size_flags_horizontal = 3
 
 [node name="LabelStage" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Stage 0"
+horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="HBoxContainer"]
 layout_mode = 2
@@ -46,6 +46,7 @@ size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/HBoxContainer"]
 modulate = Color(0.133333, 0.309804, 1, 1)
@@ -56,6 +57,7 @@ expand_mode = 3
 [node name="LabelScore" type="Label" parent="HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "123"
+horizontal_alignment = 2
 
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer"]
 layout_mode = 2

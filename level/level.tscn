@@ -47,6 +47,7 @@ vertical_alignment = 1
 stage_manager = NodePath("../../LevelStageManager")
 
 [node name="LevelUI" parent="CanvasLayer2" instance=ExtResource("6_s1udc")]
+modulate = Color(1, 1, 1, 0.705882)
 
 [node name="EdibleSpawner" parent="." node_paths=PackedStringArray("level") instance=ExtResource("6_45qq1")]
 level = NodePath("..")

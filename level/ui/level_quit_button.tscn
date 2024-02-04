@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://level/ui/level_quit_button.gd" id="1_jq5mi"]
 
-[node name="LevelQuitIndicator" type="Label"]
+[node name="LevelQuitButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
 theme_type_variation = &"ButtonBorderless"
-text = "Exit (E)"
+text = "Exit"
 script = ExtResource("1_jq5mi")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -18,3 +18,6 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 1.0
 show_percentage = false
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
