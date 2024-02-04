@@ -48,6 +48,7 @@ size_flags_horizontal = 3
 [node name="CurrencyCounterScore" parent="HBoxContainer" instance=ExtResource("3_718i1")]
 layout_mode = 2
 texture = ExtResource("1_8rq2u")
+interpolation_enabled = true
 
 [node name="HSeparator3" type="HSeparator" parent="HBoxContainer"]
 layout_mode = 2
