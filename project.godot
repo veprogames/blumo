@@ -12,6 +12,8 @@ config_version=5
 
 config/name="Blumo"
 run/main_scene="res://main_menu/main_menu.tscn"
+config/auto_accept_quit=false
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 

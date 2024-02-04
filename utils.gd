@@ -31,3 +31,6 @@ static func format_number(n: float) -> String:
 	if absf(n) > 10_000_000:
 		return "%sK" % format_thousands(n / 1000)
 	return format_thousands(n)
+
+static func is_mobile() -> bool:
+	return OS.has_feature("mobile")

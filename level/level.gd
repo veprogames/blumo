@@ -8,7 +8,9 @@ func _on_player_died() -> void:
 
 
 func _on_tree_entered() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if not Utils.is_mobile():
+		pass #Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_tree_exited() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if not Utils.is_mobile():
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

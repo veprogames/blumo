@@ -11,7 +11,7 @@ var hold_time: float = 0.0 : set = _set_hold_time
 var holding: bool = false
 
 func _ready() -> void:
-	if not is_mobile():
+	if not Utils.is_mobile():
 		text += " (E)"
 
 func _process(delta: float) -> void:
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		if hold_time >= MAX_HOLD_TIME:
 			SceneManager.goto_scene(MainMenuScene)
 	
-	if not Input.is_action_pressed("level_exit"):
+	if Input.is_action_just_released("level_exit"):
 		hold_time = 0.0
 
 func _set_hold_time(time: float) -> void:
@@ -38,6 +38,3 @@ func _on_button_up() -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		holding = !holding
-
-func is_mobile() -> bool:
-	return OS.has_feature("mobile")
