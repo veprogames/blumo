@@ -11,7 +11,7 @@ var hold_time: float = 0.0 : set = _set_hold_time
 var holding: bool = false
 
 func _ready() -> void:
-	if not is_android():
+	if not is_mobile():
 		text += " (E)"
 
 func _process(delta: float) -> void:
@@ -39,5 +39,5 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		holding = !holding
 
-func is_android() -> bool:
-	return OS.get_name() == "Android"
+func is_mobile() -> bool:
+	return OS.has_feature("mobile")

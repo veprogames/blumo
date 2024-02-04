@@ -5,7 +5,7 @@ const SAVE_PATH: String = "user://save.tres"
 var save: SaveGame = SaveGame.new()
 
 func _ready() -> void:
-	if not OS.is_debug_build():
+	if not OS.has_feature("editor"):
 		try_load_game()
 	
 	save.stage_changed.connect(_on_stage_changed)
