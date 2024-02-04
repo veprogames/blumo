@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://ckehh8iri5o8t"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://ckehh8iri5o8t"]
 
 [ext_resource type="FontFile" uid="uid://bwqj1g86nb0i2" path="res://fonts/Montserrat-Regular.ttf" id="1_ka16o"]
 
@@ -97,6 +97,8 @@ expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wavyl"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nsjfo"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2ei2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -119,6 +121,8 @@ ButtonBorderless/styles/focus = SubResource("StyleBoxEmpty_ujtjg")
 ButtonBorderless/styles/hover = SubResource("StyleBoxEmpty_3c4q2")
 ButtonBorderless/styles/normal = SubResource("StyleBoxEmpty_rrexw")
 ButtonBorderless/styles/pressed = SubResource("StyleBoxEmpty_wavyl")
+HSeparator/constants/separation = 16
+HSeparator/styles/separator = SubResource("StyleBoxEmpty_nsjfo")
 LabelLarge/base_type = &"Label"
 LabelLarge/font_sizes/font_size = 192
 ProgressBar/styles/background = SubResource("StyleBoxFlat_t2ei2")

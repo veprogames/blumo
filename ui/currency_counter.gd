@@ -22,7 +22,7 @@ func _ready() -> void:
 		process_mode = Node.PROCESS_MODE_DISABLED
 
 func _process(_delta: float) -> void:
-	label_value.text = "%.0f" % Utils.format_number(displayed_value)
+	label_value.text = Utils.format_number(displayed_value)
 
 func _set_texture(new_texture: Texture2D) -> void:
 	texture = new_texture

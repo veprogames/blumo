@@ -6,6 +6,10 @@ signal leveled_up()
 @export var level: int = 0
 @export var price_formula: UpgradeFormula
 @export var effect_formula: UpgradeFormula
+@export var effect_display: EffectDisplayTemplate
+
+func get_effect_display() -> String:
+	return effect_display.get_value(get_current_effect())
 
 func get_current_price() -> float:
 	return price_formula.get_value(level)

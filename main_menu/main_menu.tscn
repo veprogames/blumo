@@ -56,6 +56,9 @@ alignment = 1
 layout_mode = 2
 text = "You Have"
 
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
 [node name="CurrencyCounter" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("2_u3cp3")]
 layout_mode = 2
 texture = ExtResource("3_yp4b8")

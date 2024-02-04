@@ -30,7 +30,7 @@ func get_upgrade() -> Variant:
 
 func update_ui() -> void:
 	if upgrade != null:
-		label_effect.text = "%.2f" % upgrade.get_current_effect()
+		label_effect.text = upgrade.get_effect_display()
 		currency_cost.value = upgrade.get_current_price()
 
 func _on_button_buy_pressed() -> void:
