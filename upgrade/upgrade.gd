@@ -1,6 +1,8 @@
 class_name Upgrade
 extends Resource
 
+signal leveled_up()
+
 @export var level: int = 0
 @export var price_formula: UpgradeFormula
 @export var effect_formula: UpgradeFormula
@@ -19,5 +21,8 @@ func try_buy(with_resource: float) -> Variant:
 		var price: float = get_current_price()
 		var deducted: float = price
 		level += 1
+		
+		leveled_up.emit()
+		
 		return deducted
 	return null

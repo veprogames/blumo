@@ -17,9 +17,11 @@ var vertex_times: Array[float] = []
 ## Elapsed time
 var t: float = 0.0
 
-static var TRAIL_LIFETIME: float = 0.4
+var trail_lifetime: float = 0.4
 
 func _ready() -> void:
+	trail_lifetime = Global.save.upgrade_trail_length.get_current_effect()
+	
 	player.died.connect(die)
 
 func _process(delta: float) -> void:
@@ -63,7 +65,7 @@ func try_add_trail_vertex() -> void:
 func should_remove_first_vertex() -> bool:
 	if len(vertex_times) == 0:
 		return false
-	return t - vertex_times[0] >= PlayerTrail.TRAIL_LIFETIME
+	return t - vertex_times[0] >= trail_lifetime
 
 ## Remove the first/oldest vertex if [method should_remove_first_vertex] applies
 func try_remove_first_trail_vertex() -> void:

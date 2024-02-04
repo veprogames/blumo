@@ -13,7 +13,11 @@ var segments: Array[TrailSegment] = []
 ## Shouldnt be needed there are no dup checks needed ig
 var collision_areas: Dictionary = {}
 
+var player_trail_lifetime: float = 0.4
+
 func _ready() -> void:
+	player_trail_lifetime = Global.save.upgrade_trail_length.get_current_effect()
+	
 	trail.died.connect(queue_free)
 	trail.vertex_added.connect(_on_point_added)
 	trail.vertex_removed.connect(_on_point_removed)
@@ -101,7 +105,8 @@ func build_collision_area(from_segment: TrailSegment, intersection_point: Vector
 	
 	add_child(area)
 	
-	area.set_remaining_time(PlayerTrail.TRAIL_LIFETIME - from_segment.age)
+	var area_lifetime: float = player_trail_lifetime - from_segment.age
+	area.set_remaining_time(area_lifetime)
 	area.polygon = poly
 	
 	return area
