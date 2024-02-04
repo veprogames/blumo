@@ -25,7 +25,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func become_edible() -> void:
 	edible = true
-	sprite_2d.modulate *= EDIBLE_COLOR
+	sprite_2d.modulate = EDIBLE_COLOR
 	became_edible.emit()
 
 func get_value() -> float:
