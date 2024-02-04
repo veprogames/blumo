@@ -16,7 +16,6 @@ const RECORD_THIS_AMOUNT_OF_MOVEMENTS: int = 8
 
 func _ready() -> void:
 	viewport_rect = get_viewport_rect()
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
 	var mouse_event: InputEventMouseMotion = event as InputEventMouseMotion

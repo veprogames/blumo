@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmmxbm2sv5ose"]
+
+[ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_p4hwm"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_p4hwm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ButtonPlay" type="Button" parent="CanvasLayer2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -34.0
+offset_right = 62.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+text = "Start"
+
+[node name="ButtonQuit" type="Button" parent="CanvasLayer2"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -120.0
+offset_right = 56.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer2/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="CanvasLayer2/ButtonQuit" to="." method="_on_button_quit_pressed"]

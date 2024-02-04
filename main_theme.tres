@@ -1,9 +1,123 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ckehh8iri5o8t"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://ckehh8iri5o8t"]
 
 [ext_resource type="FontFile" uid="uid://bwqj1g86nb0i2" path="res://fonts/Montserrat-Regular.ttf" id="1_ka16o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnh1m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.501961)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4soh1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.501961)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjlf3"]
+bg_color = Color(0.6, 0.6, 0.6, 0.156863)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.501961)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3ntk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.501961)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3fy1"]
+bg_color = Color(0.6, 0.6, 0.6, 0.243137)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0.501961)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 8.0
+expand_margin_top = 4.0
+expand_margin_right = 8.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mt7m3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujtjg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3c4q2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrexw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wavyl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2ei2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68d6u"]
+bg_color = Color(1, 1, 1, 0.392157)
 
 [resource]
 default_font = ExtResource("1_ka16o")
 default_font_size = 48
+Button/styles/disabled = SubResource("StyleBoxFlat_dnh1m")
+Button/styles/focus = SubResource("StyleBoxFlat_4soh1")
+Button/styles/hover = SubResource("StyleBoxFlat_yjlf3")
+Button/styles/normal = SubResource("StyleBoxFlat_d3ntk")
+Button/styles/pressed = SubResource("StyleBoxFlat_c3fy1")
+ButtonBorderless/base_type = &"Button"
+ButtonBorderless/styles/disabled = SubResource("StyleBoxEmpty_mt7m3")
+ButtonBorderless/styles/focus = SubResource("StyleBoxEmpty_ujtjg")
+ButtonBorderless/styles/hover = SubResource("StyleBoxEmpty_3c4q2")
+ButtonBorderless/styles/normal = SubResource("StyleBoxEmpty_rrexw")
+ButtonBorderless/styles/pressed = SubResource("StyleBoxEmpty_wavyl")
 LabelLarge/base_type = &"Label"
 LabelLarge/font_sizes/font_size = 192
+ProgressBar/styles/background = SubResource("StyleBoxFlat_t2ei2")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_68d6u")

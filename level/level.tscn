@@ -54,4 +54,6 @@ level = NodePath("..")
 [node name="LevelStageManager" parent="." node_paths=PackedStringArray("spawner") instance=ExtResource("6_u3frg")]
 spawner = NodePath("../EdibleSpawner")
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
