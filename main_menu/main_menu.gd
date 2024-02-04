@@ -1,7 +1,12 @@
 class_name MainMenu
 extends Node2D
 
+@onready var currency_counter: CurrencyCounter = $CanvasLayer/VBoxContainer/HBoxContainer/CurrencyCounter
+
 var LevelScene: PackedScene = preload("res://level/level.tscn")
+
+func _ready() -> void:
+	currency_counter.value = Global.save.score
 
 func _on_button_play_pressed() -> void:
 	SceneManager.goto_scene(LevelScene)
@@ -9,3 +14,9 @@ func _on_button_play_pressed() -> void:
 
 func _on_button_quit_pressed() -> void:
 	SceneManager.quit_game()
+
+
+func _on_label_subtitle_meta_clicked(meta: Variant) -> void:
+	var url: String = meta as String
+	if url != null:
+		OS.shell_open(url)

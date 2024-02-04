@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmmxbm2sv5ose"]
+[gd_scene load_steps=4 format=3 uid="uid://cmmxbm2sv5ose"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_p4hwm"]
+[ext_resource type="PackedScene" uid="uid://dojgmv85rvmht" path="res://ui/currency_counter.tscn" id="2_u3cp3"]
+[ext_resource type="Texture2D" uid="uid://d0kn8ocaeinst" path="res://art/score.png" id="3_yp4b8"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_p4hwm")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayerBackground" type="CanvasLayer" parent="."]
 layer = -10
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayerBackground"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,9 +18,47 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ButtonPlay" type="Button" parent="CanvasLayer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+
+[node name="LabelTitle" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelLarge"
+theme_override_colors/font_color = Color(1, 1, 1, 0.392157)
+text = "BLUMO"
+horizontal_alignment = 1
+
+[node name="LabelSubtitle" type="RichTextLabel" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme_type_variation = &"LabelLarge"
+theme_override_colors/default_color = Color(1, 1, 1, 0.705882)
+bbcode_enabled = true
+text = "[center]A REDMO fanmade
+by [url=\"https://veprogames.github.io\"]veprogames[/url][/center]"
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="YouHave" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "You Have"
+
+[node name="CurrencyCounter" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("2_u3cp3")]
+layout_mode = 2
+texture = ExtResource("3_yp4b8")
+
+[node name="ButtonPlay" type="Button" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -33,7 +73,7 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 text = "Start"
 
-[node name="ButtonQuit" type="Button" parent="CanvasLayer2"]
+[node name="ButtonQuit" type="Button" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -47,5 +87,6 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Quit"
 
-[connection signal="pressed" from="CanvasLayer2/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="CanvasLayer2/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="meta_clicked" from="CanvasLayer/VBoxContainer/LabelSubtitle" to="." method="_on_label_subtitle_meta_clicked"]
+[connection signal="pressed" from="CanvasLayer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
