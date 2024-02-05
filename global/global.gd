@@ -15,7 +15,7 @@ func save_game() -> void:
 
 func try_load_game() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
-		var loaded_save: SaveGame = load(SAVE_PATH) as SaveGame
+		var loaded_save: SaveGame = SafeResourceLoader.load(SAVE_PATH) as SaveGame
 		if loaded_save != null:
 			apply_loaded_save(loaded_save)
 

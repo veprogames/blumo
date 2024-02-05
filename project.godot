@@ -45,6 +45,10 @@ window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/safe_resource_loader/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
