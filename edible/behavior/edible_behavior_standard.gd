@@ -46,8 +46,18 @@ func _process(delta: float) -> void:
 	
 	edible.position += direction_vector * speed * delta
 	if not viewport_rect.has_point(edible.position):
-		direction_vector = direction_vector.rotated(PI / 2.0)
+		# it's not correct, but it works better than just ortating 90 degrees
+		var edge_normal: Vector2 = get_edge_normal(edible.position)
+		var angle_to_edge_normal: float = direction_vector.angle_to(edge_normal)
+		direction_vector = direction_vector.rotated(-angle_to_edge_normal)
+		
 		edible.position = edible.position.clamp(viewport_rect.position, viewport_rect.end)
+
+## get a vector pointing outward to the edge
+## using rounding down
+func get_edge_normal(for_position: Vector2) -> Vector2:
+	var rounded: Vector2 = (for_position / viewport_rect.size).floor()
+	return rounded
 
 func get_direction_from_edge(edge: EdibleSpawner.LevelEdge) -> float:
 	match edge:

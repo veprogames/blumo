@@ -68,7 +68,7 @@ func get_random_position_for_edge(edge: LevelEdge) -> Vector2:
 			from = Vector2.ZERO
 			to = Vector2.ZERO
 	
-	return from.lerp(to, randf_range(0.2, 0.8))
+	return from.lerp(to, randf_range(0.1, 0.9))
 
 func spawn_edible(edge: LevelEdge) -> void:
 	var edible_position: Vector2 = get_random_position_for_edge(edge)
