@@ -9,7 +9,7 @@ func _on_player_died() -> void:
 
 func _on_tree_entered() -> void:
 	if not Utils.is_mobile():
-		pass #Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_tree_exited() -> void:
 	if not Utils.is_mobile():
