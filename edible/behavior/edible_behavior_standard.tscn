@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://hougfbs3syj8"]
 
 [ext_resource type="PackedScene" uid="uid://d1qjpjlxlevg4" path="res://edible/behavior/edible_behavior.tscn" id="1_mamxa"]
-[ext_resource type="Script" path="res://edible/behavior/edible_behavior_standard.gd" id="2_wbaj2"]
+[ext_resource type="Script" path="res://edible/behavior/edible_behavior_standard.gd" id="2_yd414"]
 
 [node name="EdibleBehaviorStandard" instance=ExtResource("1_mamxa")]
-script = ExtResource("2_wbaj2")
+script = ExtResource("2_yd414")
