@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b524q435s8xuh"]
+[gd_scene load_steps=5 format=3 uid="uid://b524q435s8xuh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_xlok0"]
 [ext_resource type="Texture2D" uid="uid://yyfw783ga8hd" path="res://player/player.png" id="2_8shp1"]
+[ext_resource type="PackedScene" uid="uid://ds3vg40luk3xy" path="res://player/player_collector_area.tscn" id="3_7ywvn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1yec6"]
 radius = 8.0
@@ -19,4 +20,4 @@ texture = ExtResource("2_8shp1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1yec6")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="PlayerCollectorArea" parent="." instance=ExtResource("3_7ywvn")]

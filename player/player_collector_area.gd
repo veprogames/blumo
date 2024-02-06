@@ -1,0 +1,2 @@
+class_name PlayerCollectorArea
+extends Area2D

@@ -43,8 +43,3 @@ func die() -> void:
 	Global.save_game()
 	died.emit()
 	queue_free()
-
-func _on_area_entered(area: Area2D) -> void:
-	var edible: Edible = area as Edible
-	if edible:
-		edible.handle_player_collision(self)

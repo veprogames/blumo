@@ -25,12 +25,22 @@ func _ready() -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is TrailCollisionArea and !edible:
 		become_edible()
+	elif area is Player:
+		handle_player_collision(area as Player)
+	elif area is PlayerCollectorArea and edible:
+		eat()
 
 func become_edible() -> void:
 	edible = true
 	sprite_2d.modulate = Edible.EDIBLE_COLOR
 	turn_on_glow()
 	became_edible.emit()
+
+func handle_player_collision(player: Player) -> void:
+	if edible:
+		eat()
+	else:
+		player.die()
 
 func get_value() -> float:
 	var base: float = Global.save.stage + 1
@@ -42,12 +52,6 @@ func eat() -> void:
 	queue_free()
 	await tree_exited
 	eaten.emit(self)
-
-func handle_player_collision(player: Player) -> void:
-	if edible:
-		eat()
-	else:
-		player.die()
 
 func turn_on_glow() -> void:
 	var tween: Tween = create_tween()
