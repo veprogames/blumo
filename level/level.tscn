@@ -61,7 +61,11 @@ spawner = NodePath("../EdibleSpawner")
 anchor_mode = 0
 shake_strength = 100.0
 
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="edible_eaten" from="EdibleSpawner" to="LevelCamera" method="_on_edible_spawner_edible_eaten"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
