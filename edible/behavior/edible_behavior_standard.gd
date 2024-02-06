@@ -46,14 +46,17 @@ func _process(delta: float) -> void:
 	
 	edible.position += direction_vector * speed * delta
 	if not viewport_rect.has_point(edible.position):
-		# it's not correct, but it works better than just ortating 90 degrees
+		# reflection based on current angle
+		
+		# the perpendicular
 		var edge_normal: Vector2 = get_edge_normal(edible.position)
 		var angle_to_edge_normal: float = direction_vector.angle_to(edge_normal)
-		direction_vector = direction_vector.rotated(-angle_to_edge_normal)
+		direction_vector = direction_vector.rotated(PI + 2.0 * angle_to_edge_normal)
 		
+		# ensure that the edible doesn't stay out of bounds for more than 1 frame
 		edible.position = edible.position.clamp(viewport_rect.position, viewport_rect.end)
 
-## get a vector pointing outward to the edge
+## get a horizontal or vertical vector pointing away from the edge
 ## using rounding down
 func get_edge_normal(for_position: Vector2) -> Vector2:
 	var rounded: Vector2 = (for_position / viewport_rect.size).floor()
