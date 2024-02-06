@@ -72,6 +72,12 @@ level_exit={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="TrailArea"
+2d_physics/layer_2="Edible"
+2d_physics/layer_3="Player"
+
 [rendering]
 
 renderer/rendering_method="mobile"
