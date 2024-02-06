@@ -7,6 +7,7 @@ signal edible_eaten()
 
 var EdibleScene: PackedScene = preload("res://edible/edible.tscn")
 var EdibleBehaviorStandardScene: PackedScene = preload("res://edible/behavior/edible_behavior_standard.tscn")
+var EdibleBehaviorRandomSizeScene: PackedScene = preload("res://edible/behavior/edible_behavior_random_size.tscn")
 var EdibleExplosionScene: PackedScene = preload("res://edible/effect/edible_explosion.tscn")
 
 @onready var edibles: Node2D = $Edibles
@@ -75,12 +76,16 @@ func spawn_edible(edge: LevelEdge) -> void:
 	
 	var edible: Edible = EdibleScene.instantiate() as Edible
 	var behavior: EdibleBehaviorStandard = EdibleBehaviorStandardScene.instantiate() as EdibleBehaviorStandard
+	var behavior_size: EdibleBehaviorRandomSize = EdibleBehaviorRandomSizeScene.instantiate() as EdibleBehaviorRandomSize
 	
 	edible.position = edible_position
 	behavior.edible = edible
 	behavior.from_edge = edge
 	
+	behavior_size.edible = edible
+	
 	edible.add_child(behavior)
+	edible.add_child(behavior_size)
 	
 	edible.eaten.connect(_on_edible_eaten)
 	
