@@ -27,7 +27,7 @@ func _ready() -> void:
 	# This ensures that the direction wont be too close to a multiple of 90 degrees
 	var direction: float = get_direction_from_edge(from_edge) + \
 		randf_range(0, PI / 6.0) * (1.0 if randi() % 2 == 0 else -1.0)
-	speed = randf_range(90.0, 150.0)
+	speed = get_base_speed() * randf_range(1.0, 1.7)
 	
 	rotation_speed = speed / 100.0
 	
@@ -69,6 +69,11 @@ func get_direction_from_edge(edge: EdibleSpawner.LevelEdge) -> float:
 		EdibleSpawner.LevelEdge.Left: return PI
 		EdibleSpawner.LevelEdge.Bottom: return 3 * PI / 2
 		_: return 0.0
+
+func get_base_speed() -> float:
+	var stage_multiplier: float = 1 + maxf(0.0, Global.save.stage - 100) / 100.0
+	stage_multiplier = stage_multiplier ** 0.3
+	return 90.0 * stage_multiplier
 
 func _on_became_edible() -> void:
 	tween.kill()

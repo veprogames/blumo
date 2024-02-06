@@ -43,9 +43,16 @@ func handle_player_collision(player: Player) -> void:
 		player.die()
 
 func get_value() -> float:
-	var base: float = Global.save.stage + 1
+	var stage: int = Global.save.stage
+	
+	var base: float = stage + 1
 	var multiplier: float = Global.save.upgrade_edible_value.get_current_effect()
-	return base * multiplier
+	
+	# after stage 100, standardbehavior edibles will get faster
+	# so another boost is introduced :)
+	var late_game_boost: float = 1 + maxf(0.0, stage - 100) * 0.01
+	
+	return base * multiplier * late_game_boost
 
 func eat() -> void:
 	Global.save.score += get_value()
