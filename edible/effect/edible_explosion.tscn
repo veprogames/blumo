@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://duakgck4wfr0q"]
+[gd_scene load_steps=8 format=3 uid="uid://duakgck4wfr0q"]
 
 [ext_resource type="Texture2D" uid="uid://blofy2qar2bv3" path="res://edible/edible.png" id="1_df8af"]
 [ext_resource type="Script" path="res://edible/effect/edible_explosion.gd" id="2_q60ks"]
+[ext_resource type="AudioStream" uid="uid://btojsrh8dhivo" path="res://edible/eat.ogg" id="3_qvqrf"]
 
 [sub_resource type="Curve" id="Curve_veh4d"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -22,6 +23,12 @@ scale_max = 0.5
 scale_curve = SubResource("CurveTexture_caucj")
 color = Color(1, 1, 1, 0.501961)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rhlad"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("3_qvqrf")
+stream_0/weight = 1.0
+
 [node name="EdibleExplosion" type="GPUParticles2D"]
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_jrqhs")
@@ -30,5 +37,9 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 script = ExtResource("2_q60ks")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rhlad")
+autoplay = true
 
 [connection signal="finished" from="." to="." method="_on_finished"]

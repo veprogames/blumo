@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b524q435s8xuh"]
+[gd_scene load_steps=6 format=3 uid="uid://b524q435s8xuh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_xlok0"]
 [ext_resource type="Texture2D" uid="uid://yyfw783ga8hd" path="res://player/player.png" id="2_8shp1"]
 [ext_resource type="PackedScene" uid="uid://ds3vg40luk3xy" path="res://player/player_collector_area.tscn" id="3_7ywvn"]
+[ext_resource type="AudioStream" uid="uid://dwntp42ifre0v" path="res://player/move.ogg" id="4_qrrqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1yec6"]
 radius = 8.0
@@ -21,3 +22,8 @@ texture = ExtResource("2_8shp1")
 shape = SubResource("CircleShape2D_1yec6")
 
 [node name="PlayerCollectorArea" parent="." instance=ExtResource("3_7ywvn")]
+
+[node name="AudioStreamPlayerMove" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qrrqd")
+volume_db = -80.0
+autoplay = true

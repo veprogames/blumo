@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0woulj7vy38c"]
+[gd_scene load_steps=3 format=3 uid="uid://b0woulj7vy38c"]
 
 [ext_resource type="Script" path="res://player/trail/collision/trail_collision_area.gd" id="1_xqoyl"]
+[ext_resource type="AudioStream" uid="uid://lwisoc4x4atp" path="res://player/trail/enclose.ogg" id="2_bqds4"]
 
 [node name="TrailCollisionArea" type="Area2D"]
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_xqoyl")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -12,4 +13,10 @@ script = ExtResource("1_xqoyl")
 wait_time = 0.4
 autostart = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_bqds4")
+volume_db = -6.0
+max_polyphony = 4
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
