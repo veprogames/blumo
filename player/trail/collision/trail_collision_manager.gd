@@ -117,7 +117,7 @@ func check_for_new_areas() -> void:
 	var newest: TrailSegment = segments[len(segments) - 1]
 	# skip the 2nd newest segment because they would always touch in a single point
 	# go backwards until the first intersection is found
-	for i: int in range(len(segments) - 2, -1, -1):
+	for i: int in range(len(segments) - 3, -1, -1):
 		var current: TrailSegment = segments[i]
 		
 		var possible_intersection: Variant = current.get_intersection(newest)
