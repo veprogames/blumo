@@ -10,7 +10,8 @@ signal died()
 var viewport_rect: Rect2
 
 ## Record movements over multiple frames to smoothly rotate the player
-# TODO simplify?
+##
+## This is much more accurate than [method Input.get_last_mouse_velocity]
 var movements: Array[Vector2] = []
 
 ## Amount of frames of movement to keep track of
@@ -42,12 +43,12 @@ func _input(event: InputEvent) -> void:
 		mouse_motion_velocity = mouse_event.velocity
 
 func _process(_delta: float) -> void:
-	# TODO simplify?
 	if len(movements) > 0:
 		var average_motion: Vector2 = Utils.sum(movements) / len(movements)
 		sprite_2d.rotation = average_motion.angle()
-		
+	
 	var velocity: float = Input.get_last_mouse_velocity().length()
+	
 	audio_stream_player_move.volume_db = clampf(
 		remap(velocity, 0.0, 7000.0, -40.0, 0.0),
 		-70.0,
