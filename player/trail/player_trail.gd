@@ -33,7 +33,6 @@ func _process(delta: float) -> void:
 
 func die() -> void:
 	died.emit()
-	queue_free()
 
 ## Get the position where a new vertex should be placed
 func get_vertex_pos() -> Vector2:
