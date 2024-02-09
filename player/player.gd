@@ -16,6 +16,9 @@ var viewport_rect: Rect2
 ## This is much more accurate than [method Input.get_last_mouse_velocity]
 var movements: Array[Vector2] = []
 
+var t: float = 0
+var movement_times: Array[float] = []
+
 ## Amount of frames of movement to keep track of
 const RECORD_THIS_AMOUNT_OF_MOVEMENTS: int = 8
 
@@ -38,26 +41,33 @@ func _input(event: InputEvent) -> void:
 
 		# record average movements
 		movements.push_back(motion)
+		movement_times.push_back(t)
 		if len(movements) > RECORD_THIS_AMOUNT_OF_MOVEMENTS:
 			movements.pop_front()
+			movement_times.pop_front()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	t += delta
+	
 	if len(movements) > 0:
-		var average_motion: Vector2 = Utils.sum(movements) / len(movements)
+		var total_movement: Vector2 = Utils.sum(movements) as Vector2
+		
+		var average_motion: Vector2 = total_movement / len(movements)
 		sprite_2d.rotation = average_motion.angle()
 	
-	var velocity: float = Input.get_last_mouse_velocity().length()
-	
-	audio_stream_player_move.volume_db = clampf(
-		remap(velocity, 0.0, 7000.0, -40.0, 0.0),
-		-70.0,
-		-6.0,
-	)
-	audio_stream_player_move.pitch_scale = clampf(
-		remap(velocity, 0.0, 7000.0, 0.1, 3.0),
-		0.1,
-		3.0,
-	)
+		var time_difference: float = t - movement_times[0]
+		var velocity: float = (total_movement / time_difference).length()
+		
+		audio_stream_player_move.volume_db = clampf(
+			remap(velocity, 0.0, 20000.0, -40.0, 0.0),
+			-70.0,
+			-6.0,
+		)
+		audio_stream_player_move.pitch_scale = clampf(
+			remap(velocity, 0.0, 20000.0, 0.1, 3.0),
+			0.1,
+			5.0,
+		)
 
 func die() -> void:
 	Global.save_game()
