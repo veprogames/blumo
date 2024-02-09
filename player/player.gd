@@ -72,13 +72,15 @@ func _process(delta: float) -> void:
 func die() -> void:
 	Global.save_game()
 	
-	dead = true
-	audio_stream_player_move.playing = false
-	audio_stream_player_die.play()
-	
-	play_death_animation()
-	
-	died.emit()
+	# if not dead already
+	if not dead:
+		dead = true
+		audio_stream_player_move.playing = false
+		audio_stream_player_die.play()
+		
+		play_death_animation()
+		
+		died.emit()
 
 func play_death_animation() -> void:
 	var tween: Tween = create_tween()
