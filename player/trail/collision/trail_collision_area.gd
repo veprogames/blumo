@@ -18,6 +18,5 @@ func set_remaining_time(seconds: float) -> void:
 	timer.wait_time = seconds
 	timer.start()
 
-func _on_area_entered(area: Area2D) -> void:
-	if area is Edible:
-		audio_stream_player.play()
+func _ready() -> void:
+	audio_stream_player.play()
