@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://lwisoc4x4atp" path="res://player/trail/enclose.ogg" id="2_bqds4"]
 
 [node name="TrailCollisionArea" type="Area2D"]
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_xqoyl")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -18,4 +18,5 @@ stream = ExtResource("2_bqds4")
 volume_db = -6.0
 max_polyphony = 4
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
