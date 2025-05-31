@@ -1,9 +1,7 @@
-[gd_resource type="Resource" script_class="Upgrade" load_steps=8 format=3 uid="uid://44dc0kemle8v"]
+[gd_resource type="Resource" script_class="Upgrade" load_steps=4 format=3 uid="uid://44dc0kemle8v"]
 
 [ext_resource type="Script" uid="uid://cbuvsvmxqxuwh" path="res://upgrade/upgrade.gd" id="1_0ovb0"]
 [ext_resource type="Script" uid="uid://bbck1ogxv7f6w" path="res://upgrade/effect_display_template.gd" id="1_vveno"]
-[ext_resource type="Script" uid="uid://xo0jsqi46psu" path="res://upgrade/formulae/upgrade_formula_polynomial.gd" id="2_hegcv"]
-[ext_resource type="Script" uid="uid://c7ghr7r80m14h" path="res://upgrade/formulae/upgrade_formula_exponential.gd" id="3_iwjlg"]
 
 [sub_resource type="Resource" id="Resource_o2emr"]
 script = ExtResource("1_vveno")
@@ -11,21 +9,9 @@ precision = 1
 prefix = "x"
 suffix = ""
 
-[sub_resource type="Resource" id="Resource_aiuwb"]
-script = ExtResource("2_hegcv")
-base = 1.0
-multiplier = 0.2
-exponent = 1.0
-
-[sub_resource type="Resource" id="Resource_ds6us"]
-script = ExtResource("3_iwjlg")
-base = 50000.0
-multiplier = 50000.0
-exponent = 2.0
-
 [resource]
 script = ExtResource("1_0ovb0")
 level = 0
-price_formula = SubResource("Resource_ds6us")
-effect_formula = SubResource("Resource_aiuwb")
+price_formula = "30000 + 20000 * 2 ** level"
+effect_formula = "1 + 0.2 * level"
 effect_display = SubResource("Resource_o2emr")
