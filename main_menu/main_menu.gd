@@ -2,10 +2,15 @@ class_name MainMenu
 extends Node2D
 
 @onready var currency_counter: CurrencyCounter = $CanvasLayer/VBoxContainer/HBoxContainer/CurrencyCounter
+@onready var upgrade_button_trail: UpgradeButton = %UpgradeButtonTrail
+@onready var upgrade_button_value: UpgradeButton = %UpgradeButtonValue
 
 var LevelScene: PackedScene = preload("res://level/level.tscn")
 
 func _ready() -> void:
+	upgrade_button_trail.upgrade = preload("res://global/upgrades/trail_length.tres")
+	upgrade_button_value.upgrade = preload("res://global/upgrades/edible_value.tres")
+	
 	update_ui()
 	
 	Global.save.score_changed.connect(_on_score_changed)
