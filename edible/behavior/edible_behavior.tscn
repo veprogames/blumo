@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1qjpjlxlevg4"]
 
-[ext_resource type="Script" path="res://edible/behavior/edible_behavior.gd" id="1_0dndc"]
+[ext_resource type="Script" uid="uid://dyl00c8vdnxs4" path="res://edible/behavior/edible_behavior.gd" id="1_0dndc"]
 
 [node name="EdibleBehavior" type="Node2D"]
 script = ExtResource("1_0dndc")

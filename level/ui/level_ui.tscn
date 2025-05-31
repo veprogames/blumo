@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://psq5s2rba4sq"]
 
-[ext_resource type="Script" path="res://level/ui/level_ui.gd" id="1_2nbs0"]
+[ext_resource type="Script" uid="uid://c2ad78ei2r8d4" path="res://level/ui/level_ui.gd" id="1_2nbs0"]
 [ext_resource type="Texture2D" uid="uid://d0kn8ocaeinst" path="res://art/score.png" id="1_8rq2u"]
 [ext_resource type="PackedScene" uid="uid://ck0m8xxdbgmgx" path="res://level/ui/level_quit_button.tscn" id="2_tp736"]
 [ext_resource type="PackedScene" uid="uid://dojgmv85rvmht" path="res://ui/currency_counter.tscn" id="3_718i1"]

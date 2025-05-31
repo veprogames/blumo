@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xj62mrn8p1oo"]
 
-[ext_resource type="Script" path="res://level/ui/remaining_edible_counter.gd" id="1_ab810"]
+[ext_resource type="Script" uid="uid://c2ld3em0kraiw" path="res://level/ui/remaining_edible_counter.gd" id="1_ab810"]
 
 [node name="RemainingEdibleCounter" type="Label"]
 anchors_preset = 8

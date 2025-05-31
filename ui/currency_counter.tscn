@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dojgmv85rvmht"]
 
 [ext_resource type="Texture2D" uid="uid://d0kn8ocaeinst" path="res://art/score.png" id="1_4abl6"]
-[ext_resource type="Script" path="res://ui/currency_counter.gd" id="1_374kk"]
+[ext_resource type="Script" uid="uid://x5ldwcfvwn6n" path="res://ui/currency_counter.gd" id="1_374kk"]
 
 [node name="CurrencyCounter" type="HBoxContainer"]
 offset_right = 40.0

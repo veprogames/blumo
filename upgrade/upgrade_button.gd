@@ -14,7 +14,7 @@ extends Control
 var upgrade: Upgrade
 
 func _ready() -> void:
-	upgrade = get_upgrade() as Upgrade
+	upgrade = get_upgrade()
 	
 	if upgrade != null:
 		upgrade.leveled_up.connect(update_ui)

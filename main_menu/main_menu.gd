@@ -19,7 +19,7 @@ func _on_button_quit_pressed() -> void:
 
 
 func _on_label_subtitle_meta_clicked(meta: Variant) -> void:
-	var url: String = meta as String
+	var url: String = meta
 	if url != null:
 		OS.shell_open(url)
 

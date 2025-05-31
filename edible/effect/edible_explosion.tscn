@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://duakgck4wfr0q"]
 
 [ext_resource type="Texture2D" uid="uid://blofy2qar2bv3" path="res://edible/edible.png" id="1_df8af"]
-[ext_resource type="Script" path="res://edible/effect/edible_explosion.gd" id="2_q60ks"]
+[ext_resource type="Script" uid="uid://csvrcgehk3ntq" path="res://edible/effect/edible_explosion.gd" id="2_q60ks"]
 [ext_resource type="AudioStream" uid="uid://btojsrh8dhivo" path="res://edible/eat.ogg" id="3_qvqrf"]
 
 [sub_resource type="Curve" id="Curve_veh4d"]
@@ -27,7 +27,6 @@ color = Color(1, 1, 1, 0.501961)
 random_pitch = 1.5
 streams_count = 1
 stream_0/stream = ExtResource("3_qvqrf")
-stream_0/weight = 1.0
 
 [node name="EdibleExplosion" type="GPUParticles2D"]
 emitting = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0woulj7vy38c"]
 
-[ext_resource type="Script" path="res://player/trail/collision/trail_collision_area.gd" id="1_xqoyl"]
+[ext_resource type="Script" uid="uid://c8sea4cj8pmut" path="res://player/trail/collision/trail_collision_area.gd" id="1_xqoyl"]
 [ext_resource type="AudioStream" uid="uid://lwisoc4x4atp" path="res://player/trail/enclose.ogg" id="2_bqds4"]
 
 [node name="TrailCollisionArea" type="Area2D"]

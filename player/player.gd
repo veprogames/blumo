@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 	t += delta
 	
 	if len(movements) > 0:
-		var total_movement: Vector2 = Utils.sum(movements) as Vector2
+		var total_movement: Vector2 = Utils.sum(movements)
 		
 		var average_motion: Vector2 = total_movement / len(movements)
 		sprite_2d.rotation = average_motion.angle()

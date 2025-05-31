@@ -13,7 +13,7 @@ static func sum(array: Array) -> Variant:
 static func format_thousands(n: float) -> String:
 	var result: String = ""
 	
-	var string: String = str(floorf(n)).replace("-", "")
+	var string: String = ("%.0f" % floorf(n)).replace("-", "")
 	var digit: int = 0
 	
 	for i: int in range(len(string) - 1, -1, -1):

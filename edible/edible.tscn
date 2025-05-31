@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfk6aw3v0herd"]
 
-[ext_resource type="Script" path="res://edible/edible.gd" id="1_n0a62"]
+[ext_resource type="Script" uid="uid://cv8chjs068okp" path="res://edible/edible.gd" id="1_n0a62"]
 [ext_resource type="Texture2D" uid="uid://blofy2qar2bv3" path="res://edible/edible.png" id="2_tifuu"]
 [ext_resource type="Texture2D" uid="uid://dqutjy48rxjhr" path="res://edible/glow.png" id="3_ulu02"]
 
