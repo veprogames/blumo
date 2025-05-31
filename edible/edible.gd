@@ -7,7 +7,7 @@ signal eaten(edible: Edible)
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var glow: Sprite2D = $Glow
 
-static var EDIBLE_COLOR: Color = Color("#224fff")
+static var EDIBLE_COLOR: Color = Color("#3a5adf")
 var edible: bool = false
 
 func _ready() -> void:
@@ -32,7 +32,6 @@ func _on_area_entered(area: Area2D) -> void:
 
 func become_edible() -> void:
 	edible = true
-	sprite_2d.modulate = Edible.EDIBLE_COLOR
 	turn_on_glow()
 	became_edible.emit()
 
@@ -55,5 +54,14 @@ func eat() -> void:
 	eaten.emit(self)
 
 func turn_on_glow() -> void:
-	var tween: Tween = create_tween()
-	tween.tween_property(glow, ^"modulate:a", 1.0, 0.2).set_ease(Tween.EASE_IN_OUT)
+	var tween_glow: Tween = create_tween()
+	var tween_sprite: Tween = create_tween()
+	tween_glow.tween_property(glow, ^"modulate", Color.WHITE, 0.1) \
+		.set_ease(Tween.EASE_IN) \
+		.set_trans(Tween.TRANS_EXPO)
+	tween_glow.tween_property(glow, ^"modulate", EDIBLE_COLOR, 0.7) \
+		.set_ease(Tween.EASE_OUT) \
+		.set_trans(Tween.TRANS_EXPO)
+	tween_sprite.tween_property(sprite_2d, ^"modulate", EDIBLE_COLOR, 0.8) \
+		.set_ease(Tween.EASE_OUT) \
+		.set_trans(Tween.TRANS_EXPO)

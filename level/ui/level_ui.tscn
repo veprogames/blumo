@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://psq5s2rba4sq"]
+[gd_scene load_steps=5 format=3 uid="uid://psq5s2rba4sq"]
 
 [ext_resource type="Script" uid="uid://c2ad78ei2r8d4" path="res://level/ui/level_ui.gd" id="1_2nbs0"]
 [ext_resource type="Texture2D" uid="uid://d0kn8ocaeinst" path="res://art/score.png" id="1_8rq2u"]
 [ext_resource type="PackedScene" uid="uid://ck0m8xxdbgmgx" path="res://level/ui/level_quit_button.tscn" id="2_tp736"]
 [ext_resource type="PackedScene" uid="uid://dojgmv85rvmht" path="res://ui/currency_counter.tscn" id="3_718i1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wv14l"]
 
 [node name="LevelUI" type="Control"]
 custom_minimum_size = Vector2(0, 64)
@@ -16,41 +14,27 @@ grow_horizontal = 2
 mouse_filter = 1
 script = ExtResource("1_2nbs0")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 36.0
 grow_horizontal = 2
-grow_vertical = 2
 
-[node name="HSeparator2" type="HSeparator" parent="HBoxContainer"]
+[node name="LevelQuitButton" parent="MarginContainer" instance=ExtResource("2_tp736")]
 layout_mode = 2
-theme_override_constants/separation = 24
-theme_override_styles/separator = SubResource("StyleBoxEmpty_wv14l")
+size_flags_horizontal = 0
 
-[node name="LevelQuitButton" parent="HBoxContainer" instance=ExtResource("2_tp736")]
+[node name="LabelStage" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Spacer2" type="Control" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="LabelStage" type="Label" parent="HBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
 text = "Stage 0"
 horizontal_alignment = 1
 
-[node name="Spacer" type="Control" parent="HBoxContainer"]
+[node name="CurrencyCounterScore" parent="MarginContainer" instance=ExtResource("3_718i1")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CurrencyCounterScore" parent="HBoxContainer" instance=ExtResource("3_718i1")]
-layout_mode = 2
+size_flags_horizontal = 8
 texture = ExtResource("1_8rq2u")
 interpolation_enabled = true
-
-[node name="HSeparator3" type="HSeparator" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 24
-theme_override_styles/separator = SubResource("StyleBoxEmpty_wv14l")

@@ -1,9 +1,8 @@
 class_name LevelUI
 extends Control
 
-@onready var label_stage: Label = $HBoxContainer/LabelStage
-
-@onready var currency_counter_score: CurrencyCounter = $HBoxContainer/CurrencyCounterScore
+@onready var label_stage: Label = %LabelStage
+@onready var currency_counter_score: CurrencyCounter = %CurrencyCounterScore
 
 func _ready() -> void:
 	_on_score_changed(Global.save.score)
