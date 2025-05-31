@@ -5,7 +5,7 @@ extends Control
 @onready var currency_counter_score: CurrencyCounter = %CurrencyCounterScore
 
 func _ready() -> void:
-	_on_score_changed(Global.save.score)
+	currency_counter_score.set_value_instant(Global.save.score)
 	_on_stage_changed(Global.save.stage)
 	
 	Global.save.score_changed.connect(_on_score_changed)

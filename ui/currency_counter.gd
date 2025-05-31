@@ -13,34 +13,31 @@ extends HBoxContainer
 
 var displayed_value: float = 0.0
 
-var is_ready: bool = false
-
-func _ready() -> void:
-	is_ready = true
-	
+func _process(delta: float) -> void:
 	if not interpolation_enabled:
-		process_mode = Node.PROCESS_MODE_DISABLED
-
-func _process(_delta: float) -> void:
+		return
+	
+	displayed_value = lerp(displayed_value, value, delta * 10)
+	displayed_value = move_toward(displayed_value, value, delta * 100)
 	label_value.text = Utils.format_number(displayed_value)
 
 func _set_texture(new_texture: Texture2D) -> void:
 	texture = new_texture
 	
-	if not is_ready:
+	if not is_node_ready():
 		await ready
+	
 	texture_rect_currency.texture = texture
 
 func _set_value(new_value: float) -> void:
 	value = new_value
 	
-	if not is_ready:
+	if not is_node_ready():
 		await ready
 	
-	if interpolation_enabled:
-		var tween: Tween = create_tween()
-		tween.tween_property(self, ^"displayed_value", value, interpolation_time) \
-			.set_ease(Tween.EASE_OUT) \
-			.set_trans(Tween.TRANS_EXPO)
-	else:
+	if not interpolation_enabled:
 		label_value.text = Utils.format_number(value)
+
+func set_value_instant(new_value: float) -> void:
+	value = new_value
+	displayed_value = new_value
