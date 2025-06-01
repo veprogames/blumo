@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://b524q435s8xuh"]
+
+[ext_resource type="Script" uid="uid://b0c7gs506b2jb" path="res://src/player/player.gd" id="1_xlok0"]
+[ext_resource type="Texture2D" uid="uid://yyfw783ga8hd" path="res://assets/player/player.png" id="2_8shp1"]
+[ext_resource type="PackedScene" uid="uid://ds3vg40luk3xy" path="res://src/player/player_collector_area.tscn" id="3_7ywvn"]
+[ext_resource type="AudioStream" uid="uid://dwntp42ifre0v" path="res://assets/player/move.ogg" id="4_qrrqd"]
+[ext_resource type="AudioStream" uid="uid://dfjc42d6wjq8u" path="res://assets/player/die.ogg" id="5_mhae5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1yec6"]
+radius = 8.0
+
+[node name="Player" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_xlok0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.380545, 0.705898, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8shp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1yec6")
+
+[node name="PlayerCollectorArea" parent="." instance=ExtResource("3_7ywvn")]
+
+[node name="AudioStreamPlayerMove" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qrrqd")
+volume_db = -80.0
+autoplay = true
+
+[node name="AudioStreamPlayerDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mhae5")
+volume_db = -9.0

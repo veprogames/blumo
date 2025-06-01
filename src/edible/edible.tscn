@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfk6aw3v0herd"]
+
+[ext_resource type="Script" uid="uid://cv8chjs068okp" path="res://src/edible/edible.gd" id="1_n0a62"]
+[ext_resource type="Texture2D" uid="uid://blofy2qar2bv3" path="res://assets/edible/edible.png" id="2_tifuu"]
+[ext_resource type="Texture2D" uid="uid://dqutjy48rxjhr" path="res://assets/edible/glow.png" id="3_ulu02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjdqc"]
+size = Vector2(64, 64)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e8277"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5lwxo"]
+blend_mode = 1
+
+[node name="Edible" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_n0a62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gjdqc")
+
+[node name="Glow" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_e8277")
+texture = ExtResource("3_ulu02")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_5lwxo")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tifuu")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

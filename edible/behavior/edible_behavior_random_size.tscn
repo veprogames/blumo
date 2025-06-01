@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dussjem2bwrxj"]
-
-[ext_resource type="PackedScene" uid="uid://d1qjpjlxlevg4" path="res://edible/behavior/edible_behavior.tscn" id="1_6gqxg"]
-[ext_resource type="Script" uid="uid://mbplnie5esor" path="res://edible/behavior/edible_behavior_random_size.gd" id="2_6tlpt"]
-
-[node name="EdibleBehaviorRandomSize" instance=ExtResource("1_6gqxg")]
-script = ExtResource("2_6tlpt")
-min_size = 0.8
-max_size = 1.1

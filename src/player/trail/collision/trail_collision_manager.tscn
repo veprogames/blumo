@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dufqidwgk1b28"]
+
+[ext_resource type="Script" uid="uid://ci4q3rel26o5t" path="res://src/player/trail/collision/trail_collision_manager.gd" id="1_kadqm"]
+
+[node name="TrailCollisionManager" type="Node2D"]
+script = ExtResource("1_kadqm")
