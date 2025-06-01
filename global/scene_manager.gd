@@ -23,4 +23,6 @@ func quit_game() -> void:
 	
 	await tween.finished
 	
+	Global.save_game()
+	
 	get_tree().quit()

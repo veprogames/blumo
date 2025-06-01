@@ -16,13 +16,17 @@ func save_game() -> void:
 	if file:
 		file.store_var(serialized)
 	else:
-		push_warning("Error while saving: %d" % file.get_error())
+		push_warning("Error while saving")
 
 func try_load_game() -> void:
+	if not FileAccess.file_exists(SAVE_PATH):
+		print("No Save File found, not loading save game")
+		return
+	
 	var file: FileAccess = FileAccess.open_compressed(SAVE_PATH, FileAccess.READ, FileAccess.COMPRESSION_ZSTD)
 	
 	if not file:
-		push_warning("Error loading save: %d" % file.get_error())
+		push_warning("Error loading save")
 		return
 	
 	var serialized: Dictionary = save.serialize()
