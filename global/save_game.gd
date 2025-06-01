@@ -4,11 +4,15 @@ extends Resource
 signal stage_changed(new_stage: int)
 signal score_changed(new_score: float)
 
-@export var stage: int = 0 : set = _set_stage
-@export var score: float = 0.0 : set = _set_score
+var stage: int = 0 : set = _set_stage
+var score: float = 0.0 : set = _set_score
 
-@export var upgrade_trail_length: Upgrade = preload("res://global/upgrades/trail_length.tres").duplicate(true)
-@export var upgrade_edible_value: Upgrade = preload("res://global/upgrades/edible_value.tres").duplicate(true)
+var upgrade_trail_length: Upgrade = Upgrade.new(
+	preload("res://global/upgrades/trail_length.tres")
+)
+var upgrade_edible_value: Upgrade = Upgrade.new(
+	preload("res://global/upgrades/edible_value.tres")
+)
 
 func _set_stage(new_stage: int) -> void:
 	stage = new_stage
