@@ -1,12 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxs7lmruydgcw"]
+[gd_scene load_steps=3 format=3 uid="uid://bxs7lmruydgcw"]
 
 [ext_resource type="Script" uid="uid://brmspdsu58333" path="res://src/upgrade/upgrade_button.gd" id="1_eelp4"]
 [ext_resource type="PackedScene" uid="uid://dojgmv85rvmht" path="res://src/ui/currency_counter.tscn" id="1_mpgtc"]
-[ext_resource type="Texture2D" uid="uid://cw45gqv75sxxc" path="res://assets/upgrades/button_base.png" id="3_j0qxp"]
 
-[node name="UpgradeButton" type="Control"]
+[node name="UpgradeButton" type="Button"]
 custom_minimum_size = Vector2(360, 360)
-layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,7 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eelp4")
 
-[node name="ButtonBuy" type="TextureButton" parent="."]
+[node name="TextureRectIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.25098)
 layout_mode = 1
 anchors_preset = 15
@@ -24,67 +23,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-stretch_mode = 0
+stretch_mode = 3
 
-[node name="CurrencyCost" parent="." instance=ExtResource("1_mpgtc")]
-z_index = 1
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -60.0
-offset_right = 48.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="LabelEffect" type="Label" parent="."]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.3
-anchor_right = 0.5
-anchor_bottom = 0.3
-offset_left = -82.5
-offset_top = -59.0
-offset_right = 82.5
-offset_bottom = 59.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 96
-text = "1.0s"
-
-[node name="LabelEffectTitle" type="Label" parent="."]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.75
-anchor_right = 0.5
-anchor_bottom = 0.75
-offset_left = -144.0
-offset_top = -59.2
-offset_right = 145.0
-offset_bottom = -31.96
-grow_horizontal = 2
-grow_vertical = 2
-text = "effect name"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("3_j0qxp")
 
-[connection signal="pressed" from="ButtonBuy" to="." method="_on_button_buy_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="LabelEffectTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+text = "effect name"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="LabelEffect" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "1.0s"
+horizontal_alignment = 1
+
+[node name="CurrencyCost" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_mpgtc")]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

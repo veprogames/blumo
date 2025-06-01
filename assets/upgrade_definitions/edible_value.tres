@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="UpgradeDefinition" load_steps=4 format=3 uid="uid://thow6oafa4pi"]
+[gd_resource type="Resource" script_class="UpgradeDefinition" load_steps=5 format=3 uid="uid://thow6oafa4pi"]
 
 [ext_resource type="Script" uid="uid://cumjv6cve7vvt" path="res://src/upgrade/upgrade_definition.gd" id="1_5ppxb"]
 [ext_resource type="Script" uid="uid://bbck1ogxv7f6w" path="res://src/upgrade/effect_display_template.gd" id="1_vveno"]
+[ext_resource type="Texture2D" uid="uid://b6vgvifwtw52p" path="res://assets/upgrades/icons/edible_value.png" id="2_fog6o"]
 
 [sub_resource type="Resource" id="Resource_b4cry"]
 script = ExtResource("1_vveno")
@@ -15,4 +16,6 @@ script = ExtResource("1_5ppxb")
 price_formula = "30000 + 20000 * 2 ** level"
 effect_formula = "1 + 0.2 * level"
 effect_display = SubResource("Resource_b4cry")
+title = "Value"
+icon = ExtResource("2_fog6o")
 metadata/_custom_type_script = "uid://cumjv6cve7vvt"
