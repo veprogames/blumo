@@ -8,8 +8,8 @@ extends Node2D
 var LevelScene: PackedScene = preload("res://level/level.tscn")
 
 func _ready() -> void:
-	upgrade_button_trail.upgrade = preload("res://global/upgrades/trail_length.tres")
-	upgrade_button_value.upgrade = preload("res://global/upgrades/edible_value.tres")
+	upgrade_button_trail.upgrade = Global.save.upgrade_trail_length
+	upgrade_button_value.upgrade = Global.save.upgrade_edible_value
 	
 	update_ui()
 	

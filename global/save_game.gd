@@ -17,3 +17,17 @@ func _set_stage(new_stage: int) -> void:
 func _set_score(new_score: float) -> void:
 	score = new_score
 	score_changed.emit(score)
+
+func serialize() -> Dictionary:
+	return {
+		"stage": stage,
+		"score": score,
+		"upgrade_trail_length": upgrade_trail_length.level,
+		"upgrade_edible_value": upgrade_edible_value.level,
+	}
+
+func load_game(serialized: Dictionary) -> void:
+	stage = serialized.stage
+	score = serialized.score
+	upgrade_trail_length.level = serialized.upgrade_trail_length
+	upgrade_edible_value.level = serialized.upgrade_edible_value
