@@ -56,7 +56,7 @@ func eat() -> void:
 func turn_on_glow() -> void:
 	var tween_glow: Tween = create_tween()
 	var tween_sprite: Tween = create_tween()
-	tween_glow.tween_property(glow, ^"modulate", Color.WHITE, 0.1) \
+	tween_glow.tween_property(glow, ^"modulate", EDIBLE_COLOR * 2, 0.1) \
 		.set_ease(Tween.EASE_IN) \
 		.set_trans(Tween.TRANS_EXPO)
 	tween_glow.tween_property(glow, ^"modulate", EDIBLE_COLOR, 0.7) \

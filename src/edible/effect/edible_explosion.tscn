@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://duakgck4wfr0q"]
+[gd_scene load_steps=11 format=3 uid="uid://duakgck4wfr0q"]
 
 [ext_resource type="Texture2D" uid="uid://blofy2qar2bv3" path="res://assets/edible/edible.png" id="1_df8af"]
 [ext_resource type="Script" uid="uid://csvrcgehk3ntq" path="res://src/edible/effect/edible_explosion.gd" id="2_q60ks"]
@@ -6,6 +6,13 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y2k1k"]
 blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_pihe3"]
+_data = [Vector2(0, 1), 0.0, -2.66292, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t7x2f"]
+curve = SubResource("Curve_pihe3")
 
 [sub_resource type="Curve" id="Curve_veh4d"]
 _data = [Vector2(0, 1), 0.0, -2.54682, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -19,14 +26,14 @@ particle_flag_disable_z = true
 angle_max = 360.0
 spread = 180.0
 initial_velocity_min = 400.0
-initial_velocity_max = 600.0
+initial_velocity_max = 1600.0
 gravity = Vector3(0, 0, 0)
-linear_accel_min = -400.0
-linear_accel_max = -400.0
-scale_min = 0.5
-scale_max = 0.5
+linear_accel_min = -2000.0
+linear_accel_max = -2000.0
+scale_min = 0.8
+scale_max = 1.2
 scale_curve = SubResource("CurveTexture_caucj")
-color = Color(1, 1, 1, 0.501961)
+alpha_curve = SubResource("CurveTexture_t7x2f")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rhlad"]
 random_pitch = 1.5
@@ -38,6 +45,7 @@ material = SubResource("CanvasItemMaterial_y2k1k")
 emitting = false
 amount = 16
 texture = ExtResource("1_df8af")
+lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60

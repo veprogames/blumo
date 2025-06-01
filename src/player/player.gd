@@ -5,6 +5,7 @@ signal died()
 signal death_animation_finished()
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_glow: Sprite2D = $SpriteGlow
 @onready var audio_stream_player_move: AudioStreamPlayer = $AudioStreamPlayerMove
 @onready var audio_stream_player_die: AudioStreamPlayer = $AudioStreamPlayerDie
 
@@ -26,6 +27,8 @@ var dead: bool = false
 
 func _ready() -> void:
 	viewport_rect = get_viewport_rect()
+	sprite_2d.modulate = Edible.EDIBLE_COLOR
+	sprite_glow.modulate = Edible.EDIBLE_COLOR
 
 func _input(event: InputEvent) -> void:
 	var mouse_event: InputEventMouseMotion = event as InputEventMouseMotion

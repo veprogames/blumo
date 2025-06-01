@@ -23,6 +23,7 @@ shape = SubResource("RectangleShape2D_gjdqc")
 
 [node name="Glow" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_e8277")
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("3_ulu02")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
