@@ -22,7 +22,7 @@ func _ready() -> void:
 	trail.vertex_added.connect(_on_point_added)
 	trail.vertex_removed.connect(_on_point_removed)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# increase the age of segments,
 	# used to set the timer for the areas accordingly
 	for segment: TrailSegment in segments:
@@ -105,7 +105,9 @@ func build_collision_area(from_segment: TrailSegment, intersection_point: Vector
 	
 	add_child(area)
 	
-	var area_lifetime: float = player_trail_lifetime - from_segment.age
+	# add 0.05s for psychology
+	var area_lifetime: float = player_trail_lifetime - from_segment.age + 0.05
+	area_lifetime = maxf(area_lifetime, 0.01)
 	area.set_remaining_time(area_lifetime)
 	area.polygon = poly
 	

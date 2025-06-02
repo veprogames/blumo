@@ -49,7 +49,7 @@ func _input(event: InputEvent) -> void:
 			movements.pop_front()
 			movement_times.pop_front()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	t += delta
 	
 	if len(movements) > 0:

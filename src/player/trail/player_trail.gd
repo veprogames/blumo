@@ -24,7 +24,7 @@ func _ready() -> void:
 	
 	player.died.connect(die)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	t += delta
 	if player != null:
 		global_position = Vector2.ZERO

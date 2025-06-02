@@ -39,8 +39,8 @@ func _ready() -> void:
 	tween.tween_property(self, ^"speed", speed * randf_range(1.5, 1.6), 20.0) \
 		.set_ease(Tween.EASE_IN_OUT)
 
-func _process(delta: float) -> void:
-	super._process(delta)
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
 	
 	sprite_2d.rotate(delta * rotation_speed)
 	
