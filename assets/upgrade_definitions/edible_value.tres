@@ -6,15 +6,15 @@
 
 [sub_resource type="Resource" id="Resource_b4cry"]
 script = ExtResource("1_vveno")
-precision = 1
+precision = 0
 prefix = "x"
 suffix = ""
 metadata/_custom_type_script = "uid://bbck1ogxv7f6w"
 
 [resource]
 script = ExtResource("1_5ppxb")
-price_formula = "30000 + 20000 * 2 ** level"
-effect_formula = "1 + 0.2 * level"
+price_formula = "50000 * (1 + level) * 2 ** level"
+effect_formula = "1 + level"
 effect_display = SubResource("Resource_b4cry")
 title = "Value"
 icon = ExtResource("2_fog6o")
