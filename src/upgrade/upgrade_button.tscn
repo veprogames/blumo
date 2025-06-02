@@ -23,7 +23,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,10 +31,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 alignment = 1
 
 [node name="LabelEffectTitle" type="Label" parent="MarginContainer/VBoxContainer"]
@@ -52,14 +57,20 @@ uppercase = true
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 96
+theme_override_font_sizes/font_size = 80
 text = "1.0s"
 horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="CurrencyCost" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_mpgtc")]
 unique_name_in_owner = true
 z_index = 1
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

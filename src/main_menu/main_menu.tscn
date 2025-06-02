@@ -98,10 +98,12 @@ grow_vertical = 2
 [node name="ButtonPlay" type="Button" parent="CanvasLayer/VBoxContainerButtons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonLarge"
 text = "Start"
 
 [node name="ButtonQuit" type="Button" parent="CanvasLayer/VBoxContainerButtons"]
 layout_mode = 2
+theme_type_variation = &"ButtonLarge"
 text = "Quit"
 
 [connection signal="meta_clicked" from="CanvasLayer/VBoxContainer/LabelSubtitle" to="." method="_on_label_subtitle_meta_clicked"]

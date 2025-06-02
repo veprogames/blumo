@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://ckehh8iri5o8t"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ckehh8iri5o8t"]
 
 [ext_resource type="FontFile" uid="uid://dbp27epd3pdii" path="res://assets/fonts/Coiny-Regular.ttf" id="1_470mv"]
 
@@ -19,34 +19,19 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2l2q"]
-content_margin_left = 28.0
-content_margin_top = 28.0
-content_margin_right = 28.0
-content_margin_bottom = 28.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 12
-border_width_top = 12
-border_width_right = 12
-border_width_bottom = 12
-border_color = Color(0.694118, 0.729412, 0.870588, 0.376471)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-anti_aliasing = false
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgdp2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0omi4"]
 content_margin_left = 28.0
 content_margin_top = 28.0
 content_margin_right = 28.0
 content_margin_bottom = 28.0
-bg_color = Color(0.696, 0.7308, 0.87, 0.25098)
+bg_color = Color(0.694118, 0.729412, 0.870588, 0)
 border_width_left = 12
 border_width_top = 12
 border_width_right = 12
 border_width_bottom = 12
-border_color = Color(0.694118, 0.729412, 0.870588, 0.376471)
+border_color = Color(0.2262, 0.35496, 0.87, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -75,12 +60,12 @@ content_margin_left = 28.0
 content_margin_top = 28.0
 content_margin_right = 28.0
 content_margin_bottom = 28.0
-bg_color = Color(0.696, 0.7308, 0.87, 0.501961)
+bg_color = Color(0.694118, 0.729412, 0.870588, 0)
 border_width_left = 12
 border_width_top = 12
 border_width_right = 12
 border_width_bottom = 12
-border_color = Color(0.694118, 0.729412, 0.870588, 0.376471)
+border_color = Color(0.26, 0.408, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -101,6 +86,23 @@ content_margin_bottom = 16.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wavyl"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgdp2"]
+content_margin_left = 48.0
+content_margin_top = 48.0
+content_margin_right = 48.0
+content_margin_bottom = 48.0
+bg_color = Color(0.696, 0.7308, 0.87, 0)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.696, 0.7308, 0.87, 0.376471)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+anti_aliasing = false
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nsjfo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2ei2"]
@@ -116,8 +118,12 @@ default_font = ExtResource("1_470mv")
 default_font_size = 48
 Button/colors/font_color = Color(0.827451, 0.835294, 0.870588, 1)
 Button/colors/font_disabled_color = Color(0.827451, 0.835294, 0.870588, 0.501961)
+Button/colors/font_focus_color = Color(0.827451, 0.835294, 0.870588, 1)
+Button/colors/font_hover_color = Color(0.827451, 0.835294, 0.870588, 1)
+Button/colors/font_hover_pressed_color = Color(0.827451, 0.835294, 0.870588, 1)
+Button/colors/font_pressed_color = Color(0.827451, 0.835294, 0.870588, 1)
 Button/styles/disabled = SubResource("StyleBoxFlat_470mv")
-Button/styles/focus = SubResource("StyleBoxFlat_a2l2q")
+Button/styles/focus = SubResource("StyleBoxEmpty_xgdp2")
 Button/styles/hover = SubResource("StyleBoxFlat_0omi4")
 Button/styles/normal = SubResource("StyleBoxFlat_d3ntk")
 Button/styles/pressed = SubResource("StyleBoxFlat_58jnp")
@@ -127,6 +133,9 @@ ButtonBorderless/styles/focus = SubResource("StyleBoxEmpty_ujtjg")
 ButtonBorderless/styles/hover = SubResource("StyleBoxEmpty_3c4q2")
 ButtonBorderless/styles/normal = SubResource("StyleBoxEmpty_rrexw")
 ButtonBorderless/styles/pressed = SubResource("StyleBoxEmpty_wavyl")
+ButtonLarge/base_type = &"Button"
+ButtonLarge/font_sizes/font_size = 96
+ButtonLarge/styles/normal = SubResource("StyleBoxFlat_xgdp2")
 HSeparator/constants/separation = 16
 HSeparator/styles/separator = SubResource("StyleBoxEmpty_nsjfo")
 Label/colors/font_color = Color(0.8265, 0.8352, 0.87, 1)
