@@ -1,3 +1,4 @@
+class_name LevelCamera
 extends Camera2D
 
 @export var shake_strength: float = 0.0

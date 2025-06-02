@@ -2,12 +2,13 @@ class_name Player
 extends Area2D
 
 signal died()
-signal death_animation_finished()
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var sprite_glow: Sprite2D = $SpriteGlow
 @onready var audio_stream_player_move: AudioStreamPlayer = $AudioStreamPlayerMove
 @onready var audio_stream_player_die: AudioStreamPlayer = $AudioStreamPlayerDie
+
+const ExplosionScene: PackedScene = preload("res://src/player/explosion/player_explosion.tscn")
 
 ## Used for getting screen edges
 var viewport_rect: Rect2
@@ -78,23 +79,11 @@ func die() -> void:
 	# if not dead already
 	if not dead:
 		dead = true
-		audio_stream_player_move.playing = false
-		audio_stream_player_die.play()
-		
-		play_death_animation()
 		
 		died.emit()
-
-func play_death_animation() -> void:
-	var tween: Tween = create_tween()
-	var frames: int = 16
-	for i: int in range(frames):
-		var amplitude: float = 48.0 / (1.0 + i)
 		
-		var next_offset: Vector2 = Vector2(
-			randf_range(-amplitude, amplitude),
-			randf_range(-amplitude, amplitude),
-		)
-		tween.tween_property(sprite_2d, ^"offset", next_offset, 0.07)
-	await tween.finished
-	death_animation_finished.emit()
+		var explosion: PlayerExplosion = ExplosionScene.instantiate()
+		explosion.position = position
+		get_parent().add_child(explosion)
+		
+		queue_free()

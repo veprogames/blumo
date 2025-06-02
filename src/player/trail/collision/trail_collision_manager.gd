@@ -18,7 +18,6 @@ var player_trail_lifetime: float = 0.4
 func _ready() -> void:
 	player_trail_lifetime = Global.save.upgrade_trail_length.get_current_effect()
 	
-	trail.died.connect(queue_free)
 	trail.vertex_added.connect(_on_point_added)
 	trail.vertex_removed.connect(_on_point_removed)
 
