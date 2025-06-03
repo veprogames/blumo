@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ckehh8iri5o8t"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://ckehh8iri5o8t"]
 
 [ext_resource type="FontFile" uid="uid://dbp27epd3pdii" path="res://assets/fonts/Coiny-Regular.ttf" id="1_470mv"]
 
@@ -105,6 +105,22 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nsjfo"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d80jv"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.262745, 0.27451, 0.32549, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.12549)
+shadow_size = 16
+shadow_offset = Vector2(8, 8)
+anti_aliasing = false
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2ei2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -136,6 +152,8 @@ ButtonBorderless/styles/pressed = SubResource("StyleBoxEmpty_wavyl")
 ButtonLarge/base_type = &"Button"
 ButtonLarge/font_sizes/font_size = 96
 ButtonLarge/styles/normal = SubResource("StyleBoxFlat_xgdp2")
+FlowContainer/constants/h_separation = 48
+FlowContainer/constants/v_separation = 48
 HSeparator/constants/separation = 16
 HSeparator/styles/separator = SubResource("StyleBoxEmpty_nsjfo")
 Label/colors/font_color = Color(0.8265, 0.8352, 0.87, 1)
@@ -145,6 +163,7 @@ MarginContainer/constants/margin_bottom = 24
 MarginContainer/constants/margin_left = 24
 MarginContainer/constants/margin_right = 24
 MarginContainer/constants/margin_top = 24
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_d80jv")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_t2ei2")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_68d6u")
 RichTextLabel/colors/default_color = Color(0.827451, 0.835294, 0.870588, 1)
