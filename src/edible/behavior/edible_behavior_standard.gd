@@ -1,5 +1,7 @@
 class_name EdibleBehaviorStandard
-extends EdibleBehavior
+extends Node2D
+
+@export var edible: Edible
 
 var speed: float
 var to_speed: float
@@ -16,8 +18,6 @@ var tween: Tween
 var from_edge: EdibleSpawner.LevelEdge
 
 func _ready() -> void:
-	super._ready()
-	
 	await edible.ready
 	
 	sprite_2d = edible.sprite_2d
@@ -40,8 +40,6 @@ func _ready() -> void:
 		.set_ease(Tween.EASE_IN_OUT)
 
 func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
-	
 	sprite_2d.rotate(delta * rotation_speed)
 	
 	edible.position += direction_vector * speed * delta

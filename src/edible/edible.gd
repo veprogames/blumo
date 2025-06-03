@@ -65,3 +65,6 @@ func turn_on_glow() -> void:
 	tween_sprite.tween_property(sprite_2d, ^"modulate", EDIBLE_COLOR, 0.8) \
 		.set_ease(Tween.EASE_OUT) \
 		.set_trans(Tween.TRANS_EXPO)
+
+func get_movement_component() -> EdibleBehaviorStandard:
+	return get_node("EdibleBehaviorStandard")

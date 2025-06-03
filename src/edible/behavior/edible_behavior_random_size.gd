@@ -1,5 +1,7 @@
 class_name EdibleBehaviorRandomSize
-extends EdibleBehavior
+extends Node
+
+@export var edible: Edible
 
 @export var min_size: float = 0.8
 @export var max_size: float = 1.1
