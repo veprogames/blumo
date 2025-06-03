@@ -74,6 +74,9 @@ func _physics_process(delta: float) -> void:
 		)
 
 func die() -> void:
+	if OS.has_feature("editor"):
+		return
+	
 	Global.save_game()
 	
 	# if not dead already

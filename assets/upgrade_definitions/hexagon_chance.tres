@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" load_steps=5 format=3 uid="uid://36wdc4xdy5r8"]
+
+[ext_resource type="Script" uid="uid://c1sdikum62e7q" path="res://src/upgrade/effect_display_template_percent.gd" id="1_y1vad"]
+[ext_resource type="Texture2D" uid="uid://dlxnfmkcy3v41" path="res://assets/upgrades/icons/hexagon_chance.png" id="2_y1vad"]
+[ext_resource type="Script" uid="uid://cumjv6cve7vvt" path="res://src/upgrade/upgrade_definition.gd" id="3_ggwab"]
+
+[sub_resource type="Resource" id="Resource_h5ye2"]
+script = ExtResource("1_y1vad")
+precision = 1
+metadata/_custom_type_script = "uid://c1sdikum62e7q"
+
+[resource]
+script = ExtResource("3_ggwab")
+price_formula = "100000 + 100000 * level"
+effect_formula = "0.025 * level"
+effect_display = SubResource("Resource_h5ye2")
+title = "Hexagon (x7)"
+icon = ExtResource("2_y1vad")
+metadata/_custom_type_script = "uid://cumjv6cve7vvt"
