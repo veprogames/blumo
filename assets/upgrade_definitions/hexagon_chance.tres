@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://c1sdikum62e7q"
 
 [resource]
 script = ExtResource("3_ggwab")
-price_formula = "100000 + 100000 * level"
+price_formula = "50000 + 50000 * level"
 effect_formula = "0.025 * level"
 effect_display = SubResource("Resource_h5ye2")
 title = "Hexagon (x7)"

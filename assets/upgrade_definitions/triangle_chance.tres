@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://c1sdikum62e7q"
 
 [resource]
 script = ExtResource("3_3am2p")
-price_formula = "10000 + 10000 * level"
+price_formula = "5000 + 5000 * level"
 effect_formula = "0.025 * level"
 effect_display = SubResource("Resource_h5ye2")
 title = "Triangle (x3)"
