@@ -1,5 +1,5 @@
 class_name EffectDisplayTemplate
-extends Resource
+extends EffectDisplayTemplateBase
 
 @export var precision: int = 2
 @export var prefix: String = ""

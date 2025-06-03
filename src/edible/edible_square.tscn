@@ -15,7 +15,7 @@ blend_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5lwxo"]
 blend_mode = 1
 
-[node name="Edible" type="Area2D"]
+[node name="EdibleSquare" type="Area2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_n0a62")

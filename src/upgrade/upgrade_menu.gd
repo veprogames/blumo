@@ -3,12 +3,14 @@ extends PanelContainer
 
 @onready var upgrade_button_trail: UpgradeButton = %UpgradeButtonTrail
 @onready var upgrade_button_value: UpgradeButton = %UpgradeButtonValue
+@onready var upgrade_button_triangle_chance: UpgradeButton = %UpgradeButtonTriangleChance
 @onready var currency_counter: CurrencyCounter = %CurrencyCounter
 
 
 func _ready() -> void:
 	upgrade_button_trail.upgrade = Global.save.upgrade_trail_length
 	upgrade_button_value.upgrade = Global.save.upgrade_edible_value
+	upgrade_button_triangle_chance.upgrade = Global.save.upgrade_triangle_chance
 	
 	currency_counter.set_value_instant(Global.save.score)
 	Global.save.score_changed.connect(_on_global_score_changed)

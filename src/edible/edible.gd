@@ -10,6 +10,9 @@ signal eaten(edible: Edible)
 static var EDIBLE_COLOR: Color = Color("#3a5adf")
 var edible: bool = false
 
+@export var value_multiplier: float = 1.0
+@export var color: Color = Color("#3a5adf")
+
 func _ready() -> void:
 	var previous_scale: Vector2 = sprite_2d.scale
 	sprite_2d.scale = Vector2.ZERO
@@ -18,7 +21,7 @@ func _ready() -> void:
 		.set_trans(Tween.TRANS_ELASTIC) \
 		.set_ease(Tween.EASE_OUT)
 	
-	glow.modulate = Edible.EDIBLE_COLOR
+	glow.modulate = color
 	glow.modulate.a = 0.0
 	sprite_2d.modulate.a *= randf_range(0.6, 0.8)
 
@@ -45,7 +48,7 @@ func get_value() -> float:
 	# so another boost is introduced :)
 	var late_game_boost: float = 1 + maxf(0.0, stage - 100) * 0.01
 	
-	return base * multiplier * late_game_boost
+	return base * multiplier * late_game_boost * value_multiplier
 
 func eat() -> void:
 	Global.save.score += get_value()
@@ -56,13 +59,13 @@ func eat() -> void:
 func turn_on_glow() -> void:
 	var tween_glow: Tween = create_tween()
 	var tween_sprite: Tween = create_tween()
-	tween_glow.tween_property(glow, ^"modulate", EDIBLE_COLOR * 2, 0.1) \
+	tween_glow.tween_property(glow, ^"modulate", color * 2, 0.1) \
 		.set_ease(Tween.EASE_IN) \
 		.set_trans(Tween.TRANS_EXPO)
-	tween_glow.tween_property(glow, ^"modulate", EDIBLE_COLOR, 0.7) \
+	tween_glow.tween_property(glow, ^"modulate", color, 0.7) \
 		.set_ease(Tween.EASE_OUT) \
 		.set_trans(Tween.TRANS_EXPO)
-	tween_sprite.tween_property(sprite_2d, ^"modulate", EDIBLE_COLOR, 0.8) \
+	tween_sprite.tween_property(sprite_2d, ^"modulate", color, 0.8) \
 		.set_ease(Tween.EASE_OUT) \
 		.set_trans(Tween.TRANS_EXPO)
 

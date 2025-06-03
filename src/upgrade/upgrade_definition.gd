@@ -25,7 +25,7 @@ var price_expression: Expression = Expression.new()
 			)
 var effect_expression: Expression = Expression.new()
 
-@export var effect_display: EffectDisplayTemplate
+@export var effect_display: EffectDisplayTemplateBase
 
 @export var title: String
 @export var icon: Texture2D

@@ -55,3 +55,7 @@ layout_mode = 2
 [node name="UpgradeButtonValue" parent="MarginContainer/VBoxContainer/FlowContainer" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="UpgradeButtonTriangleChance" parent="MarginContainer/VBoxContainer/FlowContainer" instance=ExtResource("1_kyr0d")]
+unique_name_in_owner = true
+layout_mode = 2

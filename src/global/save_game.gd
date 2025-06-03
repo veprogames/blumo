@@ -13,6 +13,9 @@ var upgrade_trail_length: Upgrade = Upgrade.new(
 var upgrade_edible_value: Upgrade = Upgrade.new(
 	preload("res://assets/upgrade_definitions/edible_value.tres")
 )
+var upgrade_triangle_chance: Upgrade = Upgrade.new(
+	preload("res://assets/upgrade_definitions/triangle_chance.tres")
+)
 
 func _set_stage(new_stage: int) -> void:
 	stage = new_stage
@@ -28,6 +31,7 @@ func serialize() -> Dictionary:
 		"score": score,
 		"upgrade_trail_length": upgrade_trail_length.level,
 		"upgrade_edible_value": upgrade_edible_value.level,
+		"triangle_chance": upgrade_triangle_chance.level,
 	}
 
 func load_game(serialized: Dictionary) -> void:
@@ -35,3 +39,4 @@ func load_game(serialized: Dictionary) -> void:
 	score = serialized.score
 	upgrade_trail_length.level = serialized.upgrade_trail_length
 	upgrade_edible_value.level = serialized.upgrade_edible_value
+	upgrade_triangle_chance.level = serialized.triangle_chance

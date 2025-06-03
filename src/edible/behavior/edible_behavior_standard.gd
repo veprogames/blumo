@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 	# This ensures that the direction wont be too close to a multiple of 90 degrees
 	var direction: float = get_direction_from_edge(from_edge) + \
-		randf_range(0, PI / 6.0) * (1.0 if randi() % 2 == 0 else -1.0)
+		randf_range(PI / 24.0, PI / 6.0) * (1.0 if randi() % 2 == 0 else -1.0)
 	speed = get_base_speed() * randf_range(1.0, 1.7)
 	
 	rotation_speed = speed / 100.0
