@@ -24,5 +24,5 @@ func _on_player_died() -> void:
 	level_camera.do_shake_impulse()
 	
 	var tween: Tween = create_tween()
-	tween.tween_property(color_rect_death, ^"modulate:a", 0.5, 0.1)
-	tween.tween_property(color_rect_death, ^"modulate:a", 0, 0.4)
+	tween.tween_property(color_rect_death, ^"modulate:a", 0.5, 0.05)
+	tween.tween_property(color_rect_death, ^"modulate:a", 0, 0.3)
