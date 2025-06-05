@@ -19,6 +19,9 @@ var upgrade_triangle_chance: Upgrade = Upgrade.new(
 var upgrade_hexagon_chance: Upgrade = Upgrade.new(
 	preload("res://assets/upgrade_definitions/hexagon_chance.tres")
 )
+var upgrade_star_chance: Upgrade = Upgrade.new(
+	preload("res://assets/upgrade_definitions/star_chance.tres")
+)
 
 func _set_stage(new_stage: int) -> void:
 	stage = new_stage
@@ -36,6 +39,7 @@ func serialize() -> Dictionary:
 		"upgrade_edible_value": upgrade_edible_value.level,
 		"upgrade_triangle_chance": upgrade_triangle_chance.level,
 		"upgrade_hexagon_chance": upgrade_hexagon_chance.level,
+		"upgrade_star_chance": upgrade_star_chance.level,
 	}
 
 func load_game(serialized: Dictionary) -> void:
@@ -45,3 +49,4 @@ func load_game(serialized: Dictionary) -> void:
 	upgrade_edible_value.level = serialized.upgrade_edible_value
 	upgrade_triangle_chance.level = serialized.upgrade_triangle_chance
 	upgrade_hexagon_chance.level = serialized.upgrade_hexagon_chance
+	upgrade_star_chance.level = serialized.upgrade_star_chance

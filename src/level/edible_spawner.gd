@@ -9,6 +9,7 @@ var Edibles: Array[PackedScene] = [
 	preload("res://src/edible/edible_square.tscn"),
 	preload("res://src/edible/edible_triangle.tscn"),
 	preload("res://src/edible/edible_hexagon.tscn"),
+	preload("res://src/edible/edible_star.tscn"),
 ]
 var EdibleExplosionScene: PackedScene = preload("res://src/edible/effect/edible_explosion.tscn")
 
@@ -79,8 +80,10 @@ func spawn_edible(edge: LevelEdge) -> void:
 	var edible_scene: PackedScene = Edibles[0]
 	if randf() < Global.save.upgrade_triangle_chance.get_current_effect():
 		edible_scene = Edibles[1]
-		if randf() < Global.save.upgrade_triangle_chance.get_current_effect():
+		if randf() < Global.save.upgrade_hexagon_chance.get_current_effect():
 			edible_scene = Edibles[2]
+			if randf() < Global.save.upgrade_star_chance.get_current_effect():
+				edible_scene = Edibles[3]
 	var edible: Edible = edible_scene.instantiate() as Edible
 	
 	edible.position = edible_position

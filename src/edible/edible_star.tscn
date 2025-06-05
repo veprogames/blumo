@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5jdque2b43k3"]
+
+[ext_resource type="Script" uid="uid://cv8chjs068okp" path="res://src/edible/edible.gd" id="1_qmc0g"]
+[ext_resource type="Texture2D" uid="uid://dqutjy48rxjhr" path="res://assets/edible/glow.png" id="2_38a2s"]
+[ext_resource type="Texture2D" uid="uid://cvp2cj2kexa1e" path="res://assets/edible/edible_star.png" id="3_qmc0g"]
+[ext_resource type="PackedScene" uid="uid://bt0nfg0todtse" path="res://src/edible/behavior/edible_behavior_random_size.tscn" id="4_3n8rn"]
+[ext_resource type="PackedScene" uid="uid://bx6blj6gtxrsg" path="res://src/edible/behavior/edible_behavior_standard.tscn" id="5_wqhru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjdqc"]
+size = Vector2(64, 64)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e8277"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5lwxo"]
+blend_mode = 1
+
+[node name="EdibleStar" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_qmc0g")
+value_multiplier = 20.0
+color = Color(0.87, 0.87, 0.2262, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gjdqc")
+
+[node name="Glow" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_e8277")
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_38a2s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_5lwxo")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_qmc0g")
+
+[node name="EdibleBehaviorRandomSize" parent="." node_paths=PackedStringArray("edible") instance=ExtResource("4_3n8rn")]
+edible = NodePath("..")
+min_size = 1.0
+max_size = 1.3
+
+[node name="EdibleBehaviorStandard" parent="." node_paths=PackedStringArray("edible") instance=ExtResource("5_wqhru")]
+edible = NodePath("..")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

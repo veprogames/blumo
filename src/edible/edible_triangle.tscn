@@ -37,6 +37,8 @@ texture = ExtResource("3_btsgu")
 
 [node name="EdibleBehaviorRandomSize" parent="." node_paths=PackedStringArray("edible") instance=ExtResource("4_apr5s")]
 edible = NodePath("..")
+min_size = 1.0
+max_size = 1.3
 
 [node name="EdibleBehaviorStandard" parent="." node_paths=PackedStringArray("edible") instance=ExtResource("5_uhxeb")]
 edible = NodePath("..")
