@@ -1,11 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://kn7n4lvm4pkn"]
+[gd_scene load_steps=8 format=3 uid="uid://kn7n4lvm4pkn"]
 
-[ext_resource type="Texture2D" uid="uid://d2spl7m5e4owu" path="res://assets/player/explosion/triangle.png" id="1_bcp45"]
+[ext_resource type="Texture2D" uid="uid://bcnql7g1ewrun" path="res://assets/edible/edible_triangle.png" id="1_80kpo"]
 [ext_resource type="Script" uid="uid://chc4xenugxd7r" path="res://src/player/explosion/player_explosion.gd" id="2_hcb5d"]
 [ext_resource type="AudioStream" uid="uid://dfjc42d6wjq8u" path="res://assets/player/die.ogg" id="3_80kpo"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hcb5d"]
 blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_80kpo"]
+offsets = PackedFloat32Array(0, 0.254545)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t17af"]
+gradient = SubResource("Gradient_80kpo")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_80kpo"]
 particle_flag_disable_z = true
@@ -19,13 +26,16 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.3
 scale_max = 0.4
 color = Color(1, 1, 1, 0.501961)
+color_ramp = SubResource("GradientTexture1D_t17af")
+hue_variation_min = -0.15
+hue_variation_max = -2.23517e-08
 
 [node name="PlayerExplosion" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_hcb5d")
 emitting = false
 amount = 32
-texture = ExtResource("1_bcp45")
-lifetime = 5.0
+texture = ExtResource("1_80kpo")
+lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
