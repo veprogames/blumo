@@ -32,5 +32,8 @@ static func format_number(n: float) -> String:
 		return "%sK" % format_thousands(n / 1000)
 	return format_thousands(n)
 
+static func sigmoid(x: float) -> float:
+	return 1.0 / (1.0 + exp(-x))
+
 static func is_mobile() -> bool:
 	return OS.has_feature("mobile")

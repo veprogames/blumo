@@ -12,6 +12,7 @@ var Edibles: Array[PackedScene] = [
 	preload("res://src/edible/edible_star.tscn"),
 ]
 var EdibleExplosionScene: PackedScene = preload("res://src/edible/effect/edible_explosion.tscn")
+var ChaseBehaviorScene: PackedScene = preload("res://src/edible/behavior/Edible_behavior_chase_player.tscn")
 
 @onready var edibles: Node2D = $Edibles
 
@@ -91,6 +92,13 @@ func spawn_edible(edge: LevelEdge) -> void:
 	var movement_component: EdibleBehaviorStandard = edible.get_movement_component()
 	if movement_component:
 		movement_component.from_edge = edge
+	
+	# randomly attach chase behavior
+	var stage: int = maxi(0, Global.save.stage - 100)
+	if randf() < minf(0.5, stage * 0.0005):
+		var behavior: EdibleBehaviorChasePlayer = ChaseBehaviorScene.instantiate()
+		behavior.edible = edible
+		edible.add_child(behavior)
 	
 	edible.eaten.connect(_on_edible_eaten)
 	

@@ -62,6 +62,10 @@ folder_colors={
 
 import/blender/enabled=false
 
+[global_group]
+
+player=""
+
 [gui]
 
 theme/custom="res://assets/main_theme.tres"

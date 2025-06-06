@@ -69,9 +69,9 @@ func get_direction_from_edge(edge: EdibleSpawner.LevelEdge) -> float:
 		_: return 0.0
 
 func get_base_speed() -> float:
-	var stage_multiplier: float = 1 + maxf(0.0, Global.save.stage - 100) / 100.0
-	stage_multiplier = stage_multiplier ** 0.3
-	return 90.0 * stage_multiplier
+	var stage: int = Global.save.stage - 100
+	var multiplier: float = (1 + 2 * Utils.sigmoid(0.02 * stage - 3))
+	return 90 * multiplier
 
 func _on_became_edible() -> void:
 	tween.kill()
