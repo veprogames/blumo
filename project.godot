@@ -40,13 +40,11 @@ gdscript/warnings/unsafe_call_argument=1
 window/size/viewport_width=1080
 window/size/viewport_height=1920
 window/size/mode=4
-window/size/resizable=false
 window/size/borderless=true
-window/size/extend_to_title=true
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
-window/size/mode.editor=0
+window/size/mode.editor=2
 window/size/window_width_override.editor=360
 window/size/window_height_override.editor=640
 
