@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bt0nfg0todtse" path="res://src/edible/behavior/edible_behavior_random_size.tscn" id="4_a07sr"]
 [ext_resource type="PackedScene" uid="uid://bx6blj6gtxrsg" path="res://src/edible/behavior/edible_behavior_standard.tscn" id="5_pvp2y"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjdqc"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_uwkny"]
+radius = 26.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e8277"]
 blend_mode = 1
@@ -20,10 +20,10 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_uwkny")
 value_multiplier = 7.0
-color = Color(0.2262, 0.87, 0.2262, 1)
+color = Color(0.156, 0.6, 0.156, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_gjdqc")
+shape = SubResource("CircleShape2D_uwkny")
 
 [node name="Glow" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_e8277")
