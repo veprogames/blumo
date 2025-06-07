@@ -73,4 +73,10 @@ layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
+[node name="LabelMaxed" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "MAX"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]

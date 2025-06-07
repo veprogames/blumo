@@ -29,3 +29,4 @@ var effect_expression: Expression = Expression.new()
 
 @export var title: String
 @export var icon: Texture2D
+@export var max_level: int = -1

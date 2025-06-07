@@ -1,9 +1,14 @@
 class_name Upgrade
 extends RefCounted
 
-signal leveled_up()
+signal level_changed(lvl: int)
+signal leveled_up
 
-var level: int = 0
+var level: int = 0:
+	set(lvl):
+		level = lvl
+		level_changed.emit(lvl)
+
 var definition: UpgradeDefinition
 
 func _init(def: UpgradeDefinition) -> void:
@@ -24,8 +29,13 @@ func get_current_effect() -> float:
 		return 0
 	return value
 
+func is_maxed() -> bool:
+	return definition.max_level > 0 and level >= definition.max_level
+
+
 func can_buy_with(resource: float) -> bool:
-	return get_current_price() <= resource
+	return !is_maxed() and get_current_price() <= resource
+
 
 func try_buy(with_resource: float) -> Variant:
 	if can_buy_with(with_resource):

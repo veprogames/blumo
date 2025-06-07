@@ -6,15 +6,20 @@ extends Button
 @onready var label_effect_title: Label = %LabelEffectTitle
 @onready var texture_rect_icon: TextureRect = %TextureRectIcon
 @onready var margin_container: MarginContainer = $MarginContainer
+@onready var label_maxed: Label = $MarginContainer/VBoxContainer/LabelMaxed
 
 var upgrade: Upgrade:
 	set(upg):
 		if not is_node_ready():
 			await ready
 		
+		if upgrade and upgrade.level_changed.is_connected(_on_upgrade_level_changed):
+			upgrade.level_changed.disconnect(_on_upgrade_level_changed)
+		
 		upgrade = upg
 		label_effect_title.text = upgrade.definition.title
 		texture_rect_icon.texture = upgrade.definition.icon
+		upgrade.level_changed.connect(_on_upgrade_level_changed)
 		
 		update_ui()
 
@@ -26,7 +31,14 @@ func _ready() -> void:
 func update_ui() -> void:
 	if upgrade != null:
 		label_effect.text = upgrade.get_effect_display()
-		currency_cost.value = upgrade.get_current_price()
+		
+		if upgrade.is_maxed():
+			label_maxed.show()
+			currency_cost.hide()
+		else:
+			label_maxed.hide()
+			currency_cost.show()
+			currency_cost.value = upgrade.get_current_price()
 		
 		var can_buy: bool = upgrade.can_buy_with(Global.save.score)
 		disabled = !can_buy
@@ -36,6 +48,10 @@ func update_ui() -> void:
 
 
 func _on_save_score_changed(_score: float) -> void:
+	update_ui()
+
+
+func _on_upgrade_level_changed(_lvl: int) -> void:
 	update_ui()
 
 
