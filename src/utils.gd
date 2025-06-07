@@ -28,8 +28,15 @@ static func format_thousands(n: float) -> String:
 	return result
 
 static func format_number(n: float) -> String:
-	if absf(n) > 10_000_000:
-		return "%sK" % format_thousands(n / 1000)
+	n = absf(n)
+	var suffixes: String = " MTQSNU!\"§$%&/()=?/*-+,;@<>#~"
+	var index: int = int(log(n / 100.0) / log(1e6))
+	if index > 0:
+		var suffix: String = suffixes[index] if index < suffixes.length() else "e%02d" % (6 * index)
+		return "%s%s" % [
+			format_thousands(n / 1e6 ** index),
+			suffix
+		]
 	return format_thousands(n)
 
 static func sigmoid(x: float) -> float:
