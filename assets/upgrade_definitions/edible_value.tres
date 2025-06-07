@@ -13,9 +13,10 @@ metadata/_custom_type_script = "uid://bbck1ogxv7f6w"
 
 [resource]
 script = ExtResource("1_5ppxb")
-price_formula = "50000 * (1 + level) * 2 ** level"
+price_formula = "50000.0 * (1 + level) * 2.0 ** level"
 effect_formula = "1 + level"
 effect_display = SubResource("Resource_b4cry")
 title = "Value"
 icon = ExtResource("2_fog6o")
+max_level = -1
 metadata/_custom_type_script = "uid://cumjv6cve7vvt"

@@ -16,4 +16,5 @@ effect_formula = "0.025 * level"
 effect_display = SubResource("Resource_h5ye2")
 title = "Triangle (x3)"
 icon = ExtResource("2_xwmdm")
+max_level = 30
 metadata/_custom_type_script = "uid://cumjv6cve7vvt"

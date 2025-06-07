@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://bbck1ogxv7f6w"
 
 [resource]
 script = ExtResource("1_0umac")
-price_formula = "(level + 1) ** 2"
+price_formula = "minf(200, level + 1) ** 2 * 1.01 ** maxf(0, level - 199)"
 effect_formula = "0.35 + 0.01 * level / 3"
 effect_display = SubResource("Resource_5xmsv")
 title = "Trail"

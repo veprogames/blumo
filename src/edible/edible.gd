@@ -46,7 +46,7 @@ func get_value() -> float:
 	
 	# after stage 100, standardbehavior edibles will get faster
 	# so another boost is introduced :)
-	var late_game_boost: float = 1 + maxf(0.0, stage - 100) * 0.01
+	var late_game_boost: float = 1.01 ** maxi(0, stage - 100)
 	
 	return base * multiplier * late_game_boost * value_multiplier
 

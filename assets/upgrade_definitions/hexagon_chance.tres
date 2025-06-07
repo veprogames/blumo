@@ -16,4 +16,5 @@ effect_formula = "0.025 * level"
 effect_display = SubResource("Resource_h5ye2")
 title = "Hexagon (x7)"
 icon = ExtResource("2_y1vad")
+max_level = 30
 metadata/_custom_type_script = "uid://cumjv6cve7vvt"
