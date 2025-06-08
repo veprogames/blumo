@@ -17,7 +17,7 @@ blend_mode = 1
 
 [node name="EdibleStar" type="Area2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_qmc0g")
 value_multiplier = 20.0
 color = Color(0.6, 0.6, 0.156, 1)

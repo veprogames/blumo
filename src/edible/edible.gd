@@ -26,14 +26,22 @@ func _ready() -> void:
 	sprite_2d.modulate.a *= randf_range(0.6, 0.8)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is TrailCollisionArea and !edible:
-		become_edible()
-	elif area is Player and not edible:
-		(area as Player).die()
-	elif area is PlayerCollectorArea and edible:
+	if area is PlayerCollectorArea and edible:
 		eat()
+	elif area is Bullet:
+		var bullet: Bullet = area as Bullet
+		if bullet.active:
+			bullet.disappear()
+			become_edible()
+	elif area is TrailCollisionArea:
+		become_edible()
+	elif area is Player:
+		(area as Player).die()
 
 func become_edible() -> void:
+	if edible:
+		return
+	
 	edible = true
 	turn_on_glow()
 	became_edible.emit()

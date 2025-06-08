@@ -14,7 +14,7 @@ blend_mode = 1
 
 [node name="EdibleTriangle" type="Area2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_btsgu")
 value_multiplier = 3.0
 color = Color(0.87, 0.2262, 0.5481, 1)

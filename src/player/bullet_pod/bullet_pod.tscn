@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://df7slsnwgx7yn"]
+
+[ext_resource type="Script" uid="uid://i5ns0wce7com" path="res://src/player/bullet_pod/bullet_pod.gd" id="1_dxrvq"]
+
+[node name="BulletPod" type="Node2D"]
+script = ExtResource("1_dxrvq")
