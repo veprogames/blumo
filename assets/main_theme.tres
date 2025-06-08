@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://ckehh8iri5o8t"]
+[gd_resource type="Theme" load_steps=26 format=3 uid="uid://ckehh8iri5o8t"]
 
 [ext_resource type="FontFile" uid="uid://dbp27epd3pdii" path="res://assets/fonts/Coiny-Regular.ttf" id="1_470mv"]
 
@@ -127,6 +127,70 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68d6u"]
 bg_color = Color(1, 1, 1, 0.392157)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d80jv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ojh6"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jsj3"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.262745, 0.27451, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2est8"]
+content_margin_left = 24.0
+content_margin_top = 12.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0arac"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.262745, 0.27451, 0.32549, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0, 0, 0, 0.12549)
+shadow_size = 16
+shadow_offset = Vector2(8, 8)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_611f8"]
+bg_color = Color(0.227451, 0.352941, 0.87451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pefyd"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.405, 0.422417, 0.5, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upuy7"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.262745, 0.27451, 0.32549, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4y2v"]
 
 [resource]
@@ -167,6 +231,19 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_d80jv")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_t2ei2")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_68d6u")
 RichTextLabel/colors/default_color = Color(0.827451, 0.835294, 0.870588, 1)
+TabBar/colors/font_hovered_color = Color(0.57, 0.5745, 0.6, 1)
+TabBar/colors/font_selected_color = Color(0.827451, 0.835294, 0.870588, 1)
+TabBar/colors/font_unselected_color = Color(0.475, 0.479583, 0.5, 1)
+TabBar/styles/tab_focus = SubResource("StyleBoxEmpty_d80jv")
+TabBar/styles/tab_hovered = SubResource("StyleBoxFlat_7ojh6")
+TabBar/styles/tab_selected = SubResource("StyleBoxFlat_2jsj3")
+TabBar/styles/tab_unselected = SubResource("StyleBoxFlat_2est8")
+TabContainer/colors/font_selected_color = Color(0.827451, 0.835294, 0.870588, 1)
+TabContainer/colors/font_unselected_color = Color(0.475, 0.479583, 0.5, 1)
+TabContainer/styles/panel = SubResource("StyleBoxFlat_0arac")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxFlat_611f8")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_pefyd")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_upuy7")
 VBoxContainer/constants/separation = 32
 VSeparator/constants/separation = 16
 VSeparator/styles/separator = SubResource("StyleBoxEmpty_p4y2v")

@@ -10,6 +10,7 @@ extends PanelContainer
 @onready var upgrade_button_bullets_firerate: UpgradeButton = %UpgradeButtonBulletsFirerate
 
 @onready var currency_counter: CurrencyCounter = %CurrencyCounter
+@onready var tabs: Control = $VBoxContainer/MarginContainer/VBoxContainer/Tabs
 
 
 func _ready() -> void:
@@ -52,3 +53,12 @@ func hide_menu() -> void:
 
 func _on_global_score_changed(score: float) -> void:
 	currency_counter.value = Global.save.score
+
+
+func _on_tab_bar_tab_changed(tab: int) -> void:
+	for child: Control in tabs.get_children():
+		child.hide()
+	
+	var child: Control = tabs.get_child(tab)
+	if child:
+		child.show()

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0kn8ocaeinst" path="res://assets/ui/score.png" id="3_rjlyh"]
 
 [node name="UpgradeMenu" type="PanelContainer"]
-custom_minimum_size = Vector2(960, 1280)
+custom_minimum_size = Vector2(960, 1500)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -21,57 +21,102 @@ grow_vertical = 2
 pivot_offset = Vector2(480, 640)
 script = ExtResource("1_7frqj")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="YouHave" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="YouHave" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "You Have"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="CurrencyCounter" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_kb2ut")]
+[node name="CurrencyCounter" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_kb2ut")]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("3_rjlyh")
 interpolation_enabled = true
 
-[node name="FlowContainer" type="FlowContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Tabs" type="Control" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FlowContainer" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="UpgradeButtonTrail" parent="MarginContainer/VBoxContainer/FlowContainer" instance=ExtResource("1_kyr0d")]
+[node name="UpgradeButtonTrail" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UpgradeButtonValue" parent="MarginContainer/VBoxContainer/FlowContainer" instance=ExtResource("1_kyr0d")]
+[node name="UpgradeButtonValue" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UpgradeButtonTriangleChance" parent="MarginContainer/VBoxContainer/FlowContainer" instance=ExtResource("1_kyr0d")]
+[node name="FlowContainer2" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="UpgradeButtonTriangleChance" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer2" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UpgradeButtonHexagonChance" parent="MarginContainer/VBoxContainer/FlowContainer" instance=ExtResource("1_kyr0d")]
+[node name="UpgradeButtonHexagonChance" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer2" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UpgradeButtonStarChance" parent="MarginContainer/VBoxContainer/FlowContainer" instance=ExtResource("1_kyr0d")]
+[node name="UpgradeButtonStarChance" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer2" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UpgradeButtonBulletsEnable" parent="MarginContainer/VBoxContainer/FlowContainer" instance=ExtResource("1_kyr0d")]
+[node name="FlowContainer3" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="UpgradeButtonBulletsEnable" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer3" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UpgradeButtonBulletsFirerate" parent="MarginContainer/VBoxContainer/FlowContainer" instance=ExtResource("1_kyr0d")]
+[node name="UpgradeButtonBulletsFirerate" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer3" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+current_tab = 0
+tab_count = 3
+tab_0/title = "1"
+tab_1/title = "2"
+tab_2/title = "3"
+
+[connection signal="tab_changed" from="VBoxContainer/TabBar" to="." method="_on_tab_bar_tab_changed"]
