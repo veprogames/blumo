@@ -28,17 +28,19 @@ func _ready() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is PlayerCollectorArea and edible:
-		eat()
-	elif area is Bullet:
-		var bullet: Bullet = area as Bullet
-		if bullet.active:
-			bullet.disappear()
+	if edible:
+		if area is PlayerCollectorArea:
+			eat()
+	else:
+		if area is Bullet:
+			var bullet: Bullet = area as Bullet
+			if bullet.active:
+				bullet.disappear()
+				become_edible()
+		elif area is Player:
+			(area as Player).die()
+		elif area is TrailCollisionArea:
 			become_edible()
-	elif area is TrailCollisionArea:
-		become_edible()
-	elif area is Player:
-		(area as Player).die()
 
 
 func become_edible() -> void:
