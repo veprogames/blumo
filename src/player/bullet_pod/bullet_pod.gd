@@ -3,8 +3,14 @@ extends Node2D
 
 const BulletScene: PackedScene = preload("res://src/bullet/bullet.tscn")
 
-var cooldown: float = 0.25
+var cooldown: float = 0.5
 var t: float = 0.0
+
+
+func _ready() -> void:
+	cooldown = get_cooldown()
+	if Global.save.upgrade_bullets_enable.level == 0:
+		queue_free()
 
 
 func _physics_process(delta: float) -> void:
@@ -12,6 +18,10 @@ func _physics_process(delta: float) -> void:
 	if t >= cooldown:
 		t -= cooldown
 		spawn_bullet()
+
+
+func get_cooldown() -> float:
+	return 1.0 / Global.save.upgrade_bullets_firerate.get_current_effect()
 
 
 func spawn_bullet() -> void:

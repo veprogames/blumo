@@ -22,6 +22,12 @@ var upgrade_hexagon_chance: Upgrade = Upgrade.new(
 var upgrade_star_chance: Upgrade = Upgrade.new(
 	preload("res://assets/upgrade_definitions/star_chance.tres")
 )
+var upgrade_bullets_enable: Upgrade = Upgrade.new(
+	preload("res://assets/upgrade_definitions/bullets_enable.tres")
+)
+var upgrade_bullets_firerate: Upgrade = Upgrade.new(
+	preload("res://assets/upgrade_definitions/bullets_firerate.tres")
+)
 
 func _set_stage(new_stage: int) -> void:
 	stage = new_stage
@@ -40,6 +46,8 @@ func serialize() -> Dictionary:
 		"upgrade_triangle_chance": upgrade_triangle_chance.level,
 		"upgrade_hexagon_chance": upgrade_hexagon_chance.level,
 		"upgrade_star_chance": upgrade_star_chance.level,
+		"upgrade_bullets_enable": upgrade_bullets_enable.level,
+		"upgrade_bullets_firerate": upgrade_bullets_firerate.level,
 	}
 
 func load_game(serialized: Dictionary) -> void:
@@ -50,3 +58,5 @@ func load_game(serialized: Dictionary) -> void:
 	upgrade_triangle_chance.level = serialized.upgrade_triangle_chance
 	upgrade_hexagon_chance.level = serialized.upgrade_hexagon_chance
 	upgrade_star_chance.level = serialized.upgrade_star_chance
+	upgrade_bullets_enable.level = serialized.upgrade_bullets_enable
+	upgrade_bullets_firerate.level = serialized.upgrade_bullets_firerate

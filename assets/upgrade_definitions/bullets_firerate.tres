@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" load_steps=5 format=3 uid="uid://bvwly5myhfeao"]
+
+[ext_resource type="Script" uid="uid://bbck1ogxv7f6w" path="res://src/upgrade/effect_display_template.gd" id="1_mjwy4"]
+[ext_resource type="Texture2D" uid="uid://bxsprf6y4jb40" path="res://assets/upgrades/icons/bullets_firerate.png" id="2_mjwy4"]
+[ext_resource type="Script" uid="uid://cumjv6cve7vvt" path="res://src/upgrade/upgrade_definition.gd" id="3_rdeiw"]
+
+[sub_resource type="Resource" id="Resource_ygo8w"]
+script = ExtResource("1_mjwy4")
+precision = 0
+prefix = ""
+suffix = "/s"
+metadata/_custom_type_script = "uid://bbck1ogxv7f6w"
+
+[resource]
+script = ExtResource("3_rdeiw")
+price_formula = "[1e7, 3e8, 1e11, 1e15, 1e25, 1e40, 1e60, 1e80, 1e100, 1e150, 1e200, 1e200][level]"
+effect_formula = "1 + level"
+effect_display = SubResource("Resource_ygo8w")
+title = "Fire Rate"
+icon = ExtResource("2_mjwy4")
+max_level = 11
+metadata/_custom_type_script = "uid://cumjv6cve7vvt"

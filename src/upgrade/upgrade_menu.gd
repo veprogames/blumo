@@ -6,6 +6,8 @@ extends PanelContainer
 @onready var upgrade_button_triangle_chance: UpgradeButton = %UpgradeButtonTriangleChance
 @onready var upgrade_button_hexagon_chance: UpgradeButton = %UpgradeButtonHexagonChance
 @onready var upgrade_button_star_chance: UpgradeButton = %UpgradeButtonStarChance
+@onready var upgrade_button_bullets_enable: UpgradeButton = %UpgradeButtonBulletsEnable
+@onready var upgrade_button_bullets_firerate: UpgradeButton = %UpgradeButtonBulletsFirerate
 
 @onready var currency_counter: CurrencyCounter = %CurrencyCounter
 
@@ -16,6 +18,8 @@ func _ready() -> void:
 	upgrade_button_triangle_chance.upgrade = Global.save.upgrade_triangle_chance
 	upgrade_button_hexagon_chance.upgrade = Global.save.upgrade_hexagon_chance
 	upgrade_button_star_chance.upgrade = Global.save.upgrade_star_chance
+	upgrade_button_bullets_enable.upgrade = Global.save.upgrade_bullets_enable
+	upgrade_button_bullets_firerate.upgrade = Global.save.upgrade_bullets_firerate
 	
 	currency_counter.set_value_instant(Global.save.score)
 	Global.save.score_changed.connect(_on_global_score_changed)
