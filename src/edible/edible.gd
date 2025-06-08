@@ -13,6 +13,7 @@ var edible: bool = false
 @export var value_multiplier: float = 1.0
 @export var color: Color = Color("#3a5adf")
 
+
 func _ready() -> void:
 	var previous_scale: Vector2 = sprite_2d.scale
 	sprite_2d.scale = Vector2.ZERO
@@ -24,6 +25,7 @@ func _ready() -> void:
 	glow.modulate = color
 	glow.modulate.a = 0.0
 	sprite_2d.modulate.a *= randf_range(0.6, 0.8)
+
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is PlayerCollectorArea and edible:
@@ -38,6 +40,7 @@ func _on_area_entered(area: Area2D) -> void:
 	elif area is Player:
 		(area as Player).die()
 
+
 func become_edible() -> void:
 	if edible:
 		return
@@ -45,6 +48,7 @@ func become_edible() -> void:
 	edible = true
 	turn_on_glow()
 	became_edible.emit()
+
 
 func get_value() -> float:
 	var stage: int = Global.save.stage
@@ -58,11 +62,13 @@ func get_value() -> float:
 	
 	return base * multiplier * late_game_boost * value_multiplier
 
+
 func eat() -> void:
 	Global.save.score += get_value()
 	queue_free()
 	await tree_exited
 	eaten.emit(self)
+
 
 func turn_on_glow() -> void:
 	var tween_glow: Tween = create_tween()
@@ -76,6 +82,7 @@ func turn_on_glow() -> void:
 	tween_sprite.tween_property(sprite_2d, ^"modulate", color, 0.8) \
 		.set_ease(Tween.EASE_OUT) \
 		.set_trans(Tween.TRANS_EXPO)
+
 
 func get_movement_component() -> EdibleBehaviorStandard:
 	return get_node("EdibleBehaviorStandard")

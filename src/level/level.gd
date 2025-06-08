@@ -5,9 +5,11 @@ extends Node2D
 @onready var color_rect_death: ColorRect = $CanvasLayerOverlay/ColorRectDeath
 @onready var level_camera: LevelCamera = $LevelCamera
 
+
 func _on_tree_entered() -> void:
 	if not Utils.is_mobile():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 func _on_tree_exited() -> void:
 	if not Utils.is_mobile():

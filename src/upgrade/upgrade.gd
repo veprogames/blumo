@@ -11,11 +11,14 @@ var level: int = 0:
 
 var definition: UpgradeDefinition
 
+
 func _init(def: UpgradeDefinition) -> void:
 	definition = def
 
+
 func get_effect_display() -> String:
 	return definition.effect_display.get_value(get_current_effect())
+
 
 func get_current_price() -> float:
 	var value: Variant = definition.price_expression.execute([level])
@@ -23,11 +26,13 @@ func get_current_price() -> float:
 		return 0
 	return value
 
+
 func get_current_effect() -> float:
 	var value: Variant = definition.effect_expression.execute([level])
 	if definition.effect_expression.has_execute_failed() or value == null:
 		return 0
 	return value
+
 
 func is_maxed() -> bool:
 	return definition.max_level > 0 and level >= definition.max_level

@@ -15,17 +15,20 @@ var collision_areas: Dictionary = {}
 
 var player_trail_lifetime: float = 0.4
 
+
 func _ready() -> void:
 	player_trail_lifetime = Global.save.upgrade_trail_length.get_current_effect()
 	
 	trail.vertex_added.connect(_on_point_added)
 	trail.vertex_removed.connect(_on_point_removed)
 
+
 func _physics_process(delta: float) -> void:
 	# increase the age of segments,
 	# used to set the timer for the areas accordingly
 	for segment: TrailSegment in segments:
 		segment.age += delta
+
 
 func _on_point_added(point_position: Vector2, index: int) -> void:
 	# We can't build a segment with 1 point
@@ -52,6 +55,7 @@ func _on_point_added(point_position: Vector2, index: int) -> void:
 	check_for_new_areas()
 	
 	assert(len(segments) == len(trail.points) - 1)
+
 
 func _on_point_removed() -> void:
 	segments.pop_front()
@@ -111,6 +115,7 @@ func build_collision_area(from_segment: TrailSegment, intersection_point: Vector
 	area.polygon = poly
 	
 	return area
+
 
 ## for the most recent segment only, go through all segments and if they collide,
 ## try to create a new polygon shape

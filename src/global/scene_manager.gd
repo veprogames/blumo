@@ -2,6 +2,7 @@ extends Node
 
 @onready var overlay: ColorRect = $CanvasLayer/Overlay
 
+
 func goto_scene(scene: PackedScene) -> void:
 	var tween: Tween = create_tween()
 	
@@ -13,7 +14,7 @@ func goto_scene(scene: PackedScene) -> void:
 	await tween.step_finished
 	
 	get_tree().change_scene_to_packed(scene)
-	
+
 
 func quit_game() -> void:
 	var tween: Tween = create_tween()

@@ -26,10 +26,12 @@ const RECORD_THIS_AMOUNT_OF_MOVEMENTS: int = 8
 
 var dead: bool = false
 
+
 func _ready() -> void:
 	viewport_rect = get_viewport_rect()
 	sprite_2d.modulate = Edible.EDIBLE_COLOR
 	sprite_glow.modulate = Edible.EDIBLE_COLOR
+
 
 func _input(event: InputEvent) -> void:
 	var mouse_event: InputEventMouseMotion = event as InputEventMouseMotion
@@ -49,6 +51,7 @@ func _input(event: InputEvent) -> void:
 		if len(movements) > RECORD_THIS_AMOUNT_OF_MOVEMENTS:
 			movements.pop_front()
 			movement_times.pop_front()
+
 
 func _physics_process(delta: float) -> void:
 	t += delta
@@ -72,6 +75,7 @@ func _physics_process(delta: float) -> void:
 			0.1,
 			5.0,
 		)
+
 
 func die() -> void:
 	if OS.has_feature("editor"):

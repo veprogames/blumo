@@ -4,11 +4,13 @@ const SAVE_PATH: String = "user://save.tres"
 
 var save: SaveGame = SaveGame.new()
 
+
 func _ready() -> void:
 	if not OS.has_feature("editor"):
 		try_load_game()
 	
 	save.stage_changed.connect(_on_stage_changed)
+
 
 func save_game() -> void:
 	var serialized: Dictionary = save.serialize()
@@ -17,6 +19,7 @@ func save_game() -> void:
 		file.store_var(serialized)
 	else:
 		push_warning("Error while saving")
+
 
 func try_load_game() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
@@ -34,6 +37,7 @@ func try_load_game() -> void:
 	if loaded is Dictionary:
 		serialized.merge(loaded, true)
 	save.load_game(serialized)
+
 
 func _on_stage_changed(_new_stage: int) -> void:
 	save_game()

@@ -29,13 +29,16 @@ var upgrade_bullets_firerate: Upgrade = Upgrade.new(
 	preload("res://assets/upgrade_definitions/bullets_firerate.tres")
 )
 
+
 func _set_stage(new_stage: int) -> void:
 	stage = new_stage
 	stage_changed.emit(stage)
 
+
 func _set_score(new_score: float) -> void:
 	score = new_score
 	score_changed.emit(score)
+
 
 func serialize() -> Dictionary:
 	return {
@@ -49,6 +52,7 @@ func serialize() -> Dictionary:
 		"upgrade_bullets_enable": upgrade_bullets_enable.level,
 		"upgrade_bullets_firerate": upgrade_bullets_firerate.level,
 	}
+
 
 func load_game(serialized: Dictionary) -> void:
 	stage = serialized.stage

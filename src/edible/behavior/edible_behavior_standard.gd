@@ -17,6 +17,7 @@ var tween: Tween
 
 var from_edge: EdibleSpawner.LevelEdge
 
+
 func _ready() -> void:
 	await edible.ready
 	
@@ -39,6 +40,7 @@ func _ready() -> void:
 	tween.tween_property(self, ^"speed", speed * randf_range(1.5, 1.6), 20.0) \
 		.set_ease(Tween.EASE_IN_OUT)
 
+
 func _physics_process(delta: float) -> void:
 	sprite_2d.rotate(delta * rotation_speed)
 	
@@ -54,11 +56,13 @@ func _physics_process(delta: float) -> void:
 		# ensure that the edible doesn't stay out of bounds for more than 1 frame
 		edible.position = edible.position.clamp(viewport_rect.position, viewport_rect.end)
 
+
 ## get a horizontal or vertical vector pointing away from the edge
 ## using rounding down
 func get_edge_normal(for_position: Vector2) -> Vector2:
 	var rounded: Vector2 = (for_position / viewport_rect.size).floor()
 	return rounded
+
 
 func get_direction_from_edge(edge: EdibleSpawner.LevelEdge) -> float:
 	match edge:
@@ -68,10 +72,12 @@ func get_direction_from_edge(edge: EdibleSpawner.LevelEdge) -> float:
 		EdibleSpawner.LevelEdge.Bottom: return 3 * PI / 2
 		_: return 0.0
 
+
 func get_base_speed() -> float:
 	var stage: int = Global.save.stage - 100
 	var multiplier: float = (1 + 2 * Utils.sigmoid(0.02 * stage - 3))
 	return 90 * multiplier
+
 
 func _on_became_edible() -> void:
 	tween.kill()

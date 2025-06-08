@@ -1,6 +1,7 @@
 class_name Utils
 extends Object
 
+
 static func sum(array: Array) -> Variant:
 	if len(array) == 0:
 		return null
@@ -9,6 +10,7 @@ static func sum(array: Array) -> Variant:
 	for i: int in range(1, len(array)):
 		result += array[i]
 	return result
+
 
 static func format_thousands(n: float) -> String:
 	var result: String = ""
@@ -27,6 +29,7 @@ static func format_thousands(n: float) -> String:
 	
 	return result
 
+
 static func format_number(n: float) -> String:
 	n = absf(n)
 	var suffixes: String = " MTQSNU!\"§$%&/()=?/*-+,;@<>#~"
@@ -39,8 +42,10 @@ static func format_number(n: float) -> String:
 		]
 	return format_thousands(n)
 
+
 static func sigmoid(x: float) -> float:
 	return 1.0 / (1.0 + exp(-x))
+
 
 static func is_mobile() -> bool:
 	return OS.has_feature("mobile")

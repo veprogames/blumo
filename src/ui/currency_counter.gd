@@ -13,6 +13,7 @@ extends HBoxContainer
 
 var displayed_value: float = 0.0
 
+
 func _process(delta: float) -> void:
 	if not interpolation_enabled:
 		return
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 	displayed_value = lerp(displayed_value, value, delta * 10)
 	displayed_value = move_toward(displayed_value, value, delta * 100)
 	label_value.text = Utils.format_number(displayed_value)
+
 
 func _set_texture(new_texture: Texture2D) -> void:
 	texture = new_texture
@@ -29,6 +31,7 @@ func _set_texture(new_texture: Texture2D) -> void:
 	
 	texture_rect_currency.texture = texture
 
+
 func _set_value(new_value: float) -> void:
 	value = new_value
 	
@@ -37,6 +40,7 @@ func _set_value(new_value: float) -> void:
 	
 	if not interpolation_enabled:
 		label_value.text = Utils.format_number(value)
+
 
 func set_value_instant(new_value: float) -> void:
 	value = new_value

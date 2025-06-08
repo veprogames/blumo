@@ -17,8 +17,10 @@ var t: float = 0.0
 
 var trail_lifetime: float = 0.4
 
+
 func _ready() -> void:
 	trail_lifetime = Global.save.upgrade_trail_length.get_current_effect()
+
 
 func _physics_process(delta: float) -> void:
 	t += delta
@@ -26,6 +28,7 @@ func _physics_process(delta: float) -> void:
 		global_position = Vector2.ZERO
 		try_add_trail_vertex()
 	try_remove_first_trail_vertex()
+
 
 ## Get the position where a new vertex should be placed
 func get_vertex_pos() -> Vector2:
@@ -38,6 +41,7 @@ func get_vertex_pos() -> Vector2:
 func should_add_vertex() -> bool:
 	return last_vertex == null or \
 		last_vertex.distance_to(get_vertex_pos()) > MIN_VERTEX_DIST
+
 
 ## Add a vertex if [method should_add_vertex] applies
 func try_add_trail_vertex() -> void:
@@ -58,6 +62,7 @@ func should_remove_first_vertex() -> bool:
 	if len(vertex_times) == 0:
 		return false
 	return t - vertex_times[0] >= trail_lifetime
+
 
 ## Remove the first/oldest vertex if [method should_remove_first_vertex] applies
 func try_remove_first_trail_vertex() -> void:

@@ -15,12 +15,15 @@ var intersections: Array[TrailSegment] = []
 
 var age: float = 0.0
 
+
 func _init(origin_: Vector2, length_: Vector2) -> void:
 	self.origin = origin_
 	self.length = length_
 
+
 func get_target_position() -> Vector2:
 	return origin + length
+
 
 func get_intersection(other: TrailSegment) -> Variant:
 	return Geometry2D.segment_intersects_segment(
@@ -30,11 +33,14 @@ func get_intersection(other: TrailSegment) -> Variant:
 		other.get_target_position()
 	)
 
+
 func intersects_with(other: TrailSegment) -> bool:
 	return self.get_intersection(other) != null
 
+
 func add_intersection(other: TrailSegment) -> void:
 	intersections.append(other)
+
 
 func has_next() -> bool:
 	return next != null

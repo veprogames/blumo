@@ -1,6 +1,7 @@
 class_name PlayerExplosion
 extends GPUParticles2D
 
+
 func _ready() -> void:
 	modulate = Edible.EDIBLE_COLOR
 	emitting = true

@@ -25,8 +25,10 @@ enum LevelEdge {
 
 var viewport_rect: Rect2
 
+
 func _ready() -> void:
 	viewport_rect = get_viewport_rect()
+
 
 func get_random_position_for_edge(edge: LevelEdge) -> Vector2:
 	var from: Vector2
@@ -75,6 +77,7 @@ func get_random_position_for_edge(edge: LevelEdge) -> Vector2:
 	
 	return from.lerp(to, randf_range(0.1, 0.9))
 
+
 func spawn_edible(edge: LevelEdge) -> void:
 	var edible_position: Vector2 = get_random_position_for_edge(edge)
 	
@@ -104,18 +107,22 @@ func spawn_edible(edge: LevelEdge) -> void:
 	
 	edibles.add_child(edible)
 
+
 func spawn_explosion(at_edible: Edible) -> void:
 	var explosion: EdibleExplosion = EdibleExplosionScene.instantiate() as EdibleExplosion
 	explosion.position = at_edible.position
 	add_child(explosion)
 
+
 func get_random_edge() -> LevelEdge:
 	var values: Array = LevelEdge.values()
 	return values[randi() % len(values)]
 
+
 func _on_edible_eaten(edible: Edible) -> void:
 	edible_eaten.emit()
 	spawn_explosion(edible)
+
 
 func get_edible_count() -> int:
 	return edibles.get_child_count()
