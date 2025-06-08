@@ -1,6 +1,9 @@
 class_name UpgradeMenu
 extends PanelContainer
 
+const TAB_BULLETS: int = 2
+const TAB_ABILITIES: int = 3
+
 @onready var upgrade_button_trail: UpgradeButton = %UpgradeButtonTrail
 @onready var upgrade_button_value: UpgradeButton = %UpgradeButtonValue
 @onready var upgrade_button_triangle_chance: UpgradeButton = %UpgradeButtonTriangleChance
@@ -10,6 +13,7 @@ extends PanelContainer
 @onready var upgrade_button_bullets_firerate: UpgradeButton = %UpgradeButtonBulletsFirerate
 
 @onready var currency_counter: CurrencyCounter = %CurrencyCounter
+@onready var tab_bar: TabBar = $VBoxContainer/TabBar
 @onready var tabs: Control = $VBoxContainer/MarginContainer/VBoxContainer/Tabs
 
 
@@ -24,6 +28,10 @@ func _ready() -> void:
 	
 	currency_counter.set_value_instant(Global.save.score)
 	Global.save.score_changed.connect(_on_global_score_changed)
+	Global.save.stage_changed.connect(_on_global_stage_changed)
+	GameEvents.upgrade_bought.connect(_on_game_events_upgrade_bought)
+	
+	update_tabs()
 	
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	scale = Vector2.ZERO
@@ -43,6 +51,7 @@ func show_menu() -> void:
 		.set_trans(Tween.TRANS_ELASTIC) \
 		.set_ease(Tween.EASE_OUT)
 
+
 func hide_menu() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var tween: Tween = create_tween()
@@ -51,8 +60,17 @@ func hide_menu() -> void:
 		.set_ease(Tween.EASE_OUT)
 
 
+func update_tabs() -> void:
+	tab_bar.set_tab_hidden(TAB_ABILITIES, Global.save.stage < 100)
+	tab_bar.set_tab_hidden(TAB_BULLETS, Global.save.upgrade_bullets_enable.level == 0)
+
+
 func _on_global_score_changed(score: float) -> void:
 	currency_counter.value = Global.save.score
+
+
+func _on_global_stage_changed(_stage: int) -> void:
+	update_tabs()
 
 
 func _on_tab_bar_tab_changed(tab: int) -> void:
@@ -62,3 +80,7 @@ func _on_tab_bar_tab_changed(tab: int) -> void:
 	var child: Control = tabs.get_child(tab)
 	if child:
 		child.show()
+
+
+func _on_game_events_upgrade_bought(_upgrade: Upgrade) -> void:
+	update_tabs()

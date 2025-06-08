@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://1kggttw1q2n2"]
+[gd_scene load_steps=10 format=3 uid="uid://1kggttw1q2n2"]
 
 [ext_resource type="Script" uid="uid://c31qlbckx1xmo" path="res://src/upgrade/upgrade_menu.gd" id="1_7frqj"]
 [ext_resource type="PackedScene" uid="uid://bxs7lmruydgcw" path="res://src/upgrade/upgrade_button.tscn" id="1_kyr0d"]
 [ext_resource type="PackedScene" uid="uid://dojgmv85rvmht" path="res://src/ui/currency_counter.tscn" id="2_kb2ut"]
 [ext_resource type="Texture2D" uid="uid://d0kn8ocaeinst" path="res://assets/ui/score.png" id="3_rjlyh"]
+[ext_resource type="Texture2D" uid="uid://bwhxjsci8fh81" path="res://assets/upgrades/menu/arrow.png" id="5_dfe6p"]
+[ext_resource type="Texture2D" uid="uid://hhvhnsgbyjnc" path="res://assets/upgrades/tabs/basic.png" id="5_nycmo"]
+[ext_resource type="Texture2D" uid="uid://bkkj3hjegubux" path="res://assets/upgrades/tabs/edibles.png" id="6_dfe6p"]
+[ext_resource type="Texture2D" uid="uid://bwijmhknkf0gf" path="res://assets/upgrades/tabs/bullets.png" id="7_msb2c"]
+[ext_resource type="Texture2D" uid="uid://djay4w1aym2nk" path="res://assets/upgrades/tabs/abilities.png" id="8_03nep"]
 
 [node name="UpgradeMenu" type="PanelContainer"]
 custom_minimum_size = Vector2(960, 1500)
@@ -27,6 +32,8 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 84
+theme_override_constants/margin_right = 84
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -52,7 +59,7 @@ interpolation_enabled = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="FlowContainer" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
+[node name="Basic" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,15 +69,73 @@ grow_vertical = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="UpgradeButtonTrail" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer" instance=ExtResource("1_kyr0d")]
+[node name="UpgradeButtonTrail" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Basic" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UpgradeButtonValue" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer" instance=ExtResource("1_kyr0d")]
+[node name="UpgradeButtonValue" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Basic" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="FlowContainer2" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
+[node name="Edibles" type="Control" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpgradeButtonTriangleChance" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles/VBoxContainer" instance=ExtResource("1_kyr0d")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeButtonHexagonChance" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles/VBoxContainer" instance=ExtResource("1_kyr0d")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeButtonStarChance" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles/VBoxContainer" instance=ExtResource("1_kyr0d")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 217.0
+offset_right = 961.0
+offset_bottom = 537.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_dfe6p")
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "of which"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 648.0
+offset_right = 961.0
+offset_bottom = 968.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_dfe6p")
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Edibles/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "of which"
+
+[node name="Bullets" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -80,19 +145,11 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="UpgradeButtonTriangleChance" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer2" instance=ExtResource("1_kyr0d")]
+[node name="UpgradeButtonBulletsFirerate" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Bullets" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UpgradeButtonHexagonChance" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer2" instance=ExtResource("1_kyr0d")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="UpgradeButtonStarChance" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer2" instance=ExtResource("1_kyr0d")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="FlowContainer3" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
+[node name="Abilities" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -102,11 +159,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="UpgradeButtonBulletsEnable" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer3" instance=ExtResource("1_kyr0d")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="UpgradeButtonBulletsFirerate" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/FlowContainer3" instance=ExtResource("1_kyr0d")]
+[node name="UpgradeButtonBulletsEnable" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Abilities" instance=ExtResource("1_kyr0d")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -114,9 +167,10 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
 current_tab = 0
-tab_count = 3
-tab_0/title = "1"
-tab_1/title = "2"
-tab_2/title = "3"
+tab_count = 4
+tab_0/icon = ExtResource("5_nycmo")
+tab_1/icon = ExtResource("6_dfe6p")
+tab_2/icon = ExtResource("7_msb2c")
+tab_3/icon = ExtResource("8_03nep")
 
 [connection signal="tab_changed" from="VBoxContainer/TabBar" to="." method="_on_tab_bar_tab_changed"]

@@ -49,6 +49,7 @@ func try_buy(with_resource: float) -> Variant:
 		level += 1
 		
 		leveled_up.emit()
+		GameEvents.emit_upgrade_bought(self)
 		
 		return deducted
 	return null
