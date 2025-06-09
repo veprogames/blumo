@@ -17,14 +17,24 @@ func _physics_process(delta: float) -> void:
 	t += delta
 	if t >= cooldown:
 		t -= cooldown
-		spawn_bullet()
+		shoot()
 
 
 func get_cooldown() -> float:
 	return 1.0 / Global.save.upgrade_bullets_firerate.get_current_effect()
 
 
-func spawn_bullet() -> void:
+func shoot() -> void:
+	var count: int = int(Global.save.upgrade_bullets_count.get_current_effect())
+	for i: int in range(count):
+		var gap: float = TAU / 16.0
+		var start_angle: float = -gap * 0.5 * (count - 1)
+		var angle: float = start_angle + gap * i
+		var bullet: Bullet = spawn_bullet()
+		bullet.rotation += angle
+
+
+func spawn_bullet() -> Bullet:
 	var container: Node2D = get_container()
 	if !container:
 		return
@@ -33,6 +43,7 @@ func spawn_bullet() -> void:
 	container.add_child(bullet)
 	bullet.rotation = global_rotation
 	bullet.position = global_position
+	return bullet
 
 
 func get_container() -> Node2D:

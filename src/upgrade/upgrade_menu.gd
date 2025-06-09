@@ -11,6 +11,7 @@ const TAB_ABILITIES: int = 3
 @onready var upgrade_button_star_chance: UpgradeButton = %UpgradeButtonStarChance
 @onready var upgrade_button_bullets_enable: UpgradeButton = %UpgradeButtonBulletsEnable
 @onready var upgrade_button_bullets_firerate: UpgradeButton = %UpgradeButtonBulletsFirerate
+@onready var upgrade_button_bullets_count: UpgradeButton = %UpgradeButtonBulletsCount
 
 @onready var currency_counter: CurrencyCounter = %CurrencyCounter
 @onready var tab_bar: TabBar = $VBoxContainer/TabBar
@@ -25,6 +26,7 @@ func _ready() -> void:
 	upgrade_button_star_chance.upgrade = Global.save.upgrade_star_chance
 	upgrade_button_bullets_enable.upgrade = Global.save.upgrade_bullets_enable
 	upgrade_button_bullets_firerate.upgrade = Global.save.upgrade_bullets_firerate
+	upgrade_button_bullets_count.upgrade = Global.save.upgrade_bullets_count
 	
 	currency_counter.set_value_instant(Global.save.score)
 	Global.save.score_changed.connect(_on_global_score_changed)

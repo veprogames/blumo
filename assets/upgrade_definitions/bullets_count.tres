@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" load_steps=5 format=3 uid="uid://boisutq35p5y2"]
+
+[ext_resource type="Script" uid="uid://bbck1ogxv7f6w" path="res://src/upgrade/effect_display_template.gd" id="1_d7cvd"]
+[ext_resource type="Texture2D" uid="uid://cxgrgvobfm3ut" path="res://assets/upgrades/icons/bullets_count.png" id="2_d7cvd"]
+[ext_resource type="Script" uid="uid://cumjv6cve7vvt" path="res://src/upgrade/upgrade_definition.gd" id="3_4qktx"]
+
+[sub_resource type="Resource" id="Resource_ygo8w"]
+script = ExtResource("1_d7cvd")
+precision = 0
+prefix = ""
+suffix = ""
+metadata/_custom_type_script = "uid://bbck1ogxv7f6w"
+
+[resource]
+script = ExtResource("3_4qktx")
+price_formula = "[5e6, 1e9, 1e15, 1e30, 1e60, 1e100, 1e150, 1e200, 1e250, 1e250][level]"
+effect_formula = "1 + level"
+effect_display = SubResource("Resource_ygo8w")
+title = "Multishot"
+icon = ExtResource("2_d7cvd")
+max_level = 8
+metadata/_custom_type_script = "uid://cumjv6cve7vvt"
