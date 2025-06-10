@@ -1,7 +1,7 @@
 class_name Edible
 extends Area2D
 
-signal became_edible()
+signal became_edible(edible: Edible)
 signal eaten(edible: Edible)
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -49,7 +49,7 @@ func become_edible() -> void:
 	
 	edible = true
 	turn_on_glow()
-	became_edible.emit()
+	became_edible.emit(self)
 
 
 func get_value() -> float:

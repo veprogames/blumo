@@ -79,7 +79,7 @@ func get_base_speed() -> float:
 	return 90 * multiplier
 
 
-func _on_became_edible() -> void:
+func _on_became_edible(_edible: Edible) -> void:
 	tween.kill()
 	tween = create_tween()
 	tween.tween_property(self, ^"speed", speed * 0.4, 0.5) \

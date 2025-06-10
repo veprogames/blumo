@@ -15,6 +15,7 @@ var EdibleExplosionScene: PackedScene = preload("res://src/edible/effect/edible_
 var ChaseBehaviorScene: PackedScene = preload("res://src/edible/behavior/Edible_behavior_chase_player.tscn")
 
 @onready var edibles: Node2D = $Edibles
+@onready var glowing_edibles: Node2D = $GlowingEdibles
 
 enum LevelEdge {
 	Right,
@@ -104,6 +105,7 @@ func spawn_edible(edge: LevelEdge) -> void:
 		edible.add_child(behavior)
 	
 	edible.eaten.connect(_on_edible_eaten)
+	edible.became_edible.connect(_on_edible_became_edible)
 	
 	edibles.add_child(edible)
 
@@ -117,6 +119,10 @@ func spawn_explosion(at_edible: Edible) -> void:
 func get_random_edge() -> LevelEdge:
 	var values: Array = LevelEdge.values()
 	return values[randi() % len(values)]
+
+
+func _on_edible_became_edible(edible: Edible) -> void:
+	edible.reparent.call_deferred(glowing_edibles)
 
 
 func _on_edible_eaten(edible: Edible) -> void:
