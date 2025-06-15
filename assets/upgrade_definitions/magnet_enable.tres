@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" load_steps=5 format=3 uid="uid://1mdqs2t0l8vr"]
+
+[ext_resource type="Script" uid="uid://beyu06ro548fg" path="res://src/upgrade/effect_display_template_strings.gd" id="1_6xf63"]
+[ext_resource type="Texture2D" uid="uid://cgd86tmyw15tq" path="res://assets/upgrades/icons/magnet_enable.png" id="2_6xf63"]
+[ext_resource type="Script" uid="uid://cumjv6cve7vvt" path="res://src/upgrade/upgrade_definition.gd" id="3_wt4i8"]
+
+[sub_resource type="Resource" id="Resource_rtmjw"]
+script = ExtResource("1_6xf63")
+values = Array[String](["Off", "On"])
+metadata/_custom_type_script = "uid://beyu06ro548fg"
+
+[resource]
+script = ExtResource("3_wt4i8")
+price_formula = "10000000"
+effect_formula = "level"
+effect_display = SubResource("Resource_rtmjw")
+title = "Magnet"
+icon = ExtResource("2_6xf63")
+max_level = 1
+metadata/_custom_type_script = "uid://cumjv6cve7vvt"

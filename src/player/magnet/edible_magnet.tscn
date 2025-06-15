@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://xot54l056new"]
+
+[ext_resource type="Script" uid="uid://dyquflkf336bn" path="res://src/player/magnet/edible_magnet.gd" id="1_lmo7c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjh5f"]
+radius = 300.0
+
+[node name="EdibleMagnet" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_lmo7c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pjh5f")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

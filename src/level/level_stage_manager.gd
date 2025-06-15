@@ -15,6 +15,7 @@ const MAX_AT_ONCE: int = 100
 
 func _ready() -> void:
 	spawner.edible_eaten.connect(_on_edible_eaten)
+	spawner.edible_became_edible.connect(_on_edible_became_edible)
 	
 	start_stage.call_deferred()
 
@@ -54,3 +55,7 @@ func _on_edible_eaten() -> void:
 	
 	if remaining == 0:
 		next_stage()
+
+
+func _on_edible_became_edible() -> void:
+	try_spawn_edibles.call_deferred()

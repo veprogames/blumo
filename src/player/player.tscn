@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b524q435s8xuh"]
+[gd_scene load_steps=11 format=3 uid="uid://b524q435s8xuh"]
 
 [ext_resource type="Script" uid="uid://b0c7gs506b2jb" path="res://src/player/player.gd" id="1_xlok0"]
 [ext_resource type="Texture2D" uid="uid://yyfw783ga8hd" path="res://assets/player/player.png" id="2_8shp1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqutjy48rxjhr" path="res://assets/edible/glow.png" id="3_jiejy"]
 [ext_resource type="AudioStream" uid="uid://dwntp42ifre0v" path="res://assets/player/move.ogg" id="4_qrrqd"]
 [ext_resource type="AudioStream" uid="uid://dfjc42d6wjq8u" path="res://assets/player/die.ogg" id="5_mhae5"]
+[ext_resource type="PackedScene" uid="uid://xot54l056new" path="res://src/player/magnet/edible_magnet.tscn" id="5_x42xx"]
 [ext_resource type="PackedScene" uid="uid://df7slsnwgx7yn" path="res://src/player/bullet_pod/bullet_pod.tscn" id="7_o822w"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o822w"]
@@ -31,6 +32,8 @@ scale = Vector2(2.5, 2.5)
 material = SubResource("CanvasItemMaterial_o822w")
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_jiejy")
+
+[node name="EdibleMagnet" parent="." instance=ExtResource("5_x42xx")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1yec6")

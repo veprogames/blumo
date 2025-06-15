@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1kggttw1q2n2"]
+[gd_scene load_steps=11 format=3 uid="uid://1kggttw1q2n2"]
 
 [ext_resource type="Script" uid="uid://c31qlbckx1xmo" path="res://src/upgrade/upgrade_menu.gd" id="1_7frqj"]
 [ext_resource type="PackedScene" uid="uid://bxs7lmruydgcw" path="res://src/upgrade/upgrade_button.tscn" id="1_kyr0d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bkkj3hjegubux" path="res://assets/upgrades/tabs/edibles.png" id="6_dfe6p"]
 [ext_resource type="Texture2D" uid="uid://bwijmhknkf0gf" path="res://assets/upgrades/tabs/bullets.png" id="7_msb2c"]
 [ext_resource type="Texture2D" uid="uid://djay4w1aym2nk" path="res://assets/upgrades/tabs/abilities.png" id="8_03nep"]
+[ext_resource type="Texture2D" uid="uid://s7f5mllbt6r" path="res://assets/upgrades/tabs/magnet.png" id="9_msb2c"]
 
 [node name="UpgradeMenu" type="PanelContainer"]
 custom_minimum_size = Vector2(960, 1500)
@@ -153,6 +154,24 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="Magnet" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="UpgradeButtonMagnetSize" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Magnet" instance=ExtResource("1_kyr0d")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradeButtonMagnetStrength" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Magnet" instance=ExtResource("1_kyr0d")]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="Abilities" type="FlowContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs"]
 visible = false
 layout_mode = 1
@@ -167,14 +186,19 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="UpgradeButtonMagnetEnable" parent="VBoxContainer/MarginContainer/VBoxContainer/Tabs/Abilities" instance=ExtResource("1_kyr0d")]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="TabBar" type="TabBar" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
 current_tab = 0
-tab_count = 4
+tab_count = 5
 tab_0/icon = ExtResource("5_nycmo")
 tab_1/icon = ExtResource("6_dfe6p")
 tab_2/icon = ExtResource("7_msb2c")
-tab_3/icon = ExtResource("8_03nep")
+tab_3/icon = ExtResource("9_msb2c")
+tab_4/icon = ExtResource("8_03nep")
 
 [connection signal="tab_changed" from="VBoxContainer/TabBar" to="." method="_on_tab_bar_tab_changed"]

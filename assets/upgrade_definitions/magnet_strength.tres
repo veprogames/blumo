@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" load_steps=5 format=3 uid="uid://cgrv63b2xfoct"]
+
+[ext_resource type="Script" uid="uid://bbck1ogxv7f6w" path="res://src/upgrade/effect_display_template.gd" id="1_8neep"]
+[ext_resource type="Texture2D" uid="uid://cqng4af7oaj02" path="res://assets/upgrades/icons/magnet_strength.png" id="2_8neep"]
+[ext_resource type="Script" uid="uid://cumjv6cve7vvt" path="res://src/upgrade/upgrade_definition.gd" id="3_r2hpq"]
+
+[sub_resource type="Resource" id="Resource_ygo8w"]
+script = ExtResource("1_8neep")
+precision = 0
+prefix = ""
+suffix = ""
+metadata/_custom_type_script = "uid://bbck1ogxv7f6w"
+
+[resource]
+script = ExtResource("3_r2hpq")
+price_formula = "15e6 * 2.0 ** level"
+effect_formula = "100 + 50 * level"
+effect_display = SubResource("Resource_ygo8w")
+title = "Magnet Strength"
+icon = ExtResource("2_8neep")
+max_level = -1
+metadata/_custom_type_script = "uid://cumjv6cve7vvt"

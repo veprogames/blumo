@@ -1,7 +1,8 @@
 class_name EdibleSpawner
 extends Node2D
 
-signal edible_eaten()
+signal edible_eaten
+signal edible_became_edible
 
 @export var level: Level
 
@@ -123,6 +124,7 @@ func get_random_edge() -> LevelEdge:
 
 func _on_edible_became_edible(edible: Edible) -> void:
 	edible.reparent.call_deferred(glowing_edibles)
+	edible_became_edible.emit()
 
 
 func _on_edible_eaten(edible: Edible) -> void:

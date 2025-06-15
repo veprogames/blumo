@@ -31,6 +31,15 @@ var upgrade_bullets_firerate: Upgrade = Upgrade.new(
 var upgrade_bullets_count: Upgrade = Upgrade.new(
 	preload("res://assets/upgrade_definitions/bullets_count.tres")
 )
+var upgrade_magnet_enable: Upgrade = Upgrade.new(
+	preload("res://assets/upgrade_definitions/magnet_enable.tres")
+)
+var upgrade_magnet_size: Upgrade = Upgrade.new(
+	preload("res://assets/upgrade_definitions/magnet_size.tres")
+)
+var upgrade_magnet_strength: Upgrade = Upgrade.new(
+	preload("res://assets/upgrade_definitions/magnet_strength.tres")
+)
 
 
 func _set_stage(new_stage: int) -> void:
@@ -55,6 +64,9 @@ func serialize() -> Dictionary:
 		"upgrade_bullets_enable": upgrade_bullets_enable.level,
 		"upgrade_bullets_firerate": upgrade_bullets_firerate.level,
 		"upgrade_bullets_count": upgrade_bullets_count.level,
+		"upgrade_magnet_enable": upgrade_magnet_enable.level,
+		"upgrade_magnet_size": upgrade_magnet_size.level,
+		"upgrade_magnet_strength": upgrade_magnet_strength.level,
 	}
 
 
@@ -69,3 +81,6 @@ func load_game(serialized: Dictionary) -> void:
 	upgrade_bullets_enable.level = serialized.upgrade_bullets_enable
 	upgrade_bullets_firerate.level = serialized.upgrade_bullets_firerate
 	upgrade_bullets_count.level = serialized.upgrade_bullets_count
+	upgrade_magnet_enable.level = serialized.upgrade_magnet_enable
+	upgrade_magnet_size.level = serialized.upgrade_magnet_size
+	upgrade_magnet_strength.level = serialized.upgrade_magnet_strength

@@ -2,7 +2,8 @@ class_name UpgradeMenu
 extends PanelContainer
 
 const TAB_BULLETS: int = 2
-const TAB_ABILITIES: int = 3
+const TAB_MAGNET: int = 3
+const TAB_ABILITIES: int = 4
 
 @onready var upgrade_button_trail: UpgradeButton = %UpgradeButtonTrail
 @onready var upgrade_button_value: UpgradeButton = %UpgradeButtonValue
@@ -12,6 +13,9 @@ const TAB_ABILITIES: int = 3
 @onready var upgrade_button_bullets_enable: UpgradeButton = %UpgradeButtonBulletsEnable
 @onready var upgrade_button_bullets_firerate: UpgradeButton = %UpgradeButtonBulletsFirerate
 @onready var upgrade_button_bullets_count: UpgradeButton = %UpgradeButtonBulletsCount
+@onready var upgrade_button_magnet_enable: UpgradeButton = %UpgradeButtonMagnetEnable
+@onready var upgrade_button_magnet_size: UpgradeButton = %UpgradeButtonMagnetSize
+@onready var upgrade_button_magnet_strength: UpgradeButton = %UpgradeButtonMagnetStrength
 
 @onready var currency_counter: CurrencyCounter = %CurrencyCounter
 @onready var tab_bar: TabBar = $VBoxContainer/TabBar
@@ -27,6 +31,9 @@ func _ready() -> void:
 	upgrade_button_bullets_enable.upgrade = Global.save.upgrade_bullets_enable
 	upgrade_button_bullets_firerate.upgrade = Global.save.upgrade_bullets_firerate
 	upgrade_button_bullets_count.upgrade = Global.save.upgrade_bullets_count
+	upgrade_button_magnet_enable.upgrade = Global.save.upgrade_magnet_enable
+	upgrade_button_magnet_size.upgrade = Global.save.upgrade_magnet_size
+	upgrade_button_magnet_strength.upgrade = Global.save.upgrade_magnet_strength
 	
 	currency_counter.set_value_instant(Global.save.score)
 	Global.save.score_changed.connect(_on_global_score_changed)
@@ -65,6 +72,7 @@ func hide_menu() -> void:
 func update_tabs() -> void:
 	tab_bar.set_tab_hidden(TAB_ABILITIES, Global.save.stage < 100)
 	tab_bar.set_tab_hidden(TAB_BULLETS, Global.save.upgrade_bullets_enable.level == 0)
+	tab_bar.set_tab_hidden(TAB_MAGNET, Global.save.upgrade_magnet_enable.level == 0)
 
 
 func _on_global_score_changed(score: float) -> void:
