@@ -13,8 +13,8 @@ metadata/_custom_type_script = "uid://bbck1ogxv7f6w"
 
 [resource]
 script = ExtResource("3_r2hpq")
-price_formula = "15e6 * 2.0 ** level"
-effect_formula = "100 + 50 * level"
+price_formula = "10e6 * 2.0 ** level"
+effect_formula = "200 + 100 * level"
 effect_display = SubResource("Resource_ygo8w")
 title = "Magnet Strength"
 icon = ExtResource("2_8neep")

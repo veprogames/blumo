@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://bbck1ogxv7f6w"
 
 [resource]
 script = ExtResource("3_rdeiw")
-price_formula = "[1e7, 3e8, 1e11, 1e15, 1e25, 1e40, 1e60, 1e80, 1e100, 1e150, 1e200, 1e200][level]"
+price_formula = "[1e7, 5e7, 4e8, 3e9, 1e11, 5e12, 1e14, 1e15, 2e16, 5e17, 1e19, 1e19][level]"
 effect_formula = "1 + level"
 effect_display = SubResource("Resource_ygo8w")
 title = "Fire Rate"

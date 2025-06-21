@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://bbck1ogxv7f6w"
 
 [resource]
 script = ExtResource("3_4qktx")
-price_formula = "[5e6, 1e9, 1e15, 1e30, 1e60, 1e100, 1e150, 1e200, 1e250, 1e250][level]"
+price_formula = "[5e6, 1e8, 1e10, 1e12, 1e14, 1e17, 1e19, 1e22, 1e25, 1e25][level]"
 effect_formula = "1 + level"
 effect_display = SubResource("Resource_ygo8w")
 title = "Multishot"
