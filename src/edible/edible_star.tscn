@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5jdque2b43k3"]
+[gd_scene load_steps=7 format=3 uid="uid://b5jdque2b43k3"]
 
 [ext_resource type="Script" uid="uid://cv8chjs068okp" path="res://src/edible/edible.gd" id="1_qmc0g"]
 [ext_resource type="Texture2D" uid="uid://dqutjy48rxjhr" path="res://assets/edible/glow.png" id="2_38a2s"]
@@ -8,12 +8,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qmc0g"]
 radius = 26.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e8277"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5lwxo"]
-blend_mode = 1
 
 [node name="EdibleStar" type="Area2D"]
 collision_layer = 2
@@ -26,12 +20,12 @@ color = Color(0.6, 0.6, 0.156, 1)
 shape = SubResource("CircleShape2D_qmc0g")
 
 [node name="Glow" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_e8277")
+use_parent_material = true
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_38a2s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_5lwxo")
+use_parent_material = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_qmc0g")
 

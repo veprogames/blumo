@@ -1,15 +1,19 @@
 class_name EdibleMagnet
 extends Area2D
 
-@warning_ignore("unsafe_cast")
-@onready var collision_shape_2d_shape: CircleShape2D = $CollisionShape2D.shape as CircleShape2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
+var collision_shape_2d_shape: CircleShape2D
 
 # This emulates a Set
 var edibles: Dictionary[Edible, int] = {}
 
 
 func _ready() -> void:
+	collision_shape_2d_shape = collision_shape_2d.shape as CircleShape2D
+	
 	if !collision_shape_2d_shape:
+		push_warning("[EdibleMagnet] Collision Shape not found!")
 		queue_free()
 	
 	if Global.save.upgrade_magnet_enable.level == 0:

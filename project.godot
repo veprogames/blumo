@@ -66,6 +66,7 @@ import/blender/enabled=false
 [global_group]
 
 player=""
+spawnables=""
 
 [gui]
 

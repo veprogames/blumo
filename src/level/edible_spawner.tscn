@@ -5,6 +5,6 @@
 [node name="EdibleSpawner" type="Node2D"]
 script = ExtResource("1_tu8d5")
 
-[node name="Edibles" type="Node2D" parent="."]
-
 [node name="GlowingEdibles" type="Node2D" parent="."]
+
+[node name="Edibles" type="Node2D" parent="."]

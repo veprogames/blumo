@@ -1,10 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cr514afpudpu0"]
 
+[ext_resource type="Material" uid="uid://iq4w6vw5p620" path="res://assets/materials/additive_blending.tres" id="1_1odl0"]
 [ext_resource type="Texture2D" uid="uid://ba46c11omqg7s" path="res://assets/player/trail/trail.png" id="1_2llef"]
 [ext_resource type="Script" uid="uid://bh45u7ilgb4qt" path="res://src/player/trail/player_trail.gd" id="1_5366p"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_poaea"]
-blend_mode = 1
 
 [sub_resource type="Curve" id="Curve_poaea"]
 _data = [Vector2(0, 0), 0.0, 2.28894, 0, 0, Vector2(0.49827, 0.871105), 0.700201, 0.700201, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -16,7 +14,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1)
 
 [node name="PlayerTrail" type="Line2D"]
 z_index = -1
-material = SubResource("CanvasItemMaterial_poaea")
+material = ExtResource("1_1odl0")
 width = 64.0
 width_curve = SubResource("Curve_poaea")
 gradient = SubResource("Gradient_2llef")

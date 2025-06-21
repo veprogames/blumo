@@ -111,12 +111,6 @@ func spawn_edible(edge: LevelEdge) -> void:
 	edibles.add_child(edible)
 
 
-func spawn_explosion(at_edible: Edible) -> void:
-	var explosion: EdibleExplosion = EdibleExplosionScene.instantiate() as EdibleExplosion
-	explosion.position = at_edible.position
-	add_child(explosion)
-
-
 func get_random_edge() -> LevelEdge:
 	var values: Array = LevelEdge.values()
 	return values[randi() % len(values)]
@@ -127,9 +121,8 @@ func _on_edible_became_edible(edible: Edible) -> void:
 	edible_became_edible.emit()
 
 
-func _on_edible_eaten(edible: Edible) -> void:
+func _on_edible_eaten(_edible: Edible) -> void:
 	edible_eaten.emit()
-	spawn_explosion(edible)
 
 
 func get_edible_count() -> int:

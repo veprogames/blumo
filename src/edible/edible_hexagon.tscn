@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3oxqbxyvuh2v"]
+[gd_scene load_steps=7 format=3 uid="uid://c3oxqbxyvuh2v"]
 
 [ext_resource type="Script" uid="uid://cv8chjs068okp" path="res://src/edible/edible.gd" id="1_uwkny"]
 [ext_resource type="Texture2D" uid="uid://dqutjy48rxjhr" path="res://assets/edible/glow.png" id="2_sbj1a"]
@@ -8,12 +8,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uwkny"]
 radius = 26.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e8277"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5lwxo"]
-blend_mode = 1
 
 [node name="EdibleHexagon" type="Area2D"]
 collision_layer = 2
@@ -26,12 +20,12 @@ color = Color(0.156, 0.6, 0.156, 1)
 shape = SubResource("CircleShape2D_uwkny")
 
 [node name="Glow" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_e8277")
+use_parent_material = true
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_sbj1a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_5lwxo")
+use_parent_material = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_uwkny")
 
