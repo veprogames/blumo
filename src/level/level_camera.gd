@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 
 
 func do_shake_impulse() -> void:
-	shake_modifier = minf(shake_modifier + 1, 2.0)
+	shake_modifier = minf(shake_modifier + 0.5, 1.0)
 
 
 func _on_edible_spawner_edible_eaten() -> void:

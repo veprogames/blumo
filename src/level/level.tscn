@@ -76,7 +76,7 @@ spawner = NodePath("../EdibleSpawner")
 
 [node name="LevelCamera" parent="." instance=ExtResource("9_8srtw")]
 anchor_mode = 0
-shake_strength = 100.0
+shake_strength = 50.0
 
 [node name="TimerRestart" type="Timer" parent="."]
 process_callback = 0
