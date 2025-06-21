@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://duakgck4wfr0q"]
+[gd_scene load_steps=9 format=3 uid="uid://duakgck4wfr0q"]
 
 [ext_resource type="Texture2D" uid="uid://blofy2qar2bv3" path="res://assets/edible/edible.png" id="1_df8af"]
 [ext_resource type="Script" uid="uid://csvrcgehk3ntq" path="res://src/edible/effect/edible_explosion.gd" id="2_q60ks"]
-[ext_resource type="AudioStream" uid="uid://btojsrh8dhivo" path="res://assets/edible/eat.ogg" id="3_qvqrf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y2k1k"]
 blend_mode = 1
@@ -35,11 +34,6 @@ scale_max = 1.2
 scale_curve = SubResource("CurveTexture_caucj")
 alpha_curve = SubResource("CurveTexture_t7x2f")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rhlad"]
-random_pitch = 1.5
-streams_count = 1
-stream_0/stream = ExtResource("3_qvqrf")
-
 [node name="EdibleExplosion" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_y2k1k")
 emitting = false
@@ -51,9 +45,5 @@ explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_jrqhs")
 script = ExtResource("2_q60ks")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_rhlad")
-autoplay = true
 
 [connection signal="finished" from="." to="." method="_on_finished"]

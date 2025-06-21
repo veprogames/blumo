@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://b6n33mn6r2f1b"]
+
+[ext_resource type="AudioStream" uid="uid://by1sycqan8akp" path="res://assets/edible/eat.wav" id="1_wd087"]
+
+[resource]
+playback_mode = 1
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("1_wd087")

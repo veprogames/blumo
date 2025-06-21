@@ -2,6 +2,7 @@ class_name BulletPod
 extends Node2D
 
 const BulletScene: PackedScene = preload("res://src/bullet/bullet.tscn")
+const StreamShoot: AudioStreamWAV = preload("res://assets/bullet/shoot.wav")
 
 var cooldown: float = 0.5
 var t: float = 0.0
@@ -32,6 +33,7 @@ func shoot() -> void:
 		var angle: float = start_angle + gap * i
 		var bullet: Bullet = spawn_bullet()
 		bullet.rotation += angle
+	AudioManager.play_stream(StreamShoot)
 
 
 func spawn_bullet() -> Bullet:

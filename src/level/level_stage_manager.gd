@@ -3,6 +3,8 @@ extends Node2D
 
 signal remaining_changed(new_amount: int)
 
+const StreamLevelUp: AudioStreamWAV = preload("res://assets/level/level_up.wav")
+
 @export var spawner: EdibleSpawner
 
 ## The amount the player this has to eat after being spawned
@@ -33,7 +35,8 @@ func start_stage() -> void:
 
 func next_stage() -> void:
 	Global.save.stage += 1
-	await get_tree().create_timer(2).timeout
+	AudioManager.play_stream(StreamLevelUp)
+	await get_tree().create_timer(0.3).timeout
 	start_stage()
 
 

@@ -6,6 +6,8 @@ signal eaten(edible: Edible)
 
 const EdibleExplosionScene: PackedScene = preload("res://src/edible/effect/edible_explosion.tscn")
 const MaterialAdditive: CanvasItemMaterial = preload("res://assets/materials/additive_blending.tres")
+const StreamEat: AudioStreamRandomizer = preload("res://assets/edible/audio_stream_eat.tres")
+const StreamBecameEdible: AudioStreamWAV = preload("res://assets/edible/became_edible.wav")
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var glow: Sprite2D = $Glow
@@ -55,6 +57,7 @@ func become_edible() -> void:
 	
 	edible = true
 	turn_on_glow()
+	AudioManager.play_stream(StreamBecameEdible)
 	became_edible.emit(self)
 
 
@@ -74,6 +77,7 @@ func get_value() -> float:
 func eat() -> void:
 	Global.save.score += get_value()
 	spawn_explosion()
+	AudioManager.play_stream(StreamEat)
 	queue_free()
 	await tree_exited
 	eaten.emit(self)

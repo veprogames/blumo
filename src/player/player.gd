@@ -5,7 +5,6 @@ signal died()
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var sprite_glow: Sprite2D = $SpriteGlow
-@onready var audio_stream_player_move: AudioStreamPlayer = $AudioStreamPlayerMove
 @onready var audio_stream_player_die: AudioStreamPlayer = $AudioStreamPlayerDie
 
 const ExplosionScene: PackedScene = preload("res://src/player/explosion/player_explosion.tscn")
@@ -61,20 +60,6 @@ func _physics_process(delta: float) -> void:
 		
 		var average_motion: Vector2 = total_movement / len(movements)
 		sprite_2d.rotation = average_motion.angle()
-	
-		var time_difference: float = t - movement_times[0]
-		var velocity: float = (total_movement / time_difference).length()
-		
-		audio_stream_player_move.volume_db = clampf(
-			remap(velocity, 0.0, 20000.0, -40.0, 0.0),
-			-70.0,
-			-6.0,
-		)
-		audio_stream_player_move.pitch_scale = clampf(
-			remap(velocity, 0.0, 20000.0, 0.1, 3.0),
-			0.1,
-			5.0,
-		)
 
 
 func die() -> void:

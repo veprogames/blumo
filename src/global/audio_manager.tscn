@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl463e1of66l7"]
+
+[ext_resource type="Script" uid="uid://c81wamrgygvvn" path="res://src/global/audio_manager.gd" id="1_8i4a6"]
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_oh04a"]
+polyphony = 64
+
+[node name="AudioManager" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamPolyphonic_oh04a")
+script = ExtResource("1_8i4a6")

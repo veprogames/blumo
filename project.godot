@@ -26,6 +26,7 @@ config/windows_native_icon="res://assets/icons/icon.ico"
 Global="*res://src/global/global.gd"
 SceneManager="*res://src/global/scene_manager.tscn"
 GameEvents="*res://src/global/game_events.gd"
+AudioManager="*res://src/global/audio_manager.tscn"
 
 [debug]
 
