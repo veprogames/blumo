@@ -57,7 +57,7 @@ func become_edible() -> void:
 	
 	edible = true
 	turn_on_glow()
-	AudioManager.play_stream(StreamBecameEdible)
+	AudioManager.play_stream(StreamBecameEdible, -6)
 	became_edible.emit(self)
 
 

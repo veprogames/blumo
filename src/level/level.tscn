@@ -16,9 +16,6 @@ blend_mode = 1
 [node name="Level" type="Node2D"]
 script = ExtResource("1_qimrh")
 
-[node name="Player" parent="." instance=ExtResource("1_2tvxm")]
-position = Vector2(540, 960)
-
 [node name="PlayerTrail" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_dp51t")]
 player = NodePath("../Player")
 
@@ -85,8 +82,11 @@ one_shot = true
 
 [node name="Spawnables" type="Node2D" parent="." groups=["spawnables"]]
 
+[node name="Player" parent="." instance=ExtResource("1_2tvxm")]
+position = Vector2(540, 960)
+
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
-[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="edible_eaten" from="EdibleSpawner" to="LevelCamera" method="_on_edible_spawner_edible_eaten"]
 [connection signal="timeout" from="TimerRestart" to="." method="_on_timer_restart_timeout"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
