@@ -45,7 +45,6 @@ window/size/mode=4
 window/size/borderless=true
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
-window/vsync/vsync_mode=0
 window/size/mode.editor=2
 window/size/window_width_override.editor=360
 window/size/window_height_override.editor=640
