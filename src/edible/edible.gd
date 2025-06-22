@@ -79,7 +79,8 @@ func get_value() -> float:
 
 func eat() -> void:
 	Global.save.score += get_value()
-	spawn_explosion()
+	if Global.settings.eat_particles:
+		spawn_explosion()
 	AudioManager.play_stream(StreamEat)
 	queue_free()
 	await tree_exited

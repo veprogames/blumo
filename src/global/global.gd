@@ -3,11 +3,13 @@ extends Node
 const SAVE_PATH: String = "user://save.tres"
 
 var save: SaveGame = SaveGame.new()
+var settings: GameSettings = GameSettings.new()
 
 
 func _ready() -> void:
 	if not OS.has_feature("editor"):
 		try_load_game()
+		settings.load_settings()
 	
 	save.stage_changed.connect(_on_stage_changed)
 
