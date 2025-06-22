@@ -20,6 +20,9 @@ var edible: bool = false
 
 
 func _ready() -> void:
+	set_process(false)
+	set_physics_process(false)
+	
 	var previous_scale: Vector2 = sprite_2d.scale
 	sprite_2d.scale = Vector2.ZERO
 	var tween: Tween = create_tween()

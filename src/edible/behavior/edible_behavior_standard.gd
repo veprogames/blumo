@@ -21,6 +21,8 @@ var from_edge: EdibleSpawner.LevelEdge
 func _ready() -> void:
 	await edible.ready
 	
+	set_process(false)
+	
 	sprite_2d = edible.sprite_2d
 	
 	viewport_rect = get_viewport_rect()

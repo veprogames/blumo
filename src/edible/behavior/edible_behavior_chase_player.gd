@@ -4,19 +4,27 @@ extends Node
 @export var edible: Edible
 
 var speed: float
+var player: Player
 
 
 func _ready() -> void:
+	set_process(false)
+	
 	speed = get_speed()
+	player = get_player()
 
 
 func _physics_process(delta: float) -> void:
 	if !can_chase():
 		return
 	
-	var player: Player = get_player()
 	if !player:
-		return
+		# try to retrieve player again
+		player = get_player()
+		
+		# exit if player still doesn't exist
+		if !player:
+			return
 	
 	var direction: Vector2 = (player.position - edible.position).normalized()
 	edible.position += direction * speed * delta

@@ -9,3 +9,4 @@ extends Node
 
 func _ready() -> void:
 	edible.scale *= randf_range(min_size, max_size)
+	queue_free()
