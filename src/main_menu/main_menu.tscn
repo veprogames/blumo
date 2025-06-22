@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmmxbm2sv5ose"]
+[gd_scene load_steps=4 format=3 uid="uid://cmmxbm2sv5ose"]
 
 [ext_resource type="Script" uid="uid://c7o3a08u18ltx" path="res://src/main_menu/main_menu.gd" id="1_p4hwm"]
+[ext_resource type="PackedScene" uid="uid://dpl0klxay4i0" path="res://src/settings/settings_menu.tscn" id="3_amn4d"]
 [ext_resource type="PackedScene" uid="uid://1kggttw1q2n2" path="res://src/upgrade/upgrade_menu.tscn" id="5_no1ax"]
 
 [node name="MainMenu" type="Node2D"]
@@ -60,6 +61,11 @@ layout_mode = 2
 theme_type_variation = &"ButtonLarge"
 text = "PowerUp"
 
+[node name="ButtonSettings" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"ButtonLarge"
+text = "Settings"
+
 [node name="ButtonQuit" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"ButtonLarge"
@@ -68,7 +74,11 @@ text = "Quit"
 [node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource("5_no1ax")]
 visible = false
 
+[node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("3_amn4d")]
+visible = false
+
 [connection signal="meta_clicked" from="CanvasLayer/CenterContainer/VBoxContainer/LabelSubtitle" to="." method="_on_label_subtitle_meta_clicked"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/ButtonUpgrades" to="." method="_on_button_upgrades_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

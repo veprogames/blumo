@@ -1,6 +1,10 @@
-[gd_resource type="Theme" load_steps=26 format=3 uid="uid://ckehh8iri5o8t"]
+[gd_resource type="Theme" load_steps=36 format=3 uid="uid://ckehh8iri5o8t"]
 
 [ext_resource type="FontFile" uid="uid://dbp27epd3pdii" path="res://assets/fonts/Coiny-Regular.ttf" id="1_470mv"]
+[ext_resource type="Texture2D" uid="uid://bul1t2s2lmihp" path="res://assets/ui/checkbox/checkbox_on.png" id="1_611f8"]
+[ext_resource type="Texture2D" uid="uid://bsk47bhxnjcnb" path="res://assets/ui/checkbox/checkbox_on_disabled.png" id="2_pefyd"]
+[ext_resource type="Texture2D" uid="uid://cs55pjiu8bvhx" path="res://assets/ui/checkbox/checkbox_off.png" id="3_upuy7"]
+[ext_resource type="Texture2D" uid="uid://b1hx8501hanld" path="res://assets/ui/checkbox/checkbox_off_disabled.png" id="4_pefyd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_470mv"]
 content_margin_left = 28.0
@@ -102,6 +106,43 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jsj3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f8b1"]
+content_margin_left = 28.0
+content_margin_top = 28.0
+content_margin_right = 28.0
+content_margin_bottom = 28.0
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl0ij"]
+content_margin_left = 28.0
+content_margin_top = 28.0
+content_margin_right = 28.0
+content_margin_bottom = 28.0
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfaqg"]
+content_margin_left = 28.0
+content_margin_top = 28.0
+content_margin_right = 28.0
+content_margin_bottom = 28.0
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yo0da"]
+content_margin_left = 28.0
+content_margin_top = 28.0
+content_margin_right = 28.0
+content_margin_bottom = 28.0
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtuga"]
+content_margin_left = 28.0
+content_margin_top = 28.0
+content_margin_right = 28.0
+content_margin_bottom = 28.0
+bg_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nsjfo"]
 
@@ -220,6 +261,17 @@ ButtonBorderless/styles/pressed = SubResource("StyleBoxEmpty_wavyl")
 ButtonLarge/base_type = &"Button"
 ButtonLarge/font_sizes/font_size = 96
 ButtonLarge/styles/normal = SubResource("StyleBoxFlat_xgdp2")
+CheckBox/constants/h_separation = 16
+CheckBox/icons/checked = ExtResource("1_611f8")
+CheckBox/icons/checked_disabled = ExtResource("2_pefyd")
+CheckBox/icons/unchecked = ExtResource("3_upuy7")
+CheckBox/icons/unchecked_disabled = ExtResource("4_pefyd")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_2jsj3")
+CheckBox/styles/hover = SubResource("StyleBoxFlat_6f8b1")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_pl0ij")
+CheckBox/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_mfaqg")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_yo0da")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_jtuga")
 FlowContainer/constants/h_separation = 48
 FlowContainer/constants/v_separation = 48
 HSeparator/constants/separation = 16

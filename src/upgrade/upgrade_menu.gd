@@ -5,6 +5,8 @@ const TAB_BULLETS: int = 2
 const TAB_MAGNET: int = 3
 const TAB_ABILITIES: int = 4
 
+@onready var popup_menu_component: PopupMenuComponent = $PopupMenuComponent
+
 @onready var upgrade_button_trail: UpgradeButton = %UpgradeButtonTrail
 @onready var upgrade_button_value: UpgradeButton = %UpgradeButtonValue
 @onready var upgrade_button_triangle_chance: UpgradeButton = %UpgradeButtonTriangleChance
@@ -41,38 +43,16 @@ func _ready() -> void:
 	GameEvents.upgrade_bought.connect(_on_game_events_upgrade_bought)
 	
 	update_tabs()
-	
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	scale = Vector2.ZERO
-	show()
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	var mouse_event: InputEventMouseButton = event as InputEventMouseButton
-	if mouse_event:
-		hide_menu()
-
-
-func show_menu() -> void:
-	mouse_filter = Control.MOUSE_FILTER_STOP
-	var tween: Tween = create_tween()
-	tween.tween_property(self, ^"scale", Vector2.ONE, 0.5) \
-		.set_trans(Tween.TRANS_ELASTIC) \
-		.set_ease(Tween.EASE_OUT)
-
-
-func hide_menu() -> void:
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var tween: Tween = create_tween()
-	tween.tween_property(self, ^"scale", Vector2.ZERO, 0.3) \
-		.set_trans(Tween.TRANS_EXPO) \
-		.set_ease(Tween.EASE_OUT)
 
 
 func update_tabs() -> void:
 	tab_bar.set_tab_hidden(TAB_ABILITIES, Global.save.stage < 100)
 	tab_bar.set_tab_hidden(TAB_BULLETS, Global.save.upgrade_bullets_enable.level == 0)
 	tab_bar.set_tab_hidden(TAB_MAGNET, Global.save.upgrade_magnet_enable.level == 0)
+
+
+func open() -> void:
+	popup_menu_component.show_menu()
 
 
 func _on_global_score_changed(score: float) -> void:

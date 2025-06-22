@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://1kggttw1q2n2"]
+[gd_scene load_steps=12 format=3 uid="uid://1kggttw1q2n2"]
 
 [ext_resource type="Script" uid="uid://c31qlbckx1xmo" path="res://src/upgrade/upgrade_menu.gd" id="1_7frqj"]
 [ext_resource type="PackedScene" uid="uid://bxs7lmruydgcw" path="res://src/upgrade/upgrade_button.tscn" id="1_kyr0d"]
+[ext_resource type="PackedScene" uid="uid://dc7h40xbumnmm" path="res://src/ui/popup_menu_component.tscn" id="2_03nep"]
 [ext_resource type="PackedScene" uid="uid://dojgmv85rvmht" path="res://src/ui/currency_counter.tscn" id="2_kb2ut"]
 [ext_resource type="Texture2D" uid="uid://d0kn8ocaeinst" path="res://assets/ui/score.png" id="3_rjlyh"]
 [ext_resource type="Texture2D" uid="uid://bwhxjsci8fh81" path="res://assets/upgrades/menu/arrow.png" id="5_dfe6p"]
@@ -26,6 +27,9 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 640)
 script = ExtResource("1_7frqj")
+
+[node name="PopupMenuComponent" parent="." node_paths=PackedStringArray("popup") instance=ExtResource("2_03nep")]
+popup = NodePath("..")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

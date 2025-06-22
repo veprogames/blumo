@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc7h40xbumnmm"]
+
+[ext_resource type="Script" uid="uid://c8i56k1e1dg4t" path="res://src/ui/popup_menu_component.gd" id="1_0o2d7"]
+
+[node name="PopupMenuComponent" type="Node"]
+script = ExtResource("1_0o2d7")

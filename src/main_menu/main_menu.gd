@@ -2,6 +2,7 @@ class_name MainMenu
 extends Node2D
 
 @onready var upgrade_menu: UpgradeMenu = $CanvasLayer/UpgradeMenu
+@onready var settings_menu: SettingsMenu = $CanvasLayer/SettingsMenu
 
 var LevelScene: PackedScene = preload("res://src/level/level.tscn")
 
@@ -21,4 +22,8 @@ func _on_label_subtitle_meta_clicked(meta: Variant) -> void:
 
 
 func _on_button_upgrades_pressed() -> void:
-	upgrade_menu.show_menu()
+	upgrade_menu.open()
+
+
+func _on_button_settings_pressed() -> void:
+	settings_menu.open()
