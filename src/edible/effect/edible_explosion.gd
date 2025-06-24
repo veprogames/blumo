@@ -1,7 +1,7 @@
 class_name EdibleExplosion
 extends GPUParticles2D
 
-@export var tex: Texture2D = preload("res://assets/edible/edible.png")
+@export var tex: Texture2D = preload("res://assets/edible/edible_square.png")
 @export var color: Color = Edible.EDIBLE_COLOR
 
 
